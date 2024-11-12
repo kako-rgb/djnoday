@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('./images/noday.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .menu {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  .menu ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .genres, .genre-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .genre {
+    cursor: pointer;
+    background-color: #6a5acd;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    width: 200px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .genre:hover {
+    transform: scale(1.05);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .loading {
+    color: #6a5acd;
+    font-size: 1.2em;
+    margin: 20px 0;
+  }
+  
+  #music-list li {
+    cursor: pointer;
+    color: white;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #music-list li:hover {
+    background-color: #eee;
+  }
+  
+  .media-player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-around;
+  }
+  
+  @media (max-width: 768px) {
+    .genre {
+      width: 90%;
+    }
+  }
+  
