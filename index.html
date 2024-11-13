@@ -9,24 +9,24 @@
 <body>
   <!-- Navigation Menu -->
   <header class="menu">
-    <h1>DJ Noday Mix</h1>
+    <h1>NODAYZ ENTERTAINMENT</h1>
     <nav>
       <ul>
-        <li><a href="#" onclick="openGenre('hiphop')">Hip Hop</a></li>
-        <li><a href="#" onclick="openGenre('rnb')">R&B</a></li>
-        <li><a href="#" onclick="openGenre('soul')">Soul</a></li>
-        <!-- Add more genres as needed -->
+        <li><a href="#" onclick="openGenre('nightclubs')"> Nightclubs </a></li>
+        <li><a href="#" onclick="openGenre('sound')">Sound</a></li>
+        <li><a href="#" onclick="openGenre('festivals')">Festivals</a></li>
       </ul>
     </nav>
   </header>
-  <img src="path-to-qr-code-image.png" alt="Scan to Access Music Site">
+  
+  <img id="qr" src="./images/qrnobg.png" alt="Scan to Access Music Site">
 
   <!-- Genre Selection Section -->
   <section class="genres">
     <h2>Select a Genre</h2>
-    <div class="genre" onclick="openGenre('hiphop')">Hip Hop</div>
-    <div class="genre" onclick="openGenre('rnb')">R&B</div>
-    <div class="genre" onclick="openGenre('soul')">Soul</div>
+    <div class="genre" onclick="openGenre('karaoke')">KARAOKE@CAFEAMKA</div>
+    <div class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
+    <div class="genre" onclick="openGenre('live')">LIVE</div>
   </section>
 
   <!-- Genre Content Display -->
@@ -36,13 +36,14 @@
     <ul id="music-list"></ul>
   </section>
 
-  <!-- Media Player (Video or Audio) -->
-  <div id="media-player" class="media-player hidden">
-    <video id="video-player" controls class="hidden"></video>
-    <audio id="audio-player" controls class="hidden"></audio>
-    <button onclick="toggleFullScreen()">Toggle Full Screen</button>
-    <button onclick="closePlayer()">Exit Player</button>
-  </div>
+ <!-- Media Player (Video or Audio) -->
+<div id="media-player" class="media-player hidden">
+  <video id="video-player" controls class="hidden"></video>
+  <audio id="audio-player" controls class="hidden"></audio>
+  <button onclick="toggleFullScreen()">Toggle Full Screen</button>
+  <button onclick="closePlayer()">Exit Player</button>
+</div>
+
 
   <!-- JavaScript -->
   <script src="script.js"></script>
