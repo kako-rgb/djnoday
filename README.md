@@ -1,0 +1,1 @@
+this is a html css and js setup for a video playing website where by a dj or event planners can use to show their products,services,past events,prices and much more it is a basic setup but feel free to customize as you see fit 
