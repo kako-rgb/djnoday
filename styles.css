@@ -91,7 +91,7 @@ body {
     justify-content: space-around;
   }
   #video-player{
-    width: 70%;
+    width: 90%;
   }
   
   @media (max-width: 768px) {
