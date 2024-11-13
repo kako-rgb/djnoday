@@ -12,7 +12,12 @@ body {
     text-align: center;
     color: white;
   }
-  
+  h2{
+    color: white;
+  }
+  .genre-content{
+    color: white;
+  }
   .menu ul {
     list-style: none;
     padding: 0;
@@ -50,7 +55,9 @@ body {
   .genre:hover {
     transform: scale(1.05);
   }
-  
+  #qr{
+    width: 100px;
+  }
   .hidden {
     display: none;
   }
@@ -75,13 +82,16 @@ body {
   .media-player {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    width: 60%;
+    background: none;
     color: white;
     display: flex;
     align-items: center;
     padding: 10px;
     justify-content: space-around;
+  }
+  #video-player{
+    width: 70%;
   }
   
   @media (max-width: 768px) {
