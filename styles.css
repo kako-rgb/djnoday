@@ -117,7 +117,14 @@ body {
 .back-button.hidden {
   display: none;
 }
-
+#back-button{
+  background-color: yellow;
+  border-radius: 5px;
+}
+#back-button:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  transform: scale(1.05);
+}
 .qr-code {
   max-width: 100%;
   height: auto;
