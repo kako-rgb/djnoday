@@ -3,49 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Genre Website</title>
+  <title>NODAY'Z ENTERTAINMENT</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="./images/nodaylogo.png"> <!-- Favicon -->
 </head>
 <body>
-  <!-- Navigation Menu -->
+  <!-- Header Section -->
   <header class="menu">
-    <h1>NODAYZ ENTERTAINMENT</h1>
+    <img id="logoimg" src="./images/nodaylogo.png" alt="Logo" class="menu-logo">
+    <h1>NODAY'Z ENTERTAINMENT</h1>
     <nav>
       <ul>
-        <li><a href="#" onclick="openGenre('nightclubs')"> Nightclubs </a></li>
-        <li><a href="#" onclick="openGenre('sound')">Sound</a></li>
-        <li><a href="#" onclick="openGenre('festivals')">Festivals</a></li>
+        <li><a href="#">Events</a>
+          <ul class="dropdown">
+            <li><a href="#">Upcoming Events</a></li>
+            <li><a href="#">Past Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Sound</a>
+          <ul class="dropdown">
+            <li><a href="#">Playlists</a></li>
+            <li><a href="#">Live Sessions</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Festivals</a>
+          <ul class="dropdown">
+            <li><a href="#">2024 Highlights</a></li>
+            <li><a href="#">Photos</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
-  
-  <img id="qr" src="./images/qrnobg.png" alt="Scan to Access Music Site">
 
-  <!-- Genre Selection Section -->
-  <section class="genres">
-    <h2>Select a Genre</h2>
-    <div class="genre" onclick="openGenre('karaoke')">KARAOKE@CAFEAMKA</div>
-    <div class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
-    <div class="genre" onclick="openGenre('live')">LIVE</div>
-  </section>
+  <!-- Main Content -->
+  <div class="container">
+    <section class="genres" id="genres-section">
+      <div class="genre" onclick="openGenre('karaoke')"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo" class="karaoke-logo hidden"></div>
+      <div class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
+      <div class="genre" onclick="openGenre('live')">LIVE</div>
+    </section>
+
+    <div id="qr-back-container">
+      <button id="back-button" onclick="goBack()" class="hidden">⬅ Back</button>
+      <img id="qr" src="./images/qr.png" alt="Scan to Access Music Site">
+    </div>
+  </div>
 
   <!-- Genre Content Display -->
   <section id="genre-content" class="genre-content hidden">
-    <h3 id="genre-title">Genre: </h3>
-    <div id="loading" class="loading hidden">Loading music...</div>
+    <h3 id="genre-title"> Enjoy: </h3>
     <ul id="music-list"></ul>
   </section>
 
- <!-- Media Player (Video or Audio) -->
-<div id="media-player" class="media-player hidden">
-  <video id="video-player" controls class="hidden"></video>
-  <audio id="audio-player" controls class="hidden"></audio>
-  <button onclick="toggleFullScreen()">Toggle Full Screen</button>
-  <button onclick="closePlayer()">Exit Player</button>
-</div>
+  <!-- Media Player -->
+  <div id="media-player" class="media-player hidden">
+    <button id="close-button" onclick="closePlayer()">✖</button>
+    <video id="video-player" controls class="hidden" onended="closePlayer()"></video>
+    <audio id="audio-player" controls class="hidden"></audio>
+  </div>
 
-
-  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
