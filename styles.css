@@ -4,6 +4,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-box input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-box button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
 
 /* Background Image */
 body {
@@ -48,7 +68,81 @@ body {
 .menu nav ul li a:hover {
   text-decoration: underline;
 }
+/************************NEW****************************/
+#kcont{
+  margin-top: -100px;
+}
+#livecont{
+  margin-top: 10px;
+}
+#mixcont{
+  margin-top: 210px;
+}
+/* Content layout */
+.content1 {
+  display: flex;
+  height: 100px;
+}
 
+/* Sidebar (Categories) */
+.categories1 {
+  width: 300px;
+  height: 300px;
+  background-color:rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+}
+#kwanza{
+  color: orange;
+}
+.categories1 h2 {
+  margin-top: 0;
+
+}
+
+.categories1 ul {
+  list-style: none;
+  padding: 0;
+}
+
+.categories1 li {
+  padding: 0.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border 0.2s;
+}
+
+.categories1 li:hover {
+  background-color: #e0e0e0;
+  border: 1px solid #0078d7;
+}
+
+/* Main details section */
+.details {
+  width: 500px;
+  height: 300px;
+  background-color:rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  overflow-y: auto;
+}
+#details-title{
+  color: red;
+}
+.details h2 {
+  margin-top: 0;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+}
+
+.item-list li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+/***********************************************END**********************/
 /* Main Container */
 .container {
   display: flex;
@@ -116,10 +210,12 @@ body {
 
 .back-button.hidden {
   display: none;
+  
 }
 #back-button{
   background-color: yellow;
   border-radius: 5px;
+  font-weight: bold;
 }
 #back-button:hover {
   background-color: rgba(255, 0, 0, 0.7);
@@ -274,3 +370,21 @@ body {
     width: 90%;
   }
 }
+/* Hide menu items and show hamburger menu on small screens */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* Hide menu items by default */
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  nav ul.active {
+    display: flex; /* Show when active */
+  }
+}
+

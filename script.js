@@ -1,3 +1,90 @@
+// Data for categories and items
+const categoryData = {
+  arabic: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    chinese: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    dancehall: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    eastAfrican: [
+    "A Woman In Love ~ Vivian ", 
+    "LAfrica ~ Sauti Sol & Yemi Alade",
+    "African Woman ~ Lenny & Kungru",
+    "Amina  ~ Sanaipei Tande",
+    "Aminia (Lyrics) ~ Nyashinski",
+    "A Woman In Love ~ Vivian ",
+    "Amuka Kumekucha ~ Maroon Commandos",
+    "Baadaye ~ Amos & Josh ft King Kaka", 
+    "Baadaye ~ Ommy Dimpoz",
+    "Baby Love ~ Otile Brown ",
+    "Bad Boy ~ Amani ft. Nyashinski",
+    "Bambika ~ Tyrical ft. Lyrical Erico & Shanky Radics", 
+    "Bebi Bebi ~ Atemi",
+    "Bebi Bebi ~ Nyashinski", 
+    "Bembeleza ~ Marlow", 
+    "Bidii Yangu ~ Jua Kali "],
+
+ international: ["1, 2 Step ~ Ciara Ft. Missy Elliott ",
+"2 In The Morning ~ New Kids On The ",
+"6, 8, 12 ~ Brian McKnight ",   
+"7 Days ~ Craig David",     
+"7 Rings ~ Ariana Grande",       
+"7 Years ~ Lukas Graham ",        
+"9 To 5 ~ Dolly Parton ",     
+"18 Till I Die ~ Brian Adams",       
+"21 Guns ~ Green Day",           
+"21 Questions ~ 50 Cents & NateDogg",    
+"24-7 ~ Kevon Edmunds",        
+"24K Magic ~ Bruno Mars",   
+"911 ~ Wyclef Jean & Mary J. Blige",   
+"2002 ( Inst.) ~ Anne Marie",         
+"2002 ~  Anne-Marie",            
+"A B C  ~ The Jackson 5",           
+"A Drop In The Ocean ~ Ron Pope",       
+"A Hard Day's Night ~ The Beatles",        
+"A Long December ~ Counting Crows",   
+"A Man Without Love ~ Englebert Humperdinck",    
+"A Million Dreams ~ The Greatest Showman",      
+"A Moment Like This ~ Kelly Clarkson",    
+"A Natural Woman (You Make Me Feel Like) ~ Aretha Franklin"   
+    ],
+    gospel: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    lingala: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    roots: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    traditional: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    naija: [ "Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    xmass: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+};
+
+// Function to render item list based on category
+function displayItems(category) {
+  const itemList = document.getElementById("item-list");
+  const title = document.getElementById("details-title");
+
+  // Clear previous items
+  itemList.innerHTML = "";
+
+  // Update title
+  title.textContent = category ? `songs in ${category}` : "Select a Category";
+
+  // Add new items
+  if (categoryData[category]) {
+    categoryData[category].forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = item;
+      itemList.appendChild(listItem);
+    });
+  }
+}
+
+// Event listener for category clicks
+document.getElementById("category-list").addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    const selectedCategory = e.target.getAttribute("data-category");
+    displayItems(selectedCategory);
+  }
+});
+
+// Default view
+displayItems();
+
 let genreHistory = [];
 
 // Open a genre and display its content
@@ -32,6 +119,7 @@ function openGenre(genre) {
   // Push current genre to history for back navigation
   genreHistory.push(genre);
 
+
   // Sample media data for genres
   const mediaData = {
     karaoke: [
@@ -65,6 +153,24 @@ function openGenre(genre) {
   
   // Animate genre content fading in
   genreContent.style.animation = "fadeIn 0.5s forwards";
+}
+
+//go back code
+function goBack() {
+  if (genreHistory.length > 0) {
+    genreHistory.pop(); // Remove the last genre from history
+    if (genreHistory.length === 0) {
+      // Show the home section
+      document.getElementById('genres-section').classList.remove('hidden');
+      document.getElementById('genre-content').classList.add('hidden');
+      document.getElementById('back-button').classList.add('hidden');
+    } else {
+      openGenre(genreHistory[genreHistory.length - 1]); // Open the previous genre
+    }
+  } else {
+    // Navigate to the previous page if no genre history
+    window.history.back();
+  }
 }
 
 // Play selected media (video or audio)
@@ -123,31 +229,8 @@ function closePlayer() {
 }
 
 // Navigate back to the previous genre or home
-function goBack() {
-  if (genreHistory.length > 1) {
-    // Remove current genre from history
-    genreHistory.pop();
-    // Get the previous genre
-    const previousGenre = genreHistory[genreHistory.length - 1];
-    // Open the previous genre
-    openGenre(previousGenre);
-  } else {
-    // If no history, go back to genres section
-    const genreContent = document.getElementById('genre-content');
-    const genresSection = document.getElementById('genres-section');
-    const backButton = document.getElementById('back-button');
-    const karaokeLogo = document.querySelector('.karaoke-logo');
 
-    // Hide genre content and back button, show genres section
-    genreContent.classList.add('hidden');
-    genresSection.classList.remove('hidden');
-    backButton.classList.add('hidden');
-    karaokeLogo.classList.add('hidden');
 
-    // Reset genre history
-    genreHistory = [];
-  }
-}
 
 // Toggle fullscreen for video player
 function toggleFullScreen() {
