@@ -68,18 +68,80 @@ body {
 .menu nav ul li a:hover {
   text-decoration: underline;
 }
-/************************NEW****************************/
+/***********************************************************NEW****************************/
 #kcont{
   margin-left: 50px;
-  width: 400px;
+  width: 300px;
   cursor: pointer;
+  background-color: rgb(150, 92, 216);
 
 }
+#kcont:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  transform: scale(1.05);
+}
+#mixcont:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  transform: scale(1.05);
+}
+
 #mixcont{
   margin-top: 10px;
-  max-width: 400px;
+  width: 300px;
   margin-left: 50px;
   cursor: pointer;
+  background-color: rgb(150, 92, 216);
+}
+#liveRequestBtn{
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: -40px;
+  margin-top: -20px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  background-color: rgb(150, 92, 216);;
+  height: 45px;
+  width: 300px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+#liveRequestBtn:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  transform: scale(1.05);
+}
+#kvidz{
+  display: none;
+}
+#kvidz{
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 190px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  background-color: rgb(150, 92, 216);;
+  height: 45px;
+  width: 130px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+#kvidz:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  transform: scale(1.05);
+}
+/*************************************************************kvidz2**************************************/
+#kvidz2{
+  display: none;
 }
 /* Content layout */
 .content1 {
@@ -112,9 +174,11 @@ body {
 
 .categories1 li {
   padding: 0.2rem;
+  text-align: left;
+
   cursor: pointer;
   font-size: 15px;
-  border: 1px solid transparent;
+  border-bottom: 1px solid;
   transition: background-color 0.2s, border 0.2s;
 }
 
@@ -126,7 +190,7 @@ body {
 /* Main details section */
 .details {
   width: 700px;
-  height: 500px;
+  height: 700px;
   background-color:rgba(0, 0, 0, 0.7);
   padding: 1rem;
   overflow-y: auto;
@@ -144,6 +208,7 @@ body {
 .item-list {
   list-style: none;
   padding: 0;
+  text-align: left;
 }
 
 .item-list li {
@@ -159,27 +224,6 @@ body {
   margin-left:-20px;
 }
 
-#liveRequestBtn{
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 50px;
-  margin-top: -20px;
-  cursor: pointer;
-  border-radius: 5px;
-  color: red;
-  text-align: center;
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 45px;
-  width: 400px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-#liveRequestBtn:hover {
-  background-color: rgba(255, 0, 0, 0.7);
-  color: white;
-  transform: scale(1.05);
-}
 #requestBox {
   margin-top: 20px;
 }
@@ -191,6 +235,8 @@ body {
 .requests-display {
   width: 400px;
   height: 400px;
+  text-align: left;
+  font-style: italic;
   margin-top: -70px;
   margin-left: 20px;
   overflow-y: auto;
@@ -202,6 +248,8 @@ body {
 }
 #musicRequest{
   margin-top: 10px;
+  color: orange;
+  font-weight: bold;
 }
 #postbt{
   margin-top: 2px;
@@ -321,15 +369,18 @@ form button:hover {
   transform: scale(1.05);
 }
 .qr-code {
-  max-width: 100%;
+  max-width: 70%;
   height: auto;
+ 
 }
-
-/* Genre Content Display */
+#qr{
+  margin-top: 100px;
+}
+/*************************************** Genre Content Display *******************************/
 .genre-content {
   flex: 1 1 300px;
-  max-width: 400px;
-  background-color: rgba(0, 0, 0, 0.6);
+  max-width: 300px;
+  background-color: rgb(150, 92, 216);
   margin-top: -280px;
   margin-left: 300px;
   padding: 20px;
