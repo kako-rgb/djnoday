@@ -1,3 +1,71 @@
+/////////////////////////////////////////////live request
+document.getElementById("liveRequestBtn").addEventListener("click", () => {
+  document.getElementById("liveRequestBtn").classList.add("hidden");
+  document.getElementById("kcont").classList.add("hidden");
+  document.getElementById("mixcont").classList.add("hidden");
+  document.getElementById("qr").classList.add("hidden");
+  document.getElementById("requestBox").classList.remove("hidden");
+});
+
+const requestForm = document.getElementById("requestForm");
+const requestsDisplay = document.getElementById("requestsDisplay");
+let requestCounter = 0;
+let requestData = JSON.parse(localStorage.getItem("requests")) || [];
+
+// Function to render requests
+function renderRequests() {
+  requestsDisplay.innerHTML = ""; // Clear existing requests
+  const now = new Date().getTime();
+
+  requestData = requestData.filter((request) => {
+    if (now - request.timestamp < 12 * 60 * 60 * 1000) {
+      const requestItem = document.createElement("div");
+      requestItem.className = "request-item";
+      requestItem.id = `request-${request.id}`;
+      requestItem.innerHTML = `
+        <span>${request.id}. ${request.name || "User"}</span>
+        ${request.request}
+      `;
+      requestsDisplay.appendChild(requestItem);
+      return true;
+    }
+    return false; // Remove expired requests
+  });
+
+  localStorage.setItem("requests", JSON.stringify(requestData));
+}
+
+// Load requests on page load
+renderRequests();
+
+requestForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const musicRequest = document.getElementById("musicRequest").value.trim();
+  const userName = document.getElementById("userName").value.trim() || "User";
+
+  const requestId = ++requestCounter;
+
+  const requestItem = {
+    id: requestId,
+    request: musicRequest,
+    name: userName,
+    timestamp: new Date().getTime(),
+  };
+
+  requestData.push(requestItem);
+
+  renderRequests(); // Re-render requests
+  localStorage.setItem("requests", JSON.stringify(requestData)); // Save to localStorage
+
+  document.getElementById("musicRequest").value = "";
+  document.getElementById("userName").value = "";
+});
+
+// Periodically check and remove expired requests
+setInterval(() => {
+  renderRequests();
+}, 60 * 1000); // Check every minute
+
 // Data for categories and items
 const categoryData = {
   arabic: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
@@ -52,7 +120,45 @@ const categoryData = {
     naija: [ "Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
     xmass: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
 };
+    // Select the elements
+    const kcont = document.getElementById('kcont');
+    const mixcont = document.getElementById('mixcont');
+    const liveRequestBtn = document.getElementById('liveRequestBtn');
+    const qr = document.getElementById('qr');
+    const genresSection = document.getElementById('genres-section');
 
+        kcont.addEventListener('click', () => {
+      // Hide the kcont div
+      kcont.style.display = 'none';
+      mixcont.style.display = 'none';
+      liveRequestBtn.style.display = 'none';
+      qr.style.display = 'none';
+      // Show the genres section
+      genresSection.style.display = 'block';
+    });
+
+        mixcont.addEventListener('click', () => {
+      // Hide the mix div
+      kcont.style.display = 'none';
+      mixcont.style.display = 'none';
+      liveRequestBtn.style.display = 'none';
+      qr.style.display = 'none';
+      // Show the genres section
+         
+    });
+
+    liveRequestBtn.addEventListener('click', () => {
+      // Hide the live div
+      kcont.style.display = 'none';
+      mixcont.style.display = 'none';
+      liveRequestBtn.style.display = 'none';
+      qr.style.display = 'none';
+      // Show the genres section
+         
+    });
+
+
+ 
 // Function to render item list based on category
 function displayItems(category) {
   const itemList = document.getElementById("item-list");
@@ -133,9 +239,7 @@ function openGenre(genre) {
       "./resouces/videos/audio1.mp3",
       "./resouces/videos/audio2.mp3"
     ],
-    live: [
-      "LIVE BROADCAST: Stream coming soon!"
-    ]
+   
   };
 
   // Populate media list based on genre

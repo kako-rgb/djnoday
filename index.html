@@ -20,45 +20,54 @@
   </header>
   <div class="search-box">
     <input type="text" placeholder="Search..." id="search-input">
-    <button onclick="performSearch()">🔍</button>
   </div>
   
   <!-- Main Content -->
   <div class="container">
-    <section class="genres" id="genres-section">
-      <div id="kcont"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo" class="karaoke-logo hidden">
+    <section class="genres" id="genres-section">     
         <div class="container1">
-                    <div class="content1">
+           <div class="content1">
             <aside class="categories1">
               <h2 id="kwanza">Genre</h2>
               <ul id="category-list">
                 <li data-category="arabic">Arabic</li>
-          <li data-category="chinese">Chinese</li>
-          <li data-category="dancehall">Dancehall,Ragga,Riddims</li>
-          <li data-category="eastAfrican">East African</li>
-          <li data-category="gospel">gospel</li>
-          <li data-category="international">International</li>
-          <li data-category="lingala">Lingala & Rhumba</li>
-          <li data-category="roots">Reggae & Roots</li>
-          <li data-category="traditional">Traditional</li>
-          <li data-category="naija">West & South Africa</li>
-          <li data-category="xmass">Xmass</li>
+                <li data-category="chinese">Chinese</li>
+                <li data-category="dancehall">Dancehall,Ragga,Riddims</li>
+                <li data-category="eastAfrican">East African</li>
+                <li data-category="gospel">gospel</li>
+                <li data-category="international">International</li>
+                <li data-category="lingala">Lingala & Rhumba</li>
+                <li data-category="roots">Reggae & Roots</li>
+                <li data-category="traditional">Traditional</li>
+                <li data-category="naija">West & South Africa</li>
+                <li data-category="xmass">Xmass</li>
               </ul>
             </aside>
             <main class="details">
-              <h2 id="details-title">Select a Song</h2>
+              <h2 id="details-title">Song</h2>
               <ul id="item-list" class="item-list"></ul>
             </main>
           </div>
         </div>
         </div>
-      <div id="mixcont" class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
-      <div id="livecont" class="genre" onclick="openGenre('live')">LIVE</div>
+        <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo" class="karaoke-logo hidden"></div>
+        <div id="mixcont" class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
+        <div class="container">
+          <button id="liveRequestBtn">LIVE REQUEST</button>
+          <div id="requestBox" class="hidden">
+            <div id="requestsDisplay" class="requests-display"></div>
+            <form id="requestForm">
+              <input type="text" id="musicRequest" maxlength="25" placeholder="Enter music request" required>
+              <input type="text" id="userName" placeholder="Enter your name (optional)">
+              <button type="submit"id="postbt">Post</button>
+            </form>
+          </div>
+        </div>
     </section>
-
+  
     <div id="qr-back-container">
       <button id="back-button" onclick="goBack()" class="hidden">⬅ Back</button>
-      <img id="qr" src="./images/qr.png" alt="Scan to Access Music Site">
+      <img id="qr" src="./images/qrnobg.png" alt="Scan to Access Music Site">
     </div>
   </div>
 
