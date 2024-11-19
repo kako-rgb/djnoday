@@ -1234,6 +1234,7 @@ international: [
 };
     // Select the elements
     const kcont = document.getElementById('kcont');
+    const ncont = document.getElementById('ncont');
     const mixcont = document.getElementById('mixcont');
     const liveRequestBtn = document.getElementById('liveRequestBtn');
     const qr = document.getElementById('qr');
@@ -1245,16 +1246,30 @@ international: [
         kcont.addEventListener('click', () => {
       // Hide the kcont div
       kcont.style.display = 'none';
+      ncont.style.display = 'none';
       mixcont.style.display = 'none';
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       // Show the genres section
       genresSection.style.display = 'block';
+      kvidz.style.display = 'block';
+    });
+        ncont.addEventListener('click', () => {
+      // Hide the kcont div
+      kcont.style.display = 'none';
+      ncont.style.display = 'none';
+      mixcont.style.display = 'none';
+      liveRequestBtn.style.display = 'none';
+      qr.style.display = 'none';
+      // Show the genres section
+      genresSection.style.display = 'block';
+      kvidz.style.display = 'block';
     });
 
         mixcont.addEventListener('click', () => {
       // Hide the mix div
       kcont.style.display = 'none';
+      ncont.style.display = 'none';
       mixcont.style.display = 'none';
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
@@ -1262,20 +1277,11 @@ international: [
          
     });
 
-    kcont.addEventListener('click', () => {
-      // Hide the live div
-      kcont.style.display = 'none';
-      mixcont.style.display = 'none';
-      liveRequestBtn.style.display = 'none';
-      qr.style.display = 'none';
-      // Show the genres section
-      kvidz.style.display = 'block';
-    });
-
     kvidz.addEventListener('click', () => {
       // Hide the live div
       kcont.style.display = 'none';
       mixcont.style.display = 'none';
+      ncont.style.display = 'none';
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       kvidz.style.display = 'none';
