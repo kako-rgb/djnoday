@@ -412,12 +412,8 @@ form button:hover {
   margin-bottom: -10px;
 }
 
-/* QR Code and Back Button Container */
-#qr-back-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* Back Button Container */
+
 
 .back-button {
   margin-bottom: 10px;
@@ -443,25 +439,34 @@ form button:hover {
   background-color: rgba(255, 0, 0, 0.7);
   transform: scale(1.05);
 }
+/*********************************************************** QR Code  */
+#qr-back-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -50px;
+  margin-left: -80px;
+
+}
 .qr-code {
-  max-width: 70%;
+  width: 300px;
   height: auto;
  
 }
 #qr{
-  margin-top: 100px;
+  margin-top: 10px;
 }
 /*************************************** Genre Content Display *******************************/
 .genre-content {
   flex: 1 1 300px;
   max-width: 300px;
-  background-color: rgb(150, 92, 216);
-  margin-top: -280px;
-  margin-left: 270px;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-left: 50px;
   padding: 20px;
   border-radius: 5px;
   animation: fadeIn 0.5s ease-out forwards;
-}
+ }
 
 .genre-content.hidden {
   display: none;
@@ -571,25 +576,12 @@ form button:hover {
     flex-direction: column;
     align-items: center;
   }
-  .genre-content {
-    flex: 1 1 300px;
-    max-width: 400px;
-    background-color: rgba(0, 0, 0, 0.6);
-    margin-top: -670px;
-    margin-left: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    animation: fadeIn 0.5s ease-out forwards;
-  }
+
 
   #qr-back-container {
     flex-direction: column;
   }
 
-  .genres, .genre-content {
-    width: 90%;
-    max-width: none;
-  }
 
   #media-player {
     width: 90%;

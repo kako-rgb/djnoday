@@ -2,6 +2,7 @@
 document.getElementById("liveRequestBtn").addEventListener("click", () => {
   document.getElementById("liveRequestBtn").classList.add("hidden");
   document.getElementById("kcont").classList.add("hidden");
+  document.getElementById("ncont").classList.add("hidden");
   document.getElementById("mixcont").classList.add("hidden");
   document.getElementById("qr").classList.add("hidden");
   document.getElementById("requestBox").classList.remove("hidden");
