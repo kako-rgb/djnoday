@@ -45,31 +45,48 @@
           </div>
         </div>
         </div>
-        <div id="kvidz2"class="container2">
-          <div class="content2">
-           <aside class="categories2">
-             <h2 id="kwanza2">Genre</h2>
-             <ul id="category-list2">
-               <li data-category="arabic">Arabic</li>
-               <li data-category="chinese">Chinese</li>
-               <li data-category="dancehall">Dancehall,Ragga,Riddims</li>
-               <li data-category="eastAfrican">East African</li>
-               <li data-category="gospel">gospel</li>
-               <li data-category="international">International</li>
-               <li data-category="lingala">Lingala & Rhumba</li>
-               <li data-category="roots">Reggae & Roots</li>
-               <li data-category="traditional">Traditional</li>
-               <li data-category="naija">West & South Africa</li>
-               <li data-category="xmass">Xmass</li>
-             </ul>
-           </aside>
-           <main id="main2"class="details">
-             <h2 id="details-title2">Song</h2>
-             <ul id="item-list2" class="item-list2"></ul>
-           </main>
-         </div>
+          <!-- Back Button -->
+          <button id="back-btn" class="back-btn">Back</button>
+        <div class="content2 hidden" >
+        
+    <div id="kvidz2">
+          <!-- Categories Sidebar -->
+          <aside class="categories2">
+            <h2>Categories</h2>
+            <ul id="category2-list">
+                <li data-category2="arabic">Arabic</li>
+                   <li data-category2="chinese">Chinese</li>
+                   <li data-category2="dancehall">Dancehall,Ragga,Riddims</li>
+                   <li data-category2="eastAfrican">East African</li>
+                   <li data-category2="gospel">gospel</li>
+                   <li data-category2="international">International</li>
+                   <li data-category2="lingala">Lingala & Rhumba</li>
+                   <li data-category2="roots">Reggae & Roots</li>
+                   <li data-category2="traditional">Traditional</li>
+                   <li data-category2="naija">West & South Africa</li>
+                   <li data-category2="xmass">Xmass</li>
+            </ul>
+          </aside>
+    
+          <!-- Video Section -->
+          <main2 class="details2">
+            <h2 id="details2-title">Select a Category</h2>
+            <div id="video-list" class="video-list"></div>
+          </main2>
+        </div>
+      </div>
+        <!-- Video Player -->
+        <div id="video-player" class="video-player hidden">
+          <video id="player" controls></video>
+          <div class="player-controls">
+            <button id="fullscreen-btn" class="fullscreen-btn">Toggle Fullscreen</button>
+            <button id="close-btn" class="close-btn">X</button>
+          </div>
+        </div>
+      </div>
        </div>
-        <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo" class="karaoke-logo hidden"></div>
+        <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo"></div>
+        <div id="ncont" class="genre"> NODAY & SAX APHROPHONIST </div>
         <div id="kvidz"  >Karaoke videos</div>
         <div id="mixcont" class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
         <div class="container">

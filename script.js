@@ -1,12 +1,5 @@
 /////////////////////////////////////////////live request
-document.getElementById("liveRequestBtn").addEventListener("click", () => {
-  document.getElementById("liveRequestBtn").classList.add("hidden");
-  document.getElementById("kcont").classList.add("hidden");
-  document.getElementById("ncont").classList.add("hidden");
-  document.getElementById("mixcont").classList.add("hidden");
-  document.getElementById("qr").classList.add("hidden");
-  document.getElementById("requestBox").classList.remove("hidden");
-});
+
 
 const requestForm = document.getElementById("requestForm");
 const requestsDisplay = document.getElementById("requestsDisplay");
@@ -69,7 +62,6 @@ setInterval(() => {
 
 // Data for categories and items
 const categoryData = {
-  //////////////////////////////////////////////////////////////ARABIC/////////////////////////////////////////////
   arabic: [
   "Sample 1",
   "Sample 2",
@@ -77,7 +69,7 @@ const categoryData = {
   "Sample 4",
   "Sample 5"
       ],
-    //////////////////////////////////////////////////////////////CHINESE/////////////////////////////////////////////  
+      
     chinese: [
     "Because Of Lov ~ Yin Wei Ai Qing-因为爱情 - 伴奏 KTV  pinyin ", 
     "Jin Sheng Yuan ~ ( 今生缘 )",
@@ -86,14 +78,14 @@ const categoryData = {
     " 因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID",
      "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução "
         ],
-//////////////////////////////////////////////////////////////DANCEHALL/////////////////////////////////////////////
+
     dancehall: [
       "Sample 1", 
       "Sample 2", 
       "Sample 3", 
       "Sample 4", 
       "Sample 5"],
-//////////////////////////////////////////////////////////////EAST AFRICAN/////////////////////////////////////////////
+
     eastAfrican: [
       "2 In 1 ~ Naiboi ",
       "A Woman In Love ~ Vivian ",
@@ -287,7 +279,7 @@ const categoryData = {
       "Woman ~ Otile Brown X Harmonize       ",
       "You Guy ~ P-Unit ft. Collo     "
     ],
-//////////////////////////////////////////////////////////////INTERNATIONAL/////////////////////////////////////////////
+
 international: [
   "(There's Gotta Be) More To Life ~ Stacy Orrico",      
   "1, 2 Step ~ Ciara Ft. Missy Elliott ",
@@ -1082,7 +1074,7 @@ international: [
 
 ],
 
-//////////////////////////////////////////////////////////////GOSPEL/////////////////////////////////////////////
+
     gospel: [
       "11th Hour ~ Betty Bayo ",
       "A No Me Dat ~ Richie Spice",
@@ -1190,8 +1182,6 @@ international: [
       "You Know Me ~ Danson Mutheka",      
       "You Never Know ~ Willy Paul "    
      ],
-
-     //////////////////////////////////////////////////////////////LINGALA/////////////////////////////////////////////
     lingala: [
     "Sample 1", 
     "Sample 2", 
@@ -1199,7 +1189,7 @@ international: [
     "Sample 4", 
     "Sample 5"
   ],
-//////////////////////////////////////////////////////////////ROOTD/////////////////////////////////////////////
+
     roots: [
     "Sample 1", 
     "Sample 2", 
@@ -1207,7 +1197,7 @@ international: [
     "Sample 4",
     "Sample 5"
     ],
-//////////////////////////////////////////////////////////////TRADITIONAL/////////////////////////////////////////////
+
     traditional: [
     "Sample 1",
     "Sample 2", 
@@ -1215,7 +1205,7 @@ international: [
     "Sample 4", 
     "Sample 5"
   ],
-//////////////////////////////////////////////////////////////NAIJA/////////////////////////////////////////////
+
     naija: [ 
     "Sample 1",
     "Sample 2",
@@ -1223,7 +1213,7 @@ international: [
     "Sample 4",
     "Sample 5"
   ],
-//////////////////////////////////////////////////////////////XMASS/////////////////////////////////////////////
+
     xmass: [
    "Sample 1", 
    "Sample 2", 
@@ -1233,9 +1223,20 @@ international: [
   ],
 
 };
+
+document.getElementById("liveRequestBtn").addEventListener("click", () => {
+  document.getElementById("liveRequestBtn").classList.add("hidden");
+  document.getElementById("kcont").classList.add("hidden");
+  document.getElementById("ncont").classList.add("hidden");
+  document.getElementById("mixcont").classList.add("hidden");
+  document.getElementById("qr").classList.add("hidden");
+  document.getElementById("requestBox").classList.remove("hidden");
+  document.getElementById("backbtn").classList.add("hidden");
+});
     // Select the elements
     const kcont = document.getElementById('kcont');
     const ncont = document.getElementById('ncont');
+    const backbtn = document.getElementById('back-btn');
     const mixcont = document.getElementById('mixcont');
     const liveRequestBtn = document.getElementById('liveRequestBtn');
     const qr = document.getElementById('qr');
@@ -1247,17 +1248,7 @@ international: [
         kcont.addEventListener('click', () => {
       // Hide the kcont div
       kcont.style.display = 'none';
-      ncont.style.display = 'none';
-      mixcont.style.display = 'none';
-      liveRequestBtn.style.display = 'none';
-      qr.style.display = 'none';
-      // Show the genres section
-      genresSection.style.display = 'block';
-      kvidz.style.display = 'block';
-    });
-        ncont.addEventListener('click', () => {
-      // Hide the kcont div
-      kcont.style.display = 'none';
+      backbtn.style.display = 'none';
       ncont.style.display = 'none';
       mixcont.style.display = 'none';
       liveRequestBtn.style.display = 'none';
@@ -1270,25 +1261,42 @@ international: [
         mixcont.addEventListener('click', () => {
       // Hide the mix div
       kcont.style.display = 'none';
+      backbtn.style.display = 'none';
       ncont.style.display = 'none';
       mixcont.style.display = 'none';
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       // Show the genres section
+      
          
     });
+        ncont.addEventListener('click', () => {
+      // Hide the mix div
+      kcont.style.display = 'none';
+      backbtn.style.display = 'none';
+      ncont.style.display = 'none';
+      mixcont.style.display = 'none';
+      liveRequestBtn.style.display = 'none';
+      qr.style.display = 'none';
+      // Show the genres section
+      genresSection.style.display = 'block'; 
+      kvidz.style.display = 'block';
+    });
+
+ 
 
     kvidz.addEventListener('click', () => {
       // Hide the live div
       kcont.style.display = 'none';
-      mixcont.style.display = 'none';
+      backbtn.style.display = 'none';
       ncont.style.display = 'none';
+      mixcont.style.display = 'none';
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       kvidz.style.display = 'none';
       container1.style.display = 'none';
       // Show the genres section
-      kvidz2.style.display = 'block';
+      container1.style.display = 'block';
     });
 
 
@@ -1525,3 +1533,122 @@ window.onresize = function() {
     positionMediaPlayer();
   }
 }
+
+// Data for categories and their video files
+const category2Data = {
+  arabic: [
+    { src: "soap1.mp4", title: "Soap Video 1" },
+    { src: "soap2.mp4", title: "Soap Video 2" },
+  ],
+  chinese: [
+    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
+    { src: "electronics2.mp4", title: "Electronics Video 2" },
+  ],
+dancehall: [
+    { src: "soap1.mp4", title: "Soap Video 1" },
+    { src: "soap2.mp4", title: "Soap Video 2" },
+  ],
+  eastAfrican: [
+    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
+    { src: "electronics2.mp4", title: "Electronics Video 2" },
+  ],
+gospel: [
+    { src: "soap1.mp4", title: "Soap Video 1" },
+    { src: "soap2.mp4", title: "Soap Video 2" },
+  ],
+  international: [
+    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
+    { src: "electronics2.mp4", title: "Electronics Video 2" },
+  ],
+lingala: [
+    { src: "soap1.mp4", title: "Soap Video 1" },
+    { src: "soap2.mp4", title: "Soap Video 2" },
+  ],
+  roots: [
+    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
+    { src: "electronics2.mp4", title: "Electronics Video 2" },
+  ],
+traditional: [
+    { src: "soap1.mp4", title: "Soap Video 1" },
+    { src: "soap2.mp4", title: "Soap Video 2" },
+  ],
+  naija: [
+    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
+    { src: "electronics2.mp4", title: "Electronics Video 2" },
+  ],
+xmass: [
+    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
+    { src: "electronics2.mp4", title: "Electronics Video 2" },
+  ],
+};
+
+// References to DOM elements
+const categoryList = document.getElementById("category2-list");
+const videoList = document.getElementById("video-list");
+const detailsTitle = document.getElementById("details2-title");
+const videoPlayer = document.getElementById("video-player");
+const player = document.getElementById("player");
+const closeBtn = document.getElementById("close-btn");
+const fullscreenBtn = document.getElementById("fullscreen-btn");
+const backBtn = document.getElementById("back-btn");
+
+// Function to render videos based on category
+function displayVideos(category2) {
+  videoList.innerHTML = "";
+  details2Title.textContent2 = category2 ? `Videos in ${category2}` : "Select a Category2";
+
+  if (category2Data[category2]) {
+    category2Data[category2].forEach((video) => {
+      const videoElement = document.createElement("video");
+      videoElement.src = video.src;
+      videoElement.title = video.title;
+
+      videoElement.addEventListener("click", () => {
+        player.src = video.src;
+        videoPlayer.classList.remove("hidden");
+        player.play();
+      });
+
+      videoList.appendChild(videoElement);
+    });
+  }
+}
+
+// Close video player
+closeBtn.addEventListener("click", () => {
+  player.pause();
+  videoPlayer.classList.add("hidden");
+  player.src = "";
+});
+
+// Automatically close player at the end of the video
+player.addEventListener("ended", () => {
+  player.pause();
+  videoPlayer.classList.add("hidden");
+  player.src = "";
+});
+
+// Toggle fullscreen mode
+fullscreenBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    videoPlayer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+// Event listener for category clicks
+categoryList.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    const selectedCategory2 = e.target.getAttribute("data-category2");
+    displayVideos(selectedCategory2);
+  }
+});
+
+// Back button functionality
+backBtn.addEventListener("click", () => {
+  window.history.back();
+});
+
+// Default view
+displayVideos();
