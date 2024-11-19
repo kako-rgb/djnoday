@@ -68,17 +68,30 @@ setInterval(() => {
 
 // Data for categories and items
 const categoryData = {
-  arabic: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+  arabic: [
+  "Sample 1",
+  "Sample 2",
+  "Sample 3",
+  "Sample 4",
+  "Sample 5"
+      ],
+      
     chinese: [
-      "Because Of Lov ~ Yin Wei Ai Qing-因为爱情 - 伴奏 KTV  pinyin ", 
-      "Jin Sheng Yuan ~ ( 今生缘 )",
-       "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng",
-        "Peng You (朋友) ~ Wakin Chau",
-        " 因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID",
-         "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução "
+    "Because Of Lov ~ Yin Wei Ai Qing-因为爱情 - 伴奏 KTV  pinyin ", 
+    "Jin Sheng Yuan ~ ( 今生缘 )",
+    "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng",
+    "Peng You (朋友) ~ Wakin Chau",
+    " 因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID",
+     "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução "
         ],
 
-    dancehall: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    dancehall: [
+      "Sample 1", 
+      "Sample 2", 
+      "Sample 3", 
+      "Sample 4", 
+      "Sample 5"],
+
     eastAfrican: [
       "2 In 1 ~ Naiboi ",
       "A Woman In Love ~ Vivian ",
@@ -238,7 +251,7 @@ const categoryData = {
       "Sober ~ Sauti Sol      ",
       "Soma Kijana ~ Sauti Sol      ",
       "Stella Wangu ~ Freshly Mwamburi     ",
-    "Still The One ~ Sauti Sol      ",
+     "Still The One ~ Sauti Sol      ",
       "Sunshine ~ Nameless ft. Habida      ",
       "Sura Yako ~ Sauti Sol       ",
       "Suzanna ~ Sauti Sol     ",
@@ -270,9 +283,11 @@ const categoryData = {
       "Wasiwasi ~ Rayvanny       ",
       "Wee Kamu ~ Nonini        ",
       "Woman ~ Otile Brown X Harmonize       ",
-      "You Guy ~ P-Unit ft. Collo     "],
+      "You Guy ~ P-Unit ft. Collo     "
+    ],
 
- international: ["1, 2 Step ~ Ciara Ft. Missy Elliott ",
+international: [
+"1, 2 Step ~ Ciara Ft. Missy Elliott ",
 "2 In The Morning ~ New Kids On The ",
 "6, 8, 12 ~ Brian McKnight ",   
 " 7 Days ~ Craig David",     
@@ -296,12 +311,153 @@ const categoryData = {
 "A Moment Like This ~ Kelly Clarkson",    
 "A Natural Woman (You Make Me Feel Like) ~ Aretha Franklin"   
     ],
-    gospel: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
-    lingala: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
-    roots: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
-    traditional: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
-    naija: [ "Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
-    xmass: ["Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5"],
+    gospel: [
+      "11th Hour ~ Betty Bayo ",
+      "A No Me Dat ~ Richie Spice",
+      "Again ~ Kambua      ",
+      "Ahadi Zake ~ Marion Shako        ",
+      "Amazing Grace ~ (Praise & Worship)    ",
+      "Amen ~ Yovi ft. Lil Kesh & Mayorkun     ",
+      "Appointment ~ Jimmy Gait      ",
+      "Asante ~ Chomba         ",
+      "At The Cross ~   (Gospel)       ",
+      "Backslide ~ Danco      ",
+      "Blessed Assurance ~ (Praise & Worship)     ",
+      "Bwana Asema ~ Jemimah Thiongo      ",
+      "Chant A Prayer ~ Rufftone      ",
+      "Daktari ~ Esther Wahome     ",
+      "Everything (Amen) ~ Timi Dakolo   ",
+      "Father Abraham ~        ",
+      "Follow You ~ Gloria Muliro      ",
+      "Fundi Wa Mbao ~ Gospel Fathers      ",
+      "God Be With You Till We Meet Again ",
+      "Goodness of God (Reggae Rmx) ~ CeCe Winans  - (Lyrics)",    
+      "Goodness of God ~ CeCe Winans",          
+      "Hallelujah ~ Alexandra Burke",     
+      "Hallelujah ~ Pentatonix",        
+      "Heaven ~ Emeli Sande",       
+      "Hela ~ Juliani",       
+      "He's Got The World In His Hands ",            
+      "Holiday ~ Hopekid & Altarmin",      
+      "Holy, Holy, Holy ",          
+      "Hosanna ~ Everlyn Wanjiru",       
+      "How Great Thou Art ",    
+      "Huratiti ~ Jimmy Gait ",       
+      "I Know Who I Am ~ Sinach",     
+      "I Need Thee Every Hour  ",             
+      "Imela ~ Nathaniel Bassey ft. Enitan Adaba",      
+      "Jesus Never Fails ~ Patrick Oyaro",       
+      "Katikia Yesu ~ Kris",          
+      "Kazi Ni Kazi ~ Ringtone",       
+      "Kiriro ~ Daddy Owen, Alan Aaron & Kerah",         
+      "Kum Ba Yah, My Lord ",               
+      "Kuna Dawa ~ Esther Wahome",        
+      "Kwetu Pazuri ~ Ambasadors Of Christ ",     
+      "Lingala Ya Yesu ~ Pitson",       
+      "Live For You ~ BMF",      
+      "Mateke ~ Linet (Size-8)",       
+      "Mbona ~ Daddy Owen ft Deno ",    
+      "Mpango Wa Kando ~ Gloria Muliro",    
+      "Mpenzi ~ Willy Paul",       
+      "Muheani ~ Phyllis Mbuthia & Sammy Irungu",    
+      "Mungu Baba ~ Ruffton ft. The Kenya G.S.U.",       
+      "Mwachie Mungu ~ Gabriel Mwamuye ft. Nyota Ndogo",       
+      "Mwamba ~ Maximum Melodies",     
+      "Mwanake ~ Benachi ft. Kaberere",     
+      "Mwema ~ Mercy Masika",          
+      "Mwenye Baraka (Akisema Atakubariki) ~ Jemmimah Thiongo",      
+      "Naduor ~ Christina Shusho",      
+      "Nakutazamia ~ Mercy Wairegi",      
+      "Napokea Kwako  ~ Christina Shusho & Janet Otieno",      
+      "Natamani ~ Eunice Njeri ft. Kaberere",     
+      "Ngai Murathimi ~ Ruth Wamuyu",     
+      "Nibebe ~ Rose Muhando",       
+      "Nifunike ~ Mercy Wairegi",     
+      "Nikupendeze ~ Mercy Masika",     
+      "Nimekubali ~ Eunice Njeri",       
+      "Nipe Macho ~ Christina Shusho",     
+      "Nisikie ~ Kambua",     
+      "Njoo Ufanyiwe Maombi ~ Bony Mwaitege",    
+      "Ombea Adui Yako ~ Peace Mulu",     
+      "One Of Us ~ Joan Osborne",     
+      "Pamela ~ Ringtone ft. SK Blue",        
+      "Penzi Lako ~ Krystal",     
+      "Racing Up ~ Paul Mwai ",    
+      "Rock Of Ages ~  (Gospel) ",         
+      "Sala Zangu ~ Ilagosa Wa Ilagosa",   
+      "Saluti ~ Daddy Owen & Friends ",    
+      "Sari Sari ~ D.K. Kwenye Beat ft Anto Neosoul",     
+      "Shackles (Praise You) ~ Mary Mary",    
+      "Shusha Nyavu ~ Christina Shusho",        
+      "Sitarudi Kuwa Vile ~ Hellena Ken",        
+      "Sitolia ~ Gloria Muliro & Willy Paul ",       
+      "Siyabonga ~ Betty Bayo",     
+      "Stomp ~ God's Property (Kirk Franklin)",    
+      "Sweet By and By  ~ (Gospel)",     
+      "Take My Hand Precious Lord ~ Elvis Presley",      
+      "Taunet Nelel ~ Emmy Kosgey",     
+      "Tenda Wema ~ Ringtone & Christina Shusho",  
+      "Thamani Ya Wokuvu Wangu ~ Christina Shusho",     
+      "Trust & Obey ~ (Gospel) ",     
+      "Uliniumba Nikuabudu ~ Angela Chibalonza ",      
+      "Umeniweza ~ Eunice Njeri",       
+      "Umetenda Mema ~ Kambua",     
+      "Uninyunyizie Maji (Karaoke) ~ Our Lady Of Fatima Kongowea Catholic Choir",    
+      "Upendo Ule Ule ~ Alice Kamande",     
+      "Uwezo ~ Adawnage",      
+      "Wanajua ~ Mwenye Haki & Pitson",      
+      "Wangu ~ Bahati ft. Mr. Seed",       
+      "Watu Wote ~ Kambua",      
+      "Waweza ~ Everlyn Wanjiru",     
+      "Wewe Pekee ~ Alice Kamande ",     
+      "What a Friend We Have In Jesus ",      
+      "When The Saints Go Matching In ",     
+      "Wi Muthaka ~ Ruth Wamuyu",        
+      "Wi Mutheru ~ Anastacia Karanja",       
+      "Yale Umenitendea ~ Pastor Peace Mulu",       
+      "You Know Me ~ Danson Mutheka",      
+      "You Never Know ~ Willy Paul "    
+     ],
+    lingala: [
+    "Sample 1", 
+    "Sample 2", 
+    "Sample 3",
+    "Sample 4", 
+    "Sample 5"
+  ],
+
+    roots: [
+    "Sample 1", 
+    "Sample 2", 
+    "Sample 3", 
+    "Sample 4",
+    "Sample 5"
+    ],
+
+    traditional: [
+    "Sample 1",
+    "Sample 2", 
+    "Sample 3", 
+    "Sample 4", 
+    "Sample 5"
+  ],
+
+    naija: [ 
+    "Sample 1",
+    "Sample 2",
+    "Sample 3",
+    "Sample 4",
+    "Sample 5"
+  ],
+
+    xmass: [
+   "Sample 1", 
+   "Sample 2", 
+   "Sample 3", 
+   "Sample 4", 
+   "Sample 5"
+  ],
+
 };
     // Select the elements
     const kcont = document.getElementById('kcont');
@@ -311,6 +467,7 @@ const categoryData = {
     const genresSection = document.getElementById('genres-section');
     const kvidz = document.getElementById('kvidz');
     const kvidz2 = document.getElementById('kvidz2');
+    const container1 = document.getElementById('container1');
 
         kcont.addEventListener('click', () => {
       // Hide the kcont div
@@ -349,6 +506,7 @@ const categoryData = {
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       kvidz.style.display = 'none';
+      container1.style.display = 'none';
       // Show the genres section
       kvidz2.style.display = 'block';
     });
@@ -364,7 +522,8 @@ function displayItems(category) {
   itemList.innerHTML = "";
 
   // Update title
-  title.textContent = category ? `songs in ${category}` : "Select a Category";
+  //second colum items
+  title.textContent = category ? ` ${category}` : "Select a Category";
 
   // Add new items
   if (categoryData[category]) {
@@ -429,6 +588,7 @@ function openGenre(genre) {
       { name: "Song 2", files: ["./resouces/karaoke/video2.mp4"] },
       { name: "Song 3", files: ["./resouces/karaoke/audio2.mp3"] }
     ],
+    
     mixxez: [
       "./resouces/videos/1.mp4",
       "./resouces/videos/2.mp4",
@@ -438,7 +598,7 @@ function openGenre(genre) {
    
   };
 
-  // Populate media list based on genre
+  ////////////////////////////////////////////////// Populate media list based on genre///////////////////////////////////////////////////////////////////////////
   const tracks = mediaData[genre] || [];
   tracks.forEach(item => {
     const li = document.createElement('li');
