@@ -582,13 +582,16 @@ header {
 #back-btn {
   margin-top: 5px;
   margin-bottom: 10px;
-  margin-left: 230px;
-  padding: 1rem 1rem;
+  margin-left: 430px;
+  padding: 5px 5px;
   background-color: #0078d7;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+#search-input{
+  background-color: white;
 }
 
 .back-btn:hover {
