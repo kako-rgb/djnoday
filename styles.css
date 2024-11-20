@@ -580,7 +580,7 @@ header {
 
 /* Back Button */
 .back-btn {
-  margin-top: -100px;
+  margin-top: -50px;
   margin-bottom: 40px;
   margin-left: 300px;
   padding: 0.5rem 1rem;
@@ -741,6 +741,7 @@ header {
 }
 #qr{
   margin-top: 100px;
+  margin-left: 82px;
 }
 /*************************************** Genre Content Display *******************************/
 .genre-content {
@@ -886,5 +887,20 @@ header {
     width: 90%;
   }
 }
+/* Hide menu items and show hamburger menu on small screens */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* Hide menu items by default */
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
 
+  nav ul.active {
+    display: flex; /* Show when active */
+  }
 }
