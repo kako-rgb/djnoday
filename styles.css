@@ -582,8 +582,8 @@ header {
 #back-btn {
   margin-top: 5px;
   margin-bottom: 10px;
-  margin-left: 100px;
-  padding: 1rem 2rem;
+  margin-left: 200px;
+  padding: 1rem 1.5rem;
   background-color: #0078d7;
   color: white;
   border: none;
