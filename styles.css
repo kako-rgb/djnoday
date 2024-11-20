@@ -582,6 +582,7 @@ header {
 .back-btn {
   margin-top: -100px;
   margin-bottom: 40px;
+  margin-left: 300px;
   padding: 0.5rem 1rem;
   background-color: #0078d7;
   color: white;
