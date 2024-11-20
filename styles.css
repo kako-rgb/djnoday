@@ -283,11 +283,11 @@ body {
   margin-top: 220px;
   cursor: pointer;
   border-radius: 5px;
-  color: red;
+  color: orange;
   text-align: center;
   font-weight: bold;
   background-color: rgb(150, 92, 216);
-  height: 45px;
+  height: 30px;
   width: 130px;
   transition: background-color 0.3s, transform 0.2s;
 }
