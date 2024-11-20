@@ -201,9 +201,6 @@ body {
   color: white;
   cursor: pointer;
 }
-
-
-
 /* Header and Navigation */
 .menu {
   margin-left: 40px;
@@ -592,6 +589,7 @@ header {
 }
 #search-input{
   background-color: white;
+  margin-top: 10px;
 }
 
 .back-btn:hover {
