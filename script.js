@@ -1,4 +1,121 @@
-/////////////////////////////////////////////live request
+////////////////////////////////////////////live request
+const videoGroups = {
+  arabicv: [
+    { src: "soap1.mp4", title: "Set It" },
+    { src: "soap2.mp4", title: "Soap Brand 2" },
+  ],
+  chinesev: [
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  ],
+  dancehallv: [
+    { src: "soap1.mp4", title: "Soap Brand 1" },
+    { src: "soap2.mp4", title: "Soap Brand 2" },
+  ],
+  eastAfricanv: [
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  ],
+  gospelv: [
+    { src: "soap1.mp4", title: "Soap Brand 1" },
+    { src: "soap2.mp4", title: "Soap Brand 2" },
+  ],
+  internationalv: [
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  ],
+  lingalav: [
+    { src: "soap1.mp4", title: "Soap Brand 1" },
+    { src: "soap2.mp4", title: "Soap Brand 2" },
+  ],
+  rootsv: [
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  ],
+  traditionalv: [
+    { src: "soap1.mp4", title: "Soap Brand 1" },
+    { src: "soap2.mp4", title: "Soap Brand 2" },
+  ],
+  naijav: [
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  ],
+  xmassv: [
+    { src: "./resouces/karaoke/video2.mp4", title: "setit" },
+    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  ],
+};
+
+// DOM References
+const groupList = document.getElementById("group-list");
+const videoGrid = document.getElementById("video-grid");
+const sectionHeading = document.getElementById("section-heading");
+const playerContainer = document.getElementById("player-container");
+const videoElement = document.getElementById("video-element");
+const exitBtn = document.getElementById("exit-btn");
+const expandBtn = document.getElementById("expand-btn");
+const returnBtn = document.getElementById("return-btn");
+
+// Display Videos in Selected Group
+function showVideos(group) {
+  videoGrid.innerHTML = "";
+  sectionHeading.textContent = group ? `Videos in ${group}` : "Choose a Video Group";
+
+  if (videoGroups[group]) {
+    videoGroups[group].forEach((video) => {
+      const videoItem = document.createElement("video");
+      videoItem.src = video.src;
+      videoItem.title = video.title;
+
+      videoItem.addEventListener("click", () => {
+        videoElement.src = video.src;
+        playerContainer.classList.remove("hidden");
+        videoElement.play();
+      });
+
+      videoGrid.appendChild(videoItem);
+    });
+  }
+}
+
+// Close Video Player
+exitBtn.addEventListener("click", () => {
+  videoElement.pause();
+  playerContainer.classList.add("hidden");
+  videoElement.src = "";
+});
+
+// Auto-close Player at Video End
+videoElement.addEventListener("ended", () => {
+  videoElement.pause();
+  playerContainer.classList.add("hidden");
+  videoElement.src = "";
+});
+
+// Toggle Fullscreen
+expandBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    playerContainer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+// Category Selection
+groupList.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    const selectedGroup = e.target.getAttribute("data-group");
+    showVideos(selectedGroup);
+  }
+});
+
+// Back Button Functionality
+returnBtn.addEventListener("click", () => {
+  window.history.back();
+});
+
+// Initial State
+showVideos();
 
 
 const requestForm = document.getElementById("requestForm");
@@ -1240,6 +1357,7 @@ document.getElementById("liveRequestBtn").addEventListener("click", () => {
     const mixcont = document.getElementById('mixcont');
     const liveRequestBtn = document.getElementById('liveRequestBtn');
     const qr = document.getElementById('qr');
+    const wrappertag = document.getElementById('wrappertag');
     const genresSection = document.getElementById('genres-section');
     const kvidz = document.getElementById('kvidz');
     const kvidz2 = document.getElementById('kvidz2');
@@ -1296,7 +1414,7 @@ document.getElementById("liveRequestBtn").addEventListener("click", () => {
       kvidz.style.display = 'none';
       container1.style.display = 'none';
       // Show the genres section
-      container1.style.display = 'block';
+      wrappertag.style.display = 'block';
     });
 
 
@@ -1652,3 +1770,4 @@ backBtn.addEventListener("click", () => {
 
 // Default view
 displayVideos();
+

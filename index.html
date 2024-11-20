@@ -11,13 +11,55 @@
   <!-- Header Section -->
   <header class="menu">
     <img id="logoimg" src="./images/nodaylogo.png" alt="Logo" class="menu-logo">
-    <h1> NODAY'Z ENTERTAINMENT</h1>
+    <h1 id="topz"> NODAY'Z ENTERTAINMENT</h1>
   </header>
   <div class="search-box">
     <input type="text" placeholder="Search..." id="search-input">
   </div>
   
   <!-- Main Content -->
+  <div id="wrappertag" class="wrapper">
+    <header id="kkvidz">
+      <h1 >KARAOKE VIDEOS</h1>
+    </header>
+    <div class="main-content">
+      <!-- Back Button -->
+      <button id="return-btn" class="return-btn">Back</button>
+
+      <!-- Sidebar for Categories -->
+      <aside class="video-categories">
+        <h2 id="vgroups">Video Groups</h2>
+        <ul id="group-list">
+          <li data-category="arabicv">Arabic</li>
+          <li data-category="chinesev">Chinese</li>
+          <li data-category="dancehallv">Dancehall,Ragga,Riddims</li>
+          <li data-category="eastAfricanv">East African</li>
+          <li data-category="gospelv">gospel</li>
+          <li data-category="internationalv">International</li>
+          <li data-category="lingalav">Lingala & Rhumba</li>
+          <li data-category="rootsv">Reggae & Roots</li>
+          <li data-category="traditionalv">Traditional</li>
+          <li data-category="naijav">West & South Africa</li>
+          <li data-category="xmassv">Xmass</li>
+        </ul>
+      </aside>
+
+      <!-- Main Display Area -->
+      <section class="video-section">
+        <h2 id="section-heading">Choose a Video Group</h2>
+        <div id="video-grid" class="video-grid"></div>
+      </section>
+    </div>
+
+    <!-- Video Player Section -->
+    <div id="player-container" class="player-container hidden">
+      <video id="video-element" controls></video>
+      <div class="player-options">
+        <button id="expand-btn" class="expand-btn">Toggle Fullscreen</button>
+        <button id="exit-btn" class="exit-btn">X</button>
+      </div>
+    </div>
+  </div>
   <div  class="container" id ="container1">
     <section class="genres" id="genres-section">     
         <div class="container1">
@@ -90,7 +132,7 @@
         <div id="kvidz"  >Karaoke videos</div>
         <div id="mixcont" class="genre" onclick="openGenre('mixxez')">MIXXEZ</div>
         <div class="container">
-          <button id="liveRequestBtn">LIVE REQUEST</button>
+          <button id="liveRequestBtn" class="genre" >LIVE REQUEST</button>
           <div id="requestBox" class="hidden">
             <div id="requestsDisplay" class="requests-display"></div>
             <form id="requestForm">

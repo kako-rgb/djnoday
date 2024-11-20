@@ -1,12 +1,189 @@
-/* Reset default browser styles */
-* {
+/* Background Image */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  background: url('./images/noday.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+  width:device-width;
 }
-.search-box {
+
+.wrapper{
+  width: 85%;
+  max-width: 1100px;
+  margin-left: 30px;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: none;
+
+}
+
+/* Header */
+#kkvidz {
+  background-color: #4CAF50;
+  font-size: 8px;
+  color: black;
+  padding: 1px;
+  border-radius: 5px;
+  text-align: center;
+}
+#section-heading{
+  display: none;
+}
+#vgroups{
+  display: none;
+}
+/* Back Button */
+.return-btn {
+  margin: 10px;
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  display: none;
+}
+
+.return-btn:hover {
+  background-color: #45a049;
+}
+
+/* Main Layout */
+.main-content {
   display: flex;
-  align-items: center;
+  height: 500px;
+}
+
+/* Sidebar (Categories) */
+.video-categories {
+  width: 80px;  
+  background-color: orangered;
+  padding: 2px;
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+}
+
+.video-categories h2 {
+  margin-top: 0;
+}
+
+.video-categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.video-categories li {
+  padding: 2px;
+  font-size: 9x;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border 0.2s;
+}
+
+.video-categories li:hover {
+  background-color: #4CAF50;
+  border: 1px solid #4CAF50;
+}
+
+/* Main Display Area */
+.video-section {
+  width: 70%;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.video-section h2 {
+  margin-top: 0;
+}
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.video-grid video {
+  width: 100px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.video-grid video:hover {
+  border-color: #4CAF50;
+}
+
+/* Video Titles */
+.video-grid video::after {
+  content: attr(title);
+  display: block;
+  text-align: center;
+  color: orange;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Video Player */
+.player-container {
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  background: black;
+  z-index: 1000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-container video {
+  width: 100%;
+}
+
+.player-options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  background: #333;
+}
+
+.exit-btn {
+  background: red;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.expand-btn {
+  background: #4CAF50;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.search-box {
+  margin-top: 5px;
+  display: flex;
+  align-items: left;
   gap: 5px;
 }
 
@@ -25,22 +202,18 @@
   cursor: pointer;
 }
 
-/* Background Image */
-body {
-  font-family: Arial, sans-serif;
-  background: url('./images/noday.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  min-height: 100vh;
-}
+
 
 /* Header and Navigation */
 .menu {
+  margin-left: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px 20px;
+  width: fit-content;
+
 }
 
 .menu-logo {
@@ -70,7 +243,7 @@ body {
 }
 /***********************************************************NEW****************************/
 #kcont{
-  margin-left: 50px;
+  margin-left: 10px;
   width: 300px;
   cursor: pointer;
   background-color: rgb(150, 92, 216);
@@ -85,7 +258,7 @@ body {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-left: -40px;
+  margin-left: -150px;
   margin-top: -20px;
   cursor: pointer;
   border-radius: 5px;
@@ -110,7 +283,7 @@ body {
   font-size: 16px;
   cursor: pointer;
   margin-left:50px;
-  margin-top: 190px;
+  margin-top: 220px;
   cursor: pointer;
   border-radius: 5px;
   color: red;
@@ -167,7 +340,7 @@ body {
 }
 
 .categories2 li:hover {
-  background-color: #e0e0e0;
+  background-color: #0078d7;
   border: 1px solid #0078d7;
 }
 
@@ -238,7 +411,7 @@ body {
 }
 
 .categories1 li:hover {
-  background-color: #e0e0e0;
+  background-color: #0078d7;
   border: 1px solid #0078d7;
 }
 
@@ -379,7 +552,7 @@ form button:hover {
   background-color: rgb(150, 92, 216);
   color: #fff;
   width: 300px;
-  margin-left: 50px;
+  margin-left: 10px;
   padding: 15px;
   margin-bottom: 10px;
   cursor: pointer;
@@ -566,7 +739,7 @@ header {
  
 }
 #qr{
-  margin-top: 60px;
+  margin-top: 100px;
 }
 /*************************************** Genre Content Display *******************************/
 .genre-content {
@@ -693,7 +866,7 @@ header {
     max-width: 400px;
     background-color: rgba(0, 0, 0, 0.6);
     margin-top: -670px;
-    margin-left: 20px;
+    margin-left: 10px;
     padding: 20px;
     border-radius: 5px;
     animation: fadeIn 0.5s ease-out forwards;
@@ -729,4 +902,3 @@ header {
     display: flex; /* Show when active */
   }
 }
-
