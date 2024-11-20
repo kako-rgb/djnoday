@@ -591,6 +591,11 @@ header {
 #search-input{
   background-color: white;
   margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  
+  
 }
 
 .back-btn:hover {
