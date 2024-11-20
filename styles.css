@@ -848,6 +848,7 @@ header {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateX(20px); }
