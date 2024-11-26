@@ -1,12 +1,15 @@
+let genreHistory = [];
 ////////////////////////////////////////////live request
 const videoGroups = {
   arabicv: [
     { src: "soap1.mp4", title: "Set It" },
-    { src: "soap2.mp4", title: "Soap Brand 2" },
+    { src: "./resouces/karaoke/setit", title: "Soap Brand 2" },
   ],
   chinesev: [
     { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
+     { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
   ],
   dancehallv: [
     { src: "soap1.mp4", title: "Soap Brand 1" },
@@ -55,6 +58,27 @@ const videoElement = document.getElementById("video-element");
 const exitBtn = document.getElementById("exit-btn");
 const expandBtn = document.getElementById("expand-btn");
 const returnBtn = document.getElementById("return-btn");
+const closebtn = document.getElementById("close-btn");
+const genresSection2 = document.getElementById("genres-section2");
+const videoGridSection = document.getElementById("video-grid-section");
+//
+let currentView = "genres";
+
+// Function to play a selected video
+function playVideo(src) {
+  videoElement.src = src;
+  playerContainer.classList.remove("hidden");
+  videoElement.play();
+}
+
+// Event listener for group selection
+groupList.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    const selectedGroup = e.target.getAttribute("data-group");
+    showVideos(selectedGroup);
+  }
+});
+   
 
 // Display Videos in Selected Group
 function showVideos(group) {
@@ -109,16 +133,30 @@ groupList.addEventListener("click", (e) => {
   }
 });
 
-// Back Button Functionality
+////////////////////////////////////////////////////////////////////////////////// Back Button Functionality
 returnBtn.addEventListener("click", () => {
   window.history.back();
 });
 
+
 // Initial State
 showVideos();
 
-
+// Select the elements
+const kcont = document.getElementById('kcont');
+const ncont = document.getElementById('ncont');
+const backbtn = document.getElementById('back-btn');
+const backbtn2 = document.getElementById('back-btn2');
+const mixcont = document.getElementById('mixcont');
+const liveRequestBtn = document.getElementById('liveRequestBtn');
+const qr = document.getElementById('qr');
+const genresSection = document.getElementById('genres-section');
+const kvidz = document.getElementById('kvidz');
+const kvidz2 = document.getElementById('kvidz2');
+const searchbar = document.getElementById('search-input');
+const container1 = document.getElementById('container1');
 const requestForm = document.getElementById("requestForm");
+const requestBox = document.getElementById("requestBox");
 const requestsDisplay = document.getElementById("requestsDisplay");
 let requestCounter = 0;
 let requestData = JSON.parse(localStorage.getItem("requests")) || [];
@@ -197,11 +235,116 @@ const categoryData = {
         ],
 
     dancehall: [
-      "Sample 1", 
-      "Sample 2", 
-      "Sample 3", 
-      "Sample 4", 
-      "Sample 5"],
+"A Woman Like You ~ Gramps Morgan  ",
+"Andas en mi Cabeza ~ Chino & Nacho ft. Daddy Yankee   ",
+"Back To My Roots ~ Lucky Dube    ",
+"Ballroom Floor ~ Live Wire ",
+"Ban Bam ~ Pliers ",
+"Body Fulla Vybes Mi Sh ~ Kip Rich    ",
+"Bring Me Your Cup ~ UB40  ",
+"Bruk Pocket Boy ~ Tiana     ",
+"Buffalo Soldier ~ Bob Marley & The Wailers    ",
+"Bun Hot ~ Navino    ",
+"Can't Help Falling In Love ~ UB40   ",
+"Cherry Oh Baby ~ UB40   ",
+"Chok There ~ Apache Indian    ",
+"Church Heathen  ~ Shaggy   -     ",
+"Close To You ~ Maxi Priest   ",
+"Come Home ~ Morgan Heritage     ",
+"Come Over ~ Estelle ft Sean Paul  ",
+"Crazy World ~ Lucky Dube  ",
+"Daddy ~ Queen Ifrica    ",
+"Destiny ~ Buju Banton   ",
+"Don't Cry ~ Lucky Dube  ",
+"Don't Keep Mi Waiting ~ Nefetari     ",
+"Dreams Of Brighter Days  ~ Busy Signal & R.C  ",
+"Earth A Run Red ~ Richie Spice  ",
+"Footprints ~ T.O.K.   ",
+"Forget You ~ Jordanne Patrice  ",
+"Free Up ~ Busy Signal    ",
+"Fren A Mi Fren ~ D'Angel       ",
+"Frenzy ~ Sanchez    ",
+"Ganja Farmer ~ Marlon Asha     ",
+"Get Up Stand Up ~ Bob Marley & The Wailers    ",
+"Ghetto People ~ Everton Blender     ",
+"Goodness of God (Reggae Rmx) ~ CeCe Winans  ",
+"Guardian Angel ~ T.O.K.   ",
+"Hard Drugs ~ Gregory Isaac   ",
+"Hold On ~ Lucky Dube       ",
+"House Of Exile ~ Lucky Dube    ",
+"House Party ~ Shane O    ",
+"Hurry Up & Come ~ Cocoa Tea   ",
+"I Swear ~ Chuck Fender    ",
+"If Jah ~ Tony Rebel   ",
+"I'm Waiting ~ Cecile   ",
+"Iron, Lion, Zion ~ Bob Marley   ",
+"Is This Love ~ Bob Marley ",
+"Jammin' ~ Bob Marley & The Wailers   ",
+"Just an Illusion ~ Julie Zahra     ",
+"Just The Way You Are ~ Tarrus Riley  ",
+"Kingston Town ~ UB40       ",
+"Legalize It ~ Peter Tosh  ",
+"Lightning ~ Mortimer   ",
+"Live My Life ~ Beenie Man    ",
+"Lively Up Yourself ~ Bob Marley & The Wailers     ",
+"Longing For ~ Jah Cure   ",
+"Love Song  ~ Etana   ",
+"Love You Too Much ~ Wayne Wade  ",
+"Mamacita ~ Collie Buddz   ",
+"Marijuana ~ Richie Spice   ",
+"My Defense ~ Nasio Fontaine  ",
+"Mysterious Girl ~ Peter Andre    ",
+"Nah Let Go ~ Gyptian   ",
+"Natural Mystic ~ Bob Marley    ",
+"Needle ~ Dr Ring Ding    ",
+"No Ordinary Love ~ Alaine    ",
+"No Woman No Cry ~ Bob Marley & The Wailers    ",
+"One In A Million ~ Gramps Morgan    ",
+"One Love ~ Bob Marley & The Wailers    ",
+"Over And Over ~ Tami Chynn     ",
+"Pale Moonlight ~ Stephen Marley    ",
+"People Like You ~ Gramps Morgan    ",
+"Prisoner ~ Lucky Dube   ",
+"Rat In Mi Kitchen ~ UB40       ",
+"Reasons ~ UB40       ",
+"Red Red Wine ~ UB40  ",
+"Redemption Song ~ Bob Marley & The Wailers      ",
+"Reggae Fever ~ Steel Pulse   ",
+"Reggae Strong ~ Lucky Dube     ",
+"Remember Me ~ Lucky Dube      ",
+"Rise In Love ~ Alaine      ",
+"Rock Away ~ Beres Hammond   ",
+"Sacrifice ~ Alaine      ",
+"Sing Our Own Song ~ UB40   ",
+"Skankin Sweet ~ Chronixx    ",
+"Slave ~ Lucky Dube     ",
+"Small People ~ Ziggy Marley     ",
+"Someone Loves You Honey (Reggae Rmx) ~ Lutricia Mcneal  ",
+"Spread Out ~ Elephant Man    ",
+"Stepping Razor ~ Peter Tosh    ",
+"Stir It Up ~ Bob Marley & The Wailers     ",
+"Strangers In The Night ~ Glen Washington   ",
+"Superman  ~ Tarrus Riley       ",
+"Telephone Ting ~ Kiprich    ",
+"Tell Me ~ Morgan Heritage     ",
+"Tell You Say ~ Vybz Kartel    ",
+"That Day Will Come ~ Capleton    ",
+"The First Cut ~ Kashief Lindo     ",
+"The Way You Do The Things You Do ~ UB-40       ",
+"The World Is A Cycle ~ Richie Spice      ",
+"Three Little Birds ~ Bob Marley & The Wailers     ",
+"Together as One ~ Lucky Dube   ",
+"Usinzi ~ Lucky Dube & The Slaves     ",
+"Virtuous Woman ~ Warrior King    ",
+"Waiting In Vain ~ Bob Marley    ",
+"War ~  Bob Marley     ",
+"Weakness In Me ~ Etana    ",
+"Welcome To Jamrock ~ Damian 'JR. Gong' Marley       ",
+"Wild World  ~  Maxi Priest   ",
+"Wings Like A Dove ~ Culture   ",
+"You Can Pray ~ Katrina   ",
+"Your Best Friend ~ Morgan Heritage     " 
+      ],
 
     eastAfrican: [
       "2 In 1 ~ Naiboi ",
@@ -1028,7 +1171,7 @@ international: [
   "Goodbye My Lover ~ James Blunt      ",
   "Goodbyes ~ Post Malone ft. Young Thug   ",
   "Goodness of God ~ CeCe Winans    ",
-  " Gotham City ~ R. Kelly   ",
+  " Gotham City ~ R. Kelly   ",
   "Gotta Tell You ~ Samantha Mumba    ",
   "Greatest Love Of All ~ Whitney Houston      ",
   "Green Light ~ Lorde   ",
@@ -1059,7 +1202,7 @@ international: [
   "Hark! The Herald Angels Sing ~   (Xmas Song)     ",
   "Hate That I Love You ~ Rihanna & Ne-Yo       ",
   "Havana ~ Camila Cabello ft. Young Thug  ",
-" Have you Ever ~ Brandy   ",
+" Have you Ever ~ Brandy   ",
   "Have You Ever Really Loved A Woman ~ Bryan Adams    ",
   "Have You Ever Seen The Rain ~ Creedence Clearwater Revival      ",
   "Have You Seen Her ~ Mc Hammer        ",
@@ -1187,7 +1330,1298 @@ international: [
   "I Learned From The Best ~ Whitney Houston      ",
   "I Like It ~ Cardi B, Bad Bunny & J Balvin   ",
   "I Love It ~ Icona Pop ft. Charli XCX  ",
-  "I Love Me Some Him ~ Toni Braxton    "
+  "I Love Me Some Him ~ Toni Braxton    ",
+  "I Love Rock 'n' Roll ~ Joan Jett & The Blackhearts  ",
+  "I Love You ~ Celine Dion       ",
+  "I Love You Always Forever ~ Donna Lewis    ",
+  "I Love Your Smile ~ Shanice       ",
+  "I Need Love ~ LL Cool J    ",
+  "I Need You ~ Anthony Marc      ",
+  "I Need Your Love ~ Calvin Harris ft. Ellie Golding    ",
+  "I Say A Little Prayer  ~ Tori Kelly x Pharrell Williams ((Lyrics)        ",
+  "I See Fire ~ Ed Sheeran    ",
+  "I Should Be So Lucky ~ Kylie Minogue   ",
+  "I Still Believe ~ Mariah Carey      ",
+  "I Swear ~ All-4-One    ",
+  "I Took A Pill In Ibiza ~ Mike Posner    ",
+  "I Try ~ Macy Gray     ",
+  "I Turn To You ~ Christina Aguilera     ",
+  "I Wanna Be Down ~ Brandy     ",
+  "I Wanna Be With You ~ Mandy Moore      ",
+  "I Wanna Be Your Lover ~ Prince      ",
+  "I Wanna Dance With Somebody ~ Whitney Houston    ",
+  "I Wanna Have Your Babies ~ Natasha Bedingfield  ",
+  "I Wanna Know ~ Joe    ",
+  "I Wanna Sex You Up ~ Color Me Badd    ",
+  "I Wanna Take Forever Tonight ~ Peter Cetera & Crystal Bernard     ",
+  "I Want It That Way ~ Backstreet Boys    ",
+  "I Want To Know What Love Is ~ Foreigner    ",
+  "I Want You Back ~ The Jackson 5      ",
+  "I Was Here ~ Beyonce     ",
+  "I Will Always Love You ~ Dolly Parton   ",
+  "I Will Always Love You ~ Whitney Houston   ",
+  "I Will Come To You ~ Hanson     ",
+  "I Will Never Let You Down ~ Rita Ora    ",
+  "I Will Survive ~ Gloria Gaynor      ",
+  "I Wish ~ Carl Thomas       ",
+  "I Wish ~ R. Kelly      ",
+  "I Won't Need You Anymore Always & Forever ~ Randy Travis  ",
+  "Ice Ice Baby ~ Vanilla Ice     ",
+  "I'd Die Without you ~ P.M. Dawn    ",
+  "I'd Do Anything For Love, But I Wont Do That ~ Meat Loaf       ",
+  "I'd Rather ~ Luther Vandross   ",
+  "I'd Rather Go Blind ~ Beyonce    ",
+  "IDGAF ~ Dua Lipa    ",
+  "If I Ain't Got You ~ Alicia Keys    ",
+  "If I Can't Have You ~ Shawn Mendes   ",
+  "If I Let You Go ~ Westlife   ",
+  "If I Ruled the World (Imagine That) ~ Nas  ft. Lauryn Hill    ",
+  "If I Was your Man ~ Joe       ",
+  "If I Were A Boy ~ Beyonce      ",
+  "If It Makes you Happy ~ Sheryl Crow    ",
+  "If That's Ok With You ~ Shayne Ward       ",
+  "If The World Was Ending ~ JP Saxe  ft. Julia Michaels       ",
+  "If There's Any Justice ~ Lemar     ",
+  "If This Isn't Love ~ Jennifer Hudson          ",
+  "If Tomorrow Never Comes ~ Garth Brooks    ",
+  "If Tomorrow Never Comes ~ Ronan Keating   ",
+  "If You Don't Know Me By Now ~ Simply Red    ",
+  "If You Had My Love ~ Jennifer Lopez    ",
+  "If You Love Me ~ Brownstone     ",
+  "If You Want To Find love ~ Kenny Rogers   ",
+  "If You Were Mine ~ Marcos Hernandez   ",
+  "If You're Happy And You Know It ~     ",
+  "Ignition (Rmx) ~ R. Kelly    ",
+  "II Most Wanted ~ Beyoncé x Miley Cyrus    ",
+  "I'll Be There ~ Jackson 5      ",
+  "I'll Be There ~ Jess Glynne    ",
+  "I'll Be There For You ~ The Rembrandts   ",
+  "I'll Be Your Baby Tonight ~ Robert Palmer & UB-40       ",
+  "I'll Make Love To You ~ R.Kelly     ",
+  "I'll Never Break Your Heart ~ Backstreet Boys     ",
+  "I'll Never Love Again ~ Lady Gaga ",
+  "I'll Take You There ~ The Staple Singers    ",
+  "I'm A Believer ~ Smash Mouth    ",
+  "I'm A Believer ~ The Monkees    ",
+  "I'm A Slave 4 U ~ Britney Spears      ",
+  "I'm Alive ~ Celene Dion   ",
+  "I'm Already There ~ Lonestar    ",
+  "I'm Burning Up ~ Vyonne Chaka Chaka       ",
+  "I'm Every Woman ~ Whitney Houston      ",
+  "I'm Free ~ Jon Secada     ",
+  "I'm Gonna Be Alright ~ Jennifer Lopez & Nas      ",
+  "I'm In Love With A DJ ~ Vyonne Chaka Chaka       ",
+  "I'm Like A Bird ~ Nelly Furtado     ",
+  "I'm Missing You ~ Kenny Rogers  ",
+  "I'm Not The Only One ~ Sam Smith     ",
+  "I'm Outta Love ~ Anastacia    ",
+  "I'm Ready ~ Tevin Campbell   ",
+  "I'm Real ~ Jennifer Lopez & Ja Rule    ",
+  "I'm So Exited ~ Pointer Sisters    ",
+  "I'm So Tired ~ Lauv & Troye Sivan      ",
+  "I'm Sprung ~ T-Pain       ",
+  "I'm Still In Love With You ~ New Edition    ",
+  "I'm Still In Love With You ~ Sean Paul & Sasha     ",
+  "I'm The One  ~ DJ Khaled  ft. Justin Bieber, Quavo, Chance the Rapper, Lil Wayne  ",
+  "I'm With You ~ Avril Lavigne    ",
+  "I'm Your Angel ~ R. Kelly & Celine Dion   ",
+  "I'm Your Baby Tonight ~ Whitney Houston    ",
+  "I'm Yours  ~ Jason Mraz  ",
+  "Impossible ~ James Arthur     ",
+  "Impossible ~ Shontelle     ",
+  "In Case You Didn't Know ~ Brett Young ",
+  "In Da Club ~ 50 Cent    ",
+  "In Love Wit Chu ~ Da Brat & Cherish   ",
+  "In My Bed ~ Dru Hill      ",
+  "In My Daughter's Eyes ~ Martina McBride   ",
+  "In My Feelings ~ Drake      ",
+  "In My Place ~ ColdPlay   ",
+  "In The End ~ Linkin Park   ",
+  "In The Ghetto ~ Elvis Presley      ",
+  "In The Midnight Hour ~ Wilson Pickett   ",
+  "In The Shadow ~ The Rasmus    ",
+  "Incomplete ~ Sisqo    ",
+  "Independent Woman ~ Destiny's Child     ",
+  "International Love ~ Pitbull ft. Chris Brown      ",
+  "Into The Groove ~ Madonna   ",
+  "Into You ~ Ariana Grande  ",
+  "Into You ~ Fabolous & Ashanti     ",
+  "Intuition ~ Jewel       ",
+  "Invisible Man ~ 98 Degrees     ",
+  "Iris ~ Goo Goo Dolls    ",
+  "Ironic ~ Alanis Morissette   ",
+  "Irreplaceable ~ Beyonce      ",
+  "Island In The Stream ~ Kenny Rogers & Dolly Patron     ",
+  "Isn't She Lovely ~ Stevie Wonder    ",
+  "Issues ~ Julia Michaels     ",
+  "It Feels So Good ~ Sonique    ",
+  "It Must Have Been Love ~ Roxette  ",
+  "It Wasn't Me ~ Shaggy & Ricardo 'RikRok' Ducent    ",
+  "It Won't Stop ~ Sevyn Streeter ft. Chris Brown   ",
+  "It's All Coming Back To Me Now ~ Celine Dion   ",
+  "It's My Birthday ~ Will.i.am, Cody Wise   ",
+  "It's My Life ~ Bon Jovi  ",
+  "It's My Life ~ No Doubt      ",
+  "It's No Crime ~ Babyface         ",
+  "It's Not That Easy ~ Lemar      ",
+  "It's Not Unusual ~ Tom Jones        ",
+  "It's Now Or Never ~ Elvis Presley    ",
+  "It's Raining Men ~ The Weather Girls     ",
+  "I've Been Thinking About You ~ Londonbeat      ",
+  "I've Got You Under My Skin ~ Frank Sinatra    ",
+  "Iwassado ~ Nayaka Bell   -   (Lyrics)    ",
+  "Jailer ~ Asa      ",
+  "Jailhouse Rock ~ Elvis Presley    ",
+  "Jamaica Farewell ~ Don Williams    ",
+  "Jar Of Hearts ~ Christina Perri    ",
+  "Je Ne Sais Pas Pourquoi (I Still Love You) ~ Kylie Minogue     ",
+  "Jealous ~ Labrinth       ",
+  "Jesus Walks ~ Kanye West      ",
+  "Johnny Be Good ~ Chuck Berry     ",
+  "Jolene ~ Dolly Parton     ",
+  "Joshua ~ Dolly Parton   ",
+  "Joy ~ Teddy Pendergrass    ",
+  "Juice ~ Lizzo      ",
+  "Juicy (Its All Good) ~ The Notorious B.I.G.    ",
+  "Juicy ~ The Notorious B.I.G.     ",
+  "Jump ~ Kris Kross    ",
+  "Jumper ~ Third Eye Blind    ",
+  "Jumpin, Jumpin ~ Destiny's Child    ",
+  "Just A Dream ~ Nelly      ",
+  "Just A Friend 2002 ~ Mario    ",
+  "Just A Lil' Bit ~ G-Unit - 50 Cents   ",
+  "Just A Man ~ Kanji    ",
+  "Just A Touch ~ Keith Sweat   ",
+  "Just An Illusion ~ Imagination     ",
+  "Just An Illusion ~ Julia Zahra   ",
+  "Just Cause I'm In Love With You ~ Don William   ",
+  "Just Dance ~ Lady Gaga & Colby O'Donis        ",
+  "Just Dropped In (To See What Condition My Condition Is In) ~ Kenny Rogers   ",
+  "Just Give Me A Reason ~ Pink ft. Nate Ruess   ",
+  "Just Got Paid ~ Johnny Kemp     ",
+  "Just Kickin' It ~ Xscape   ",
+  "Just Like A Pill ~ Pink      ",
+  "Just Like Fire ~ Pink (Pi!nk)    ",
+  "Just Like It ~ Eminem      ",
+  "Just My Imagination (Running Away With Me) ~ The Temptations   ",
+  "Just Once ~ James Ingram   ",
+  "Just The Two Of Us ~ Grover Washington Jr ft. Bill Withers    ",
+  "Just The Way You Are ~ Billy Joel      ",
+  "Just The Way You Are ~ Bruno Mars      ",
+  "Just You And I ~Tom Walker       ",
+  "Karma ~ Alicia Keys      ",
+  "Karma Chameleon ~ Culture Club     ",
+  "Keep It Coming' ~ Keith Sweat     ",
+  "Keep Their Heads Ringing ~ Dr. Dre   ",
+  "Kill Em With Kindness ~ Selena Gomez   ",
+  "Killing Me Softly ~ Fugees     ",
+  "Killing Me Softly With This Song ~ Roberta Flack      ",
+  "King ~ Years & Years       ",
+  "King Without A Crown ~ Matisyahu     ",
+  "Kiss ~ Prince     ",
+  "Kiss From A Rose ~ Seal        ",
+  "Kiss Me ~ Sixpence None The Richer     ",
+  "Kiss Me More  ~ Doja Cat  ft. SZA          ",
+  "Kiss The Rain ~ Billie Myers    ",
+  "Kissin' You ~ Total     ",
+  "Knock You Down ~ Keri Hilson ft. Ne-Yo & Kanye West    ",
+  "Knockin' On Heavens Door ~ Bob Dylan    ",
+  "Knowing Me, Knowing You ~ ABBA     ",
+  "Kryptonite ~ 3 Doors Down     ",
+  "Kung Fu Fighting ~ Carl Douglas      ",
+  "La Bamba ~ Los Lobos    ",
+  "La Isla Bonita ~ Madonna   ",
+  "La La La ~ Naughty Boy ft Sam Smith  ",
+  "Lady (You Bring Me Up) ~ Commodores    ",
+  "Lady ~ Kenny Rogers   ",
+  "Lady ~ Modjo      ",
+  "Lady In Red ~ Chris DeBurgh        ",
+  "Lambada ~ Kaoma  ",
+  "Last Hurrah ~ Bebe Rexha  ",
+  "Last Night ~ AZ Yet    ",
+  "Lay Me Down ~ Sam Smith   ",
+  "Lay With You ~ El DeBarge ft. Faith Evans    ",
+  "Le Freak ~ Chic       ",
+  "Lean Back ~ Terror Squad, Fat Joe & Remy     ",
+  "Lean On ~ Major Lazor ft. MO & Dj Snake    ",
+  "Lean On Me ~ Bill Withers       ",
+  "Lean On Me ~ Club Nouveau     ",
+  "Learning To Fly ~ Tom Petty & The Heartbreakers       ",
+  "Leave (Get Out) ~ Jojo      ",
+  "Leave A Light On ~ Tom Walker    ",
+  "Leave The Door Open  ~ Bruno Mars, Anderson .Paak, Silk Sonic ",
+  "Leaving On A Jet Plane ~ John Denver  ",
+  "Lemon Tree ~ Fools Garden   ",
+  "Let Her Cry ~ Hootie & The Blowfish   ",
+  "Let Her Go ~ Passenger    ",
+  "Let It Be ~ The Beatles     ",
+  "Let It Flow ~ Toni Braxton     ",
+  "Let It Go ~ Demi Lovato   ",
+  "Let It Go ~ Idina Menzel      ",
+  "Let It Whip ~ Dazzy Band     ",
+  "Let Me Be Free ~ Vyonne Chaka  Chaka    ",
+  "Let Me Be The One ~ Expose       ",
+  "Let Me Blow Ya Mind ~ Eve & Gwen Stefani  ",
+  "Let Me Love You (Untill You Learn To Love Yourself) ~ Ne-Yo   ",
+  "Let Me Love You ~ Mario      ",
+  "Let The Music Play ~ Shannon  ",
+  "Let Your Hair Down ~ Magic   ",
+  "Let's Get It On ~ Marvin Gaye     ",
+  "Let's Go ~ Calvin Harris ft. Ne-Yo     ",
+  "Let's Groove ~ Earth, Wind & Fire    ",
+  "Lets Hear It From The Boy ~ Beniece Williams        ",
+  "Let's Twist Again ~ Chubby Checkers     ",
+  "Let's Wait Awhile ~ Janet Jackson      ",
+  "Levitating ~ Dua Lipa  ",
+  "Liberian Girl ~ Michael Jackson ",
+  "Life ~ Des'ree       ",
+  "Life For Rent ~ Dido     ",
+  "Life Is A Rollercoaster ~ Ronan Keating     ",
+  "Lifetime ~ Maxwell        ",
+  "Light It Up (Rmx) ~ Major Lazer ft. Nyla & Fuse ODG    ",
+  "Lighters Up ~ Lil Kim    ",
+  "Lights ~ Ellie Goulding   ",
+  "Like A Prayer ~ Madonna    ",
+  "Like Glue ~ Sean Paul      ",
+  "Like Toy Soldiers ~ Eminem    ",
+  "Linger ~ The Cranberries    ",
+  "Liquor Store Blues ~ Bruno Mars ft. Damian Marley   ",
+  "Listen ~ Beyonce       ",
+  "Listen To Your Heart ~ D.H.T.      ",
+  "Little Red Corvette ~ Prince     ",
+  "Live More & Love More ~ Cat Burns   ",
+  "Live To Tell ~ Madonna    ",
+  "Live Your Life ~ T.I.  ft. Rihanna     ",
+  "Livin' La Vida Loca ~ Ricky Martin   ",
+  "Livin' On A Prayer ~ Bon Jovi      ",
+  "Locked Out Of Heaven ~ Bruno Mars  ",
+  "Locked Up ~ Akon & Styles P    ",
+  "Lodi Dodi ~ Snoop Doggy Dogg ft. Nancy Fletcher    ",
+  "Loliwe ~ Zahara    ",
+  "Lollipop ~ Lil Wayne      ",
+  "Lonely ~ Akon      ",
+  "Long Distance ~ Brandy       ",
+  "Look After You ~The Fray     ",
+  "Look What You Made Me Do ~ Taylor Swift  ",
+  "Lord Have Mercy On A Country Boy ~ Don Williams   ",
+  "Lose Control ~ Keri Hilson ft. Nelly      ",
+  "Lose Control ~ Teddy Swims   ",
+  "Losing My Religion ~ R.E.M.    ",
+  "Lost Without You ~ Robin Thicke      ",
+  "Love Shoulda Brought You Home ~ Toni Braxton    ",
+  "Love ~ Musiq Soulchild   ",
+  "Love Again ~ Dua Lipa    ",
+  "Love At First Sight ~ Kylie Minogue    ",
+  "Love Come Down ~ Everlyn ''Champagne'' King      ",
+  "Love Don't Cost A Thing ~ Jennifer Lopez   ",
+  "Love In The Dark ~ Adele   ",
+  "Love In This Club ~ Usher ft. Young Jeezy     ",
+  "Love Is ~ V.Williams & B. McKnight    ",
+  "Love Is A Wonderful Thing ~ Michael Bolton     ",
+  "Love Is All Around ~ Wet Wet Wet     ",
+  "Love Is Like A Butterfly ~ Dolly Parton  ",
+  "Love Lies ~ Khalid & Normani   ",
+  "Love Like This ~ Faith Evans    ",
+  "Love Me ~ Elvis Presley    ",
+  "Love Me Again ~ John Newman    ",
+  "Love Me Like You Do ~ Ellie Goulding     ",
+  "Love Me Now ~ John Legend   ",
+  "Love Me Tender ~ Elvis Presley    ",
+  "Love Never Felt So Good ~ Michael Jackson & Justin Timberlake  ",
+  "Love On The Rock ~ Neil Diamond      ",
+  "Love On Top ~ Beyonce  ",
+  "Love Runs Out ~ OneRepublic    ",
+  "Love Story ~ Taylor Swift     ",
+  "Love Takes Time ~ Margulice & Carey       ",
+  "Love The Way You Lie ~ Eminem ft. Rihanna      ",
+  "Love Will Turn You Around ~ Kenny Rogers   ",
+  "Love Yourself ~ Justin Bieber    ",
+  "Lovely ~ Billie Eilish & Khalid   ",
+  "Lovely Day ~ Bill Withers     ",
+  "Loverboy ~ Billy Ocean     ",
+  "Lovers On The Sun ~ David Guetta ft. Sam Martin     ",
+  "Lovin' You ~ Minnie Ripperton  ",
+  "Loving Arms ~ Dixie Chicks    ",
+  "Low ~ Flo-Rida            ",
+  "Lowkey  ~ NIKI    ",
+  "Lucid Dreams ~ Juice WRLD   ",
+  "Lucille ~ Kenny Rogers     ",
+  "Lucky Star ~ Madonna     ",
+  "Lucy In The Sky With Diamonds ~ The Beatles      ",
+  "Luka ~ Suzanne Vega   ",
+  "Lullaby ~ Nickelback    ",
+  "Lullaby ~ Shawn Mullins    ",
+  "Lullaby ~ Sigala ft Paloma Faith     ",
+  "Lunch Time ~ Gabriel Omolo     ",
+  "Lush Life ~ Zara Larsson   ",
+  "M.I.L.F. $ ~ Fergie     ",
+  "Macarena ~ Los Del Rio       ",
+  "Mack The Knife ~ Brocht, Blitzs tein & Weill    ",
+  "Mad Season ~ Matchbox 20     ",
+  "Made For Me ~ Muni Long    ",
+  "Made You Look ~ Meghan Trainor   ",
+  "Magic ~ Coldplay      ",
+  "Make It Happen ~ Mariah Carey    ",
+  "Make It Rain ~ Fat Joe & Lil Wayne       ",
+  "Make It Real ~ The Jets     ",
+  "Make Me Better ~ Fabulous ft. Ne-Yo    ",
+  "Make Me Feel ~ Janelle Monáe  ",
+  "Make You Feel My Love ~ Adele     ",
+  "Malibu ~ Miley Cyrus    ",
+  "Mama ~ Spice Girls     ",
+  "Mama Do The Hump ~ Rizzle Kicks       ",
+  "Mama Mia ~ ABBA     ",
+  "Mamacita ~ Collie Buddz   ",
+  "Mambo No.5 ~ Lou Bega       ",
+  "Man Down ~ Rihanna       ",
+  "Man In The Mirror ~ Michael Jackson   ",
+  "Mandolin Rain ~ Bruce Hornsby & The Range     ",
+  "Manic Monday ~ The Bangles    ",
+  "Many Rivers To Cross ~ Jimmy Cliff     ",
+  "Maps ~ Maroon 5       ",
+  "Maria ~ Blondie      ",
+  "Maria Maria ~ Carlos Santana ft. Wyclef Jean      ",
+  "Mark The Knife ~ Bobby Darin    ",
+  "Marry Me ~ Jason Derulo    ",
+  "Marvin Gaye ~ Charlie Puth ft Meghan Trainor   ",
+  "Mask Off ~ Future     ",
+  "Master Blaster (Jammin') ~ Steve Wonder    ",
+  "Master Piece ~ Kofi Yoo ft. D.K. & Cabassa      ",
+  "Masterpiece ~ Atlantic Starr    ",
+  "Material Girl ~ Madonna      ",
+  "Me ! ~ Taylor Swift ft. Brendon Urie    ",
+  "Me and My Broken Heart ~ Rixton   ",
+  "Me Love ~ Sean Kingston     ",
+  "Me, Myself & I ~ G-Eazy ft. Bebe Rexha    ",
+  "Meant To Be ~ Bebe Rexha ft. Florida Georgia Line  ",
+  "Melt Away ~ Mariah Carey      ",
+  "Melt My Heart To Stone ~ Adele    ",
+  "Memories  ~ Maroon 5       ",
+  "Mercedes Boy ~ Pebbles    ",
+  "Mercy ~ Duffy    ",
+  "Mesmerize ~ Ja Rule & Ashanti    ",
+  "Mexican Girl ~ Smokie      ",
+  "Mia ~ Bad Bunny x Drake       ",
+  "Middle ~ DJ Snake  ft. Bipolar Sunshine    ",
+  "Middle Child ~ J. Cole   ",
+  "Midnight Train To Georgia ~ Gladys Knight & The Pips   ",
+  "Minefields ~ Faouzia x John Legend   ",
+  "Miracle ~ Whitney Houston      ",
+  "Mirror ~ Justin Timberlake    ",
+  "Mising You ~ Case     ",
+  "Misled ~ Celine Dion    ",
+  "Miss You ~ Aaliyah     ",
+  "Missing ~ Everything But The Girl    ",
+  "Missing You ~ Brandy, Tamia, Glady's Knight & Chaka Khan ",
+  "Missing You ~ Kenny Rogers   ",
+  "MMM Bop ~ Hanson       ",
+  "Mo Money Mo Problems ~ The Notorious B.I.G. feat. Puff Daddy  ",
+  "Mockingbird  ~ Eminem   ",
+  "Mona Lisa ~ Nat King Cole   ",
+  "Money On My Mind ~ Sam Smith     ",
+  "More Than Words ~ Extreme      ",
+  "More Than Words ~ Westlife   ",
+  "Most Girl ~ Pink       ",
+  "Motivation ~ Kelly Rowland ft. Lil. Wayne     ",
+  "Mouth ~ Merril Bainbridge     ",
+  "Moves Like Jagger ~ Maroon 5 ft. Christina Aguilera      ",
+  "Moving On Up ~ M-People     ",
+  "Mr. Jones ~ Counting Crows     ",
+  "Mr. Loverman ~ Shabba Ranks      ",
+  "Mr. Telephone Man ~ New Edition   ",
+  "Mr. Too Damn Good ~ Gerald Levert    ",
+  "Ms. Fat Booty ~ Mos Def   ",
+  "Ms. Jackson ~ Outkast        ",
+  "My All ~ Mariah Carey       ",
+  "My Blue Ridge Mountain Boy ~ Dolly Parton  ",
+  "My Boo ~ Usher & Alicia Keys    ",
+  "My Boy lollipop ~ Millie Small     ",
+  "My Church ~ Maren Morris  ",
+  "My Favorite MIstake ~ Sheryl Crow   ",
+  "My Favourite Game ~ The Cardigans    ",
+  "My Girl ~ The Temptations    ",
+  "My Happy Ending ~ Avril Lavigne       ",
+  "My Head Is A Jungle (MK Rmx) ~ Wankelmut & Emma Louise   ",
+  "My Heart Will Go On ~ Celine Dion    ",
+  "My Immortal ~ Evanescence       ",
+  "My Kind Of Love ~ Emeli Sande      ",
+  "My Life Would Suck Without You ~ Kelly Clarkson   ",
+  "My Love ~ Julio Iglesias & Stevie Wonder   ",
+  "My Love ~ Justin Timberlake ft. T.I.     ",
+  "My Love ~ Route 94 ft. Jess Glynne  ",
+  "My Love ~ Westlife     ",
+  "My Love Is Your Love ~ Whitney Houston  ",
+  "My Name Is ~ Eminem   ",
+  "My Name Is Not Susan ~ Whitney Houston       ",
+  "My Place ~ Nelly & Jaheim     ",
+  "My Prerogavive ~ Bobby Brown   ",
+  "My Proposal ~ Ak Songstress  -  (Lyrics)            ",
+  "My Sacrifice ~ Creed     ",
+  "My Way ~ Frank Sinatra    ",
+  "My, My, My ~ Johnny Gill    ",
+  "Mysterious Girl ~ Peter Andre    ",
+  "Natural ~ The Tiny Cities  ",
+  "Naughty Girl ~ Beyonce Knowles     ",
+  "Ndihamba Nawe ~ Mafikizolo    ",
+  "Need U (100%) ~ Duke Dumont ft AME    ",
+  "Need You Now ~ Lady Antebellum   ",
+  "Needed Me ~ Rihanna   ",
+  "Never Be The Same ~ Camilla Cabello  ",
+  "Never Be The Same Again ~ TLC       ",
+  "Never Find Someone Like You ~ Keith Martin     ",
+  "Never Forget You ~ MNEK & Zara Larsson    ",
+  "Never Give Up ~ Sia   ",
+  "Never Gonna Give You Up ~ Rick Astley      ",
+  "Never Had A Dream Come True ~ S Club 7        ",
+  "Never Keeping Secrets ~ Babyface     ",
+  "Never Let You Go ~ Third Eye Blind     ",
+  "Never Lie ~ Immature    ",
+  "Never Too Busy ~ Kenny Lattimore  ",
+  "Never Too Much ~ Luther Vandross  ",
+  "New York, New York ~ Frank Sinatra       ",
+  "Next To Me ~ Emeli Sande    ",
+  "Night Shift ~ Commodores     ",
+  "No Air ~ Jordin Sparks ft. Chris Brown      ",
+  "No Diggity ~ Blackstreet     ",
+  "No Lettin Go ~ Wayne Wonder    ",
+  "No Money ~ Galantis     ",
+  "No More (Baby I'ma Do Right) ~ 3LW   ",
+  "No More ~ Ruff Endz   ",
+  "No One ~ Alicia Keys    ",
+  "No Scrubs ~ TLC    ",
+  "No Tears Left To Cry ~ Ariana Grande    ",
+  "No U Hang Up ~ Shayne Ward   ",
+  "Nobody  ~ Keith Sweat Ft Athena Cage   ",
+  "Nobody ~ The Tony Rich Project     ",
+  "Nobody's Home ~ Avril Lavigne      ",
+  "Not Afraid ~ Eminem     ",
+  "Not Gon' Cry ~ Mary J. Blige     ",
+  "Not Letting Go ~ Tinie Tempah ft Jess Glynne     ",
+  "Not Like Us ~ Kendrick Lamar      ",
+  "Nothin' On You ~ B.O.B. ft. Bruno Mars      ",
+  "Nothing Breaks Like a Heart ~ Mark Ronson ft. Miley Cyrus     ",
+  "Nothing Compares To You ~ Sinead O'Connar     ",
+  "Nothing Like This ~ Blonde & Craig David   ",
+  "Nothing’s Gonna Change My Love For You ~ George Benson  ",
+  "Nothing's Gonna Stop Us Now ~ Starship      ",
+  "Numb ~ Linkin Park       ",
+  "Numb Encore ~ Linkin Park ft. Jay-Z      ",
+  "Nuthin' But A ''G'' Thang ~ Dr. Dre & Snoop Doggy Dogg    ",
+  "O.P.P. ~ Naughty By Nature   ",
+  "Object Of My Desire ~ Starpoint      ",
+  "Off The Wall ~ Michael Jackson     ",
+  "Old McDonald ~         ",
+  "Old Time Rock 'N' Roll ~ Bob Seger and The Silver Bullet Band    ",
+  "Old Town Road (Rmx) ~ Lil Nas X ft. Billy Ray Cyrus    ",
+  "OMG ~ Usher ft. Will.I.Am     ",
+  "On Bended Knee ~ Boyz II Men     ",
+  "On Fire ~ Lloyd Banks     ",
+  "On More Day ~ Diamond Rio      ",
+  "One ~ U2     ",
+  "One Dance ~ Drake  feat. Kyla & Wizkid      ",
+  "One In A Million ~ Gramps Morgan  -  (Lyrics)          ",
+  "One In A Million ~ Ne-Yo  ",
+  "One Last Breath ~ Creed      ",
+  "One Last Cry ~ Brian McKnight     ",
+  "One Love ~ Blue        ",
+  "One Man Can Change The World ~ Big Sean   ",
+  "One Mic ~ Nas   ",
+  "One Moment In Time ~ Whitney Houston      ",
+  "One More Chance ~ Michael Jackson     ",
+  "One More Chance ~ The Notorious B.I.G.      ",
+  "One More Night ~ Maroon 5      ",
+  "One More Night ~ Phil Collins    ",
+  "One More Time ~ Daft Punk    ",
+  "One Night ~ Elvis Presley       ",
+  "One Of The Girls ~ The Weeknd, Jennie, Lily Rose Depp",
+  "One Step At A Time ~ Jordin Sparks     ",
+  "One Sweet Day ~ Mariah Carey & Boyz II Men      ",
+  "One Way or  Another (Teenage Kids) ~ One Direction    ",
+  "One Wish ~ Ray J      ",
+  "One Word ~ Elliot Yamin        ",
+  "Only Love Can Hurt Like This ~ Paloma Faith      ",
+  "Only You ~ 112           ",
+  "Open Wide ~ Calvin Harris ft. Big Sean  ",
+  "Ordinary Day ~ Vanessa Carlton  ",
+  "Ordinary Girl ~ Lionel Richie     ",
+  "Ordinary People ~ John Legend  ",
+  "Orinoco Flow ~ Enya   ",
+  "Otis ~ Jay-Z & Kanye West  ",
+  "Our Song ~ Anne-Marie & Niall Horan     ",
+  "Out Of My Head ~ Fastball    ",
+  "Outside ~ Calvin Harris ft. Ellie Goulding    ",
+  "Over ~  Drake      ",
+  "Over My Shoulder ~ Mike & The Mechanics     ",
+  "Oye Mi Canto ~ N.O.R.E. Nina Sky & Daddy Yankee   ",
+  "P.I.M.P. ~ 50 Cent     ",
+  "P.Y.T. (Pretty Young Thing) ~ Michael Jackson   ",
+  "Paint My Love ~ Michael Learns To Rock      ",
+  "Panda ~ Desiigner      ",
+  "Papa Don't Preach ~ Madonna   ",
+  "Paper Planes ~ M.I.A.     ",
+  "Paradise ~ George Ezra      ",
+  "Paradise By The Dashboard Light ~ Meat Loaf      ",
+  "Paris ~ The Chainsmokers      ",
+  "Part Of Me ~ Katy Perry      ",
+  "Part Time Lover ~ Stevie Wonder     ",
+  "Party ~ Beyonce ft. J Cole      ",
+  "Party For One ~ Carly Rae Jepsen     ",
+  "Party Rock Anthem ~ LMFAO ft. Lauren Bennett Goonrock    ",
+  "Party To Damascus ~ Wyclef Jean ft Missy Elliott   ",
+  "Pass The Dutchie ~ Musical Youth      ",
+  "Pay Phone ~ Maroon 5 ft. Wiz Khalifa      ",
+  "Penny Lover ~ Lionel Richie     ",
+  "People ~ Libianca   ",
+  "People Like You ~ Gramps Morgan    ",
+  "Perfect ~ Ed Sheeran        ",
+  "Perfect ~ Simple Plan   ",
+  "Perfect Gentleman ~ Wyclef       ",
+  "Perfume ~ Britney Spears      ",
+  "Perhaps, Perhaps, Perhaps ~ Dorris Day    ",
+  "Photograph ~ Ed Sheeran      ",
+  "Piano Man ~ Billy Joel    ",
+  "Piece Of Your Heart ~ Meduza     ",
+  "Pieces Of A Dream ~ Anastacia      ",
+  "PillowTalk ~ Zayn   ",
+  "Pinch Me ~ Barenaked Ladies     ",
+  "Pink Cadillac ~ Natalie Cole    ",
+  "Pink Lemonade ~ James Bay ",
+   "Play Hard ~ David Guetta ft Ne-Yo & Akon   ",
+  "Play Me ~ Neil Diamond      ",
+  "Please Don't Go ~ K.C. & The Sunshine Band    ",
+  "Please Dont Leave Me ~ Pink   ",
+  "Please Forgive Me ~ Bryan Adams    ",
+  "Please Please Please ~ Sabrina Carpenter  ",
+  "Poison ~ Bell Biv Devoe      ",
+  "Poker Face ~ Lady Gaga       ",
+  "Pompeii ~ Bastille     ",
+  "Pon De Replay ~ Rihanna      ",
+  "Pop Ya Collar ~ Usher     ",
+  "Pound The Alarm ~ Nicki Minaj    ",
+  "Pour It Up ~ Rihanna       ",
+  "Power Of Love (Love Power) ~ Luther Vandross      ",
+  "Practise What You Preach ~ Barry White   ",
+  "Praise You ~ Fatboy Slim      ",
+  "Pray ~ Sam Smith    ",
+  "Prayer In C ~ Lilly Wood & The Prick & Robin Schulz     ",
+  "Praying ~ Kesha    ",
+  "Pressure Drop ~ Toots & The Maytals      ",
+  "Pretty Baby ~ Vanessa Carlton       ",
+  "Pretty Girl ~ Jon B.      ",
+  "Pretty Girl Rock ~ Keri Hilson     ",
+  "Pretty Hurts ~  Beyonce       ",
+  "Pretty Little Fears ~ 6Lack ft. J Cole    ",
+  "Prince Of China ~ Coldplay ft. Rihanna    ",
+  "Problem ~ Ariana Grande  ft. Iggy Azalea   ",
+  "Promise Me ~ Beverley Craven      ",
+  "Promises ~ Calvin Harris, Sam Smith    ",
+  "Proud Mary ~ Tina Turner    ",
+  "Prove Your Love ~ Taylor Dayne   ",
+  "Psycho ~ Post Malone ft. TY Dolla $ign    ",
+  "Pump Up The Jam ~ Technotronic ",
+  "Pupple Rain ~ Prince     ",
+  "Pure And Simple ~ Dolly Parton    ",
+  "Pure Shores ~ All Saints      ",
+  "Push ~ Matchbox 20     ",
+  "Push It ~ Salt-N-Pepa    ",
+  "Que Sera Sera ~ Doris Day      ",
+  "Queen Of The Heart ~ Westlife     ",
+  "Quit Playing Games ~ Backstreet Boys     ",
+  "Radioactive ~ Imagine Dragons   ",
+  "Rain ~ SWV     ",
+  "Raise Glass ~ Pink      ",
+  "Rather Be ~ Clean Bandit ft. Jess Glynne  ",
+  "Read All About It (P-III) ~ Emeli Sande        ",
+  "Ready For Your Love ~ Gorgon City ft. MNEK   ",
+  "Real Love ~ Clean Bandits & Jess Glynne     ",
+  "Real Love ~ Dolly Patron     ",
+  "Real Love ~ Mary J. Blige     ",
+  "Red Light Special ~ TLC     ",
+  "Redeemer ~ Nicole C. Mellen    ",
+  "Regulate ~ Warren G      ",
+  "Rehab ~ Amy Winehouse   ",
+  "Rehab ~ Rihanna      ",
+  "Remember The Time ~ Michael Jackson     ",
+  "Remember When ~ Color Me Badd       ",
+  "Respect ~ Aretha Franklin     ",
+  "Rest Your Love On Me ~ Conway Twitty    ",
+  "Return Of The Mack ~ Mark Morrison     ",
+  "Return To Sender ~ Elvis Presley    ",
+  "Reuben James ~ Kenny Rogers    ",
+  "Rewrite The Stars ~ Anne-Marie & James Arthur    ",
+  "Rhyme And Reason ~ John Denver    ",
+  "Rhythm Devine ~ Enrique Iglesias    ",
+  "Rhythm Of The Night ~ DeBarge       ",
+  "Ride  ~ Twenty One Pilots   ",
+  "Ride Wit Me ~ Nelly & City Spud    ",
+  "Ridin' ~ Chamillionaire      ",
+  "Ridin' ~ Mya      ",
+  "Right Here ~ Jess Glynne    ",
+  "Right Here Waiting ~ Monica & 112      ",
+  "Right Here Waiting ~ Richard Marx    ",
+  "Right Thur ~ Chingy     ",
+  "Ring My Bell ~ Anita Ward      ",
+  "Riptide ~ Vance Joy  ",
+  "Rise - Gabrielle     ",
+  "Rise & Fall ~ Craig David      ",
+  "Rise (Olimpic Song) ~ Katy Perry     ",
+  "Rise Up ~ Andra Day     ",
+  "Rise Up ~ Yves Larock   ",
+  "River ~ Eminem ft. Ed Sheeran     ",
+  "Roar ~ Katy Perry       ",
+  "Rock Around The Clock ~ Bill Haley & His Comets      ",
+  "Rock DJ ~ Robbie Williams    ",
+  "Rock Me Amadeus ~ Falco      ",
+  "Rock The Boat ~ Aaliyah      ",
+  "Rock Wit U (Awww Baby) ~ Ashanti   ",
+  "Rockabye ~ Clean Bandit  ft. Sean Paul & Anne Marie   ",
+  "Rockstar ~ Nickelback      ",
+  "Rockstar ~ Post Malone ft. 21 Savage    ",
+  "Roll It Gal ~ Alison Hinds     ",
+  "Rolling In The Deep ~ Adele   ",
+  "Rompe ~ Daddy Yankee      ",
+  "Roni ~ Bobby Brown     ",
+  "Roses ~ The Chainsmokers ft. Rozes    ",
+  "Roses Are Red ~ Mac Band     ",
+  "Royals ~ Lorde        ",
+  "Ruby, Don't Take your Love To Town ~ Kenny Rogers & The First Edition    ",
+  "Rude ~ Magic  ",
+  "Rude Boy ~ Rihanna      ",
+  "RuffNeck ~ MC Lyte      ",
+  "Rumour Has It ~ Adele      ",
+  "Rump Shaker ~ Wreck-N-Effect     ",
+  "Run The World (Girls) ~ Beyonce    ",
+  "Run This Town ~ Jay-Z ft. Rihanna & Kanye West      ",
+  "Runaway (U & I) ~ Galantis      ",
+  "Runaway ~ The Corrs    ",
+  "Runnin' (Dying To Live) - 2Pac ft. Notorious B.I.G    ",
+  "Rush Rush ~ Paula Abdul        ",
+  "Russian Roulette ~ Rihanna     ",
+  "Sacrifice ~ Elton John    ",
+  "Said I Loved You,, But I Lied ~ Michael Bolton   ",
+  "Sail On ~ Commodores    ",
+  "Same Script, Different Cast ~ Whitney Houston & Deborah Cox     ",
+  "Santa Baby ~ Madonna     ",
+  "Satisfaction ~ Eve   ",
+  "Saturday Night ~ Whigfield   ",
+  "Saturday Nights ~ Khalid   ",
+  "Save The Best For The Last ~ Vanessa Williams    ",
+  "Save The Last Dance For Me ~ The Drifters  ",
+  "Save Tonight ~ Eagle-Eye Cherry      ",
+  "Save Your Tears ~ The Weeknd  ",
+  "Saving All My Love ~ Whitney Houston    ",
+  "Saving Forever, For You ~ Shanice    ",
+  "Say It Again ~ Don Williams   ",
+  "Say Something ~ A Great Big World ft Christina Aguilera     ",
+  " Say You, Say Me ~ Lionel Richie  ",
+  "Say You'll Be There ~ Spice Girls  ",
+  "Scared To Be Lonely ~ Martin Garrix & Dua Lipa  ",
+  "Scream & Shout ~ Will.I.Am ft. Britney Spears   ",
+  "Scream ~ Usher      ",
+  "Searchin' my Soul ~ Vonda Shepard     ",
+  "Secret Love Song ~ Little Mix ft. Jason Derulo    ",
+  "Secret Lovers ~ Atlantic Starr      ",
+  "See You Again ~ Wiz Khalifa ft Charlie Puth     ",
+  "Self Control ~ Laura Branigan     ",
+  "Semi-Charmed Life ~ Third Eye Blind    ",
+  "Send My Love (To Your New Lover) ~ Adele   ",
+  "Sentimental ~ Deborah Cox    ",
+  "Senza Una Donna (Without A Woman) ~ Zucchero ft. Paul Young   ",
+  "September ~ Earth, Wind & Fire     ",
+  "Set Adrift On Memory Bliss ~ PM Dawn  ",
+  "Set Fire To The Rain ~ Adele    ",
+  "SEX ~ Cheat Codes x Kris Kross Amsterdam     ",
+  "Sex With Me ~ Rihanna   ",
+  "Sexual Healing ~ Marvin Gaye   ",
+  "Sexy And I Know It ~ LMFAO    ",
+  "Sexy Eyes ~ Dr. Hook    ",
+  "Sexy Love ~ Ne-Yo       ",
+  "SexyBack ~ Justin Timberlake & Timbaland    ",
+  "Shake It Off ~ Taylor Swift  ",
+  "Shake You Down ~ Gregory Abbott    ",
+  "Shake Your Body ~ Michael Jackson (The Jacksons)   ",
+  "Shallow ~ Lady Gaga, Bradley Cooper   ",
+  "Shape Of My Heart ~ Backstreet Boys    ",
+  "Shape of My Heart ~ Sting    ",
+  "Shape of You  ~ Ed Sheeran    ",
+  "She Believes In Me ~ Kenny Rogers     ",
+  "She Drives Me Crazy ~ Fine Young Cannibals    ",
+  "She Looks So Perfect ~ 5 Seconds of Summer    ",
+  "She Will Be Loved ~ Maroon 5      ",
+  "Shed a Light ~ Robin Schulz, David Guetta & Cheat Codes   ",
+  "She's Out Of My Life ~ Michael Jackson  ",
+  "She's So High ~ Tal Bachman   ",
+  "Shine ~ Years & Years  ",
+  "Shiny Happy People ~ R.E.M.     ",
+  "Shoop ~ Salt-N-Pepa    ",
+  "Shoot To Thrill ~ AC-DC     ",
+  "Shotgun ~ George Ezra     ",
+  "Should I Stay Or Should I Go ~ The Clash  ",
+  "Shoulda, Woulda, Coulda ~ Beverley Knight      ",
+  "Show Me Heaven ~ Maria McKee       ",
+  "Show Me Heaven ~ Tina Arena      ",
+  "Show Me Love ~ Robyn    ",
+  "Show Me Off  ~ Asa    -     (Lyrics)  ",
+  "Show Me The Way ~ Papa Wemba  ",
+  "Shower Me With Your Love ~ Surface   ",
+  "Shut Up & Dance ~ Walk The Moon     ",
+  "Shy Guy ~ Diana King  ",
+  "Sicko Mode ~ Travis Scott  ",
+  "Sign O' The Times ~ Prince     ",
+  "Sign of the Times ~ Harry Styles  ",
+  "Sign Of Victory ~ R.Kelly ft. Soweto Spiritual Singers      ",
+  "Since U Been Gone ~ Kelly Clarkson      ",
+  "Sing ~ Ed Sheeran  ",
+  "Sing ~ Travis    ",
+  "Sing for the Moment ~ Eminem   ",
+  "Sittin' Up In My Room ~ Brandy       ",
+  "Sitting Down Here ~ Lean Rimes         ",
+  "Sk8er Boi ~ Avril Lavigne     ",
+  "Sky ~ Sonique      ",
+  "Skyfall ~ Adele     ",
+  "Sleeping Child ~ Michael Learns To Rock     ",
+  "Slide ~ Goo Goo Dolls     ",
+  "Slow Dance More ~ Kenny Rogers    ",
+  "Slow Down ~ Bobby Valentino      ",
+  "Slow Hands ~ Niall Horan   ",
+  "Smack That ~ Akon ft. Eminem ",
+  "Smells Like Teen Spirit ~ Nirvana    ",
+  "Smooth ~ Santana & Rob Thomas      ",
+  "Smooth Criminal ~ Alien Ant Farm        ",
+  "Smooth Operator ~ Sade     ",
+  "So Am I ~ Ava Max    ",
+  "So Emotional ~ Whitney Houston      ",
+  "So Far Away ~ Staind      ",
+  "So Into You (Rmx) ~ Fabolous ft. Tamia  ",
+  "So Into You ~ Tamia   ",
+  "So Many Tears ~ 2 Pac     ",
+  "So Sick ~ Ne-Yo      ",
+  "So Young ~ The Corrs     ",
+  "Soak Up The Sun ~ Sheryl Crow      ",
+  "Soledad ~ Westlife   ",
+  "Solid (As A Rock) ~ Ashford & Simpson       ",
+  "Solo ~ Clean Bandit ft. Demi Lovato    ",
+  "Some Broken Hearts Never Mend ~ Don Williams      ",
+  "Some Nights ~ Fun    ",
+  "Somebody That I Used To Know ~ Gotye ft. Kimbra      ",
+  "Somebody To You ~ The Vamps ft. Demi Lovato   ",
+  "Somebody's Watching Me ~ Rockwell    ",
+  "Someday (Pay Day) ~ Michael Learns To Rock       ",
+  "Someday ~ Nickelback   ",
+  "Someday ~ Sugar Ray    ",
+  "Someday We'll Know ~ New Radicals    ",
+  "Someone Like You ~ Adele   ",
+  "Someone Loves You Honey (Reggae Rmx) ~ Lutricia Mcneal ",
+  "Someone To Love ~ Jon B. & Babyface   ",
+  "Someone You Loved ~ Lewis Capaldi   ",
+  "Something Happened On The Way To Heaven ~ Phil Collins      ",
+  "Something I Need ~ Ben Haenow   ",
+  "Something In Your Eyes ~ Bell Biv Devoe    ",
+  "Something Just Like This ~ The Chainsmokers & Coldplay  ",
+  "Something Stupid ~ Robby Williams & Nicole Kidman     ",
+  "Something's Burning ~ Kenny Rogers    ",
+  "Sometimes ~ Brand New Heavies      ",
+  "Sometimes ~ Britney Spears     ",
+  "Sometimes Love Just Ain't Enough ~ Patty Smyth & Don Henley    ",
+  "Sometimes When We Touch ~ Dan Hill     ",
+  "Sometimes When We Touch ~ Dottie West      ",
+  "Somewhere I Belong ~ Linkin Park      ",
+  "Somewhere Only We Know ~ Keane  ",
+  "Somewhere Only We Know ~ Lily Allen  ",
+  "Sorry ~ Justin Bieber     ",
+  "Soul Provider  ~ Michael Bolton    ",
+  "Spanish Guitar ~ Toni Braxton     ",
+  "Spectrum (Say My Name) ~ Florence + the Machine ft. Calvin Harris  ",
+  "Spotlight ~ Jennifer Hudson    ",
+  "Stacy's Mom ~ Fountains Of Wayne       ",
+  "Stan ~ Eminem & Dido   ",
+  "Stand By ME ~ Ben E. king   ",
+  "Stand Up ~ Cynthia Erivo  ",
+  "Stand Up ~ Ludacris ft. Shawnna   ",
+  "Standing Still ~ Jewel   ",
+  "Starboy ~ The Weeknd ft. Daft Punk    ",
+  "Starships ~ Nicki Minaj    ",
+  "Start Me Up ~ The Rolling Stones   ",
+  "Start Of Something New ~ High School Musical   ",
+  "Stay ~ Rihanna ft. Mikky Ekko    ",
+  "Stay ~ Zedd, Alessia Cara  ",
+  "Stay Or Let It Go ~ Brian McKnight    ",
+  "Stay The Night ~ Zedd Ft. Hayley Williams   ",
+  "Stay With Me ~ Sam Smith    ",
+  "Stayin' Alive ~ The Bee Gees      ",
+  "Steal My Girl ~ One Direction   ",
+  "Steal My Sunshine ~ Len  ",
+  "Step In The Name Of Love ~ R. Kelly     ",
+  "Stickwitu ~ Pussycat Dolls    ",
+  "Still ~ Tamia      ",
+  "Still D.R.E. ~ Dr. Dre ft. Snoop Dogg       ",
+  "Still Fly ~ Big Tymers   ",
+  "Still Into You ~ Paramore     ",
+  "Sting ~ Fragile  ",
+  "Stitches ~ Shawn Mendes   ",
+  "Stop ~ Spice Girls     ",
+  "Story Of My Life ~ Don Williams   ",
+  "Straight Up ~ Paula Abdul    ",
+  "Streets Of Philadelphia ~ Bruce Springsteen      ",
+  "Strength Of A Woman ~ Shaggy      ",
+  "Stressed Out ~ Twenty One Pilots     ",
+  "Strip That Down ~ Liam Payne  ft. Quavo     ",
+  "Strong Enough ~ Cher   ",
+  "Stronger (What Doesn't Kill You) ~ Kelly Clarkson     ",
+  "Stronger ~ Kanye West    ",
+  "Stronger Than Me ~ Amy Winehouse   ",
+  "Stuck In A Moment You Can't Get Out Of ~ U2       ",
+  "Stuck On You ~ Lionel Richie   ",
+  "Stunt 101 ~ G-Unit     ",
+  "Stupid Girl ~ Garbage   ",
+  "Sucker ~ Jonas Brothers  ",
+  "Suddenly ~ Billy Ocean   ",
+  "Suffocate ~ J Holiday     ",
+  "Sugar ~ Maroon 5    ",
+  "Suit & Tie ~ Justin Timberlake ft. Jay-Z     ",
+  "Suited ~ Shekhinah   ",
+  "Summer ~ Calvin Harris   ",
+  "Summer Girls ~ LFO     ",
+  "Summer Holiday ~ Cliff Richard    ",
+  "Summer Nights ~ Olivia Newton-John & John Travolta   ",
+  "Summer Of '69 ~ Bryan Adams     ",
+  "Summertime Sadness ~ Lana Del Rey & Cedric Gervais   ",
+  "Sunflower ~ Post Malone x Swae Lee  ",
+  "Sunny Came Home ~ Shawn Colvin    ",
+  "Sunshine On My Shoes ~ John Denver   ",
+  "Super Bass ~ Nicki Minaj        ",
+  "Super Freak ~ Rick James   ",
+  "Super Trouper ~ ABBA   ",
+  "Superheroes ~ The Script    ",
+  "Superwoman ~ Karyn White   ",
+  "Survivor ~ Destiny's Child   ",
+  "Suspicious Mind ~ Elvis Presley   ",
+  "Sway ~ Michael Bublé      ",
+  "Swear It Again ~ Westlife     ",
+  "Sweat (A La La La La Long) ~ Inner Circle     ",
+  "Sweet But Psycho ~ Ava Max     ",
+  "Sweet Caroline (Good Times Never Seemed So Good) ~ Neil Diamond   ",
+  "Sweet Dreams (Are Made Of This) ~ The Eurythmics    ",
+  "Sweet Dreams ~ Beyonce    ",
+  "Sweet Home ~ Lynyrd Skynyrd       ",
+  "Sweet Lady ~ Tyrese     ",
+  "Sweet Love ~ Anita Baker  ",
+  "Sweet Lovin' ~ Sigala    ",
+  "Sweet Music Man ~ Kenny Rogers    ",
+  "Sweetest Girl ~ Wyclef Jean ft. Akon & Lil Wayne       ",
+  "Swing Low, Sweet Chariot ~ Ella Eyre      ",
+  "Symphony ~ Clean Bandit ft. Zara Larsson     ",
+  "System Ya Kapungala ~ Daddy Owen       ",
+  "Tabia Mbaya ~ K. South     ",
+  "Take A Bow ~ Madonna    ",
+  "Take A Bow ~ Rihanna    ",
+  "Take A Chance On Me ~ ABBA      ",
+  "Take Care ~ Drake ft. Rihanna  ",
+  "Take Me Home, Country Roads ~ John Denver      ",
+  "Take Me To The Church ~ Hozier   ",
+  "Take My Love Is Free ~ Vyonne Chaka Chaka    ",
+  "Take You Out ~ Luther Vandross       ",
+  "Take You There ~ Sean Kingston    ",
+  "Taki Taki ~ DJ Snake ft. Selena Gomez, Ozuna, Cardi B  ",
+  "Talk ~ Khalid   ",
+  "Talk Dirty ~ Jason Derulo ft. 2 Chainz     ",
+  "Talk That Talk ~ Rihanna & Jay-Z   ",
+  "Talkin' Bout A Revolution ~ Tracy Chapman     ",
+  "Talking to My Diary ~ Dr. Dre   ",
+  "Tarzan Boy ~ Baltimora      ",
+  "Tattoo ~ Jordin Sparks   ",
+  "Te Amo ~ Rihanna      ",
+  "Tears In Heaven ~ Eric Clapton   ",
+  "Teenage Dirtbag ~ Wheatus    ",
+  "Tell It All Brother ~ Kenny Rogers & The First Edition      ",
+  "Tell It To My Heart ~ Taylor Dayne     ",
+  "Tell Me (Whats Goin On) ~ Smilez & Southstar    ",
+  "Tell Me ~ Groove Theory   ",
+  "Tell Me It's Real ~ K-Ci & Jojo      ",
+  "Temperature ~ Sean Paul     ",
+  "Tenerife Sea  ~ Ed Sheeran       ",
+  "Tennessee Whiskey ~ Chris Stapleton  ",
+  "Thank You ~ Alanie Morrisette      ",
+  "Thank You ~ Dido     ",
+  "Thank You In Advance ~ Boyz II Men    ",
+  "Thank You, Next ~ Ariana Grande      ",
+  "That Don't Impress Me Much ~ Shaania Twain    ",
+  "That’s What I Like ~ Bruno Mars   ",
+  "That's The Thing About Love ~ Don Williams   ",
+  "That's The Way It Is ~ Celine Dion       ",
+  "Thats The Way Love Goes ~ Janet Jackson      ",
+  "Thats What Friends Are For ~ Dionne Warwick & Friends      ",
+  "That's Why ~ Michael Learns To Rock     ",
+  "The A Team ~ Ed Sheeran    ",
+  "The Best ~ Tina Turner     ",
+  "The Boy Is Mine ~ Brandy & Monica       ",
+  "The Climb ~ Miley Cyrus ",
+  "The Closer I Get To You ~ Beyonce Knowles & Luther Vandross      ",
+  "The Cure ~ Lady Gaga    ",
+  "The First Cut Is The Deepest ~ Sheryl Crow    ",
+  "The First Time ~ Surface   ",
+  "The Flinstones Theme ~      ",
+  "The Gambler ~ Kenny Rogers     ",
+  "The Girl Is Mine ~ Michael Jackson & Paul McCartney   ",
+  "The Greatest ~ Kenny Rogers     ",
+  "The Greatest Gift Of All ~ Kenny Rogers & Dolly Parton   ",
+  "The Greatest Show ~ The Greatest Showman Cast",
+  "The Harder They Come ~ Jimmy Cliff    ",
+  "The Hardest Thing ~ 98 Degrees   ",
+  "The Hills ~ The Weeknd   ",
+  "The Lady In My Life ~ Michael Jackson      ",
+  "The Lazy Song ~ Bruno Mars   ",
+  "The Lion Sleeps Tonight ~ The Tokens   ",
+  "The Lonely ~ Christina Perri  ",
+  "The Man ~ Aloe Blacc    ",
+  "The Man Who Cant Be Moved ~ The Script         ",
+  "The Middle ~ Zedd, Maren Morris & Grey     ",
+  "The Monster ~ Eminem ft. Rihanna   ",
+  "The Most Beautiful Girl In The World ~ Prince     ",
+  "The Nights ~ Avicii     ",
+  "The Other Side ~ Jason Derulo   ",
+  "The Power Of Goodbye ~ Madonna    ",
+  "The Power Of Love ~ Celine Dion  ",
+  "The Prayer ~ Celine Dion  ",
+  "The Real Slim Shady ~ Eminem    ",
+  "The Reason ~ Hoobastank    ",
+  "The Scientist ~ Coldplay     ",
+  "The Shoop Shoop Song ~ Cher     ",
+  "The Sign ~ Ace Of Base   ",
+  "The Sound Of Silence ~ Simon & Garfunkel        ",
+  "The Storm Is Over ~ R.Kelly   ",
+  "The Sweetest Taboo ~ Sade    ",
+  "The Tide Is High (Get The Feeling) ~ Atomic Kitten      ",
+  "The Tide Is High ~ Blonde    ",
+  "The Vows Go Unbroken ~ Kenny Rogers     ",
+  "The Way ~ Fastball   ",
+  "The Way I Am ~ Eminem     ",
+  "The Way It Is ~ Bruce Hornsby & The Range       ",
+  "The Way You Make Me Feel ~ Michael Jackson    ",
+  "The Winner Takes It All ~ ABBA        ",
+  "The World's Greatest ~ R Kelly  ",
+  "The Young Ones ~ Cliff Richard    ",
+  "Then Its Love ~ Don Williams   ",
+  "There She Goes ~ Sixpence None The Richer   ",
+  "There's Nothing Holding Me Back ~ Shawn Mendes  ",
+  "These Are The Times ~ Dru Hill     ",
+  "These Days ~ Rudimental ft. Jess Glynne, Macklemore & Dan Caplen   ",
+  "These Days ~ Take That   ",
+  "They Don't Know ~ Jon B.  ",
+  "Think About Love ~ Dolly Patron          ",
+  "Think About Us ~ Little Mix ft. Ty Dolla $ign ",
+  "Thinking Out Loud ~ Ed Sheeran    ",
+  "Thinks Twice ~ Celine Dion   ",
+  "This I Promise You ~ NSYNC     ",
+  "This Is America ~ Childish Gambino  ",
+  "This Is How We Do It ~ Montel Jordan       ",
+  "This Is Love ~ Will.I.Am ft Eva Simons   ",
+  "This Is Me ~ Camp Rock   ",
+  "This Is Me ~ Demi Lovato ",
+  "This Is Me ~ Demi Lovato & Joe Jonas",
+  "This Is Me ~ The Greatest Showman Cast     ",
+  "This Is What You Came For  ~ Calvin Harris & Rihanna   ",
+  "This Is Why I'm Hot ~ Mims     ",
+  "This Kiss ~ Faith Hill    ",
+  "This Love ~ Maroon 5    ",
+  "This Womans Work ~ Maxwell      ",
+  "Thong Song ~ Sisqo    ",
+  "Three Times A Lady ~ Commodores  ",
+  "Three Wooden Crosses ~ Randy Travis  ",
+  "Thrift Shop ~ Macklemore & Ryan Lewis ft Wanz     ",
+  "Thriller ~ Michael Jackson   ",
+  "Through The Years ~ Kenny Rogers     ",
+  "Throw Some D's ~ Rich Boy ft. Polow Da Don     ",
+  "Thug Mansion ~ 2 Pac     ",
+  "Thunderclouds ~ LSD ft. Sia, Diplo, Labrinth    ",
+  "Tie A Yellow Ribbon Round The Ole Oak Tree ~ Tony Orlando & Dawn    ",
+  "Till You Do Me Right ~ After 7        ",
+  "Timber ~ Pitbull ft. Ke$ha  ",
+  "Time After Time ~ Cyndi Lauper  ",
+  "Time To Say Goodbye (Con the Partiró) ~ Andrea Bocelli & Sarah Brightman   ",
+  "Titanium ~ David Guettta ft. Sia    ",
+  "To All The Girls I've Loved Before ~ Julio Iglesias & Willie Nelson    ",
+  "To Love Somebody ~ Bee Gees     ",
+  "To Love you More ~ Celine Dion     ",
+  "To Loves A Woman ~  Lionel Richie & Enrique Iglesias    ",
+  "To The Moon & Back ~ Savage Garden    ",
+  "Together Forever ~ Rick Astley   ",
+  "Tokyo (Vampires & Wolves) ~ Wombats   ",
+  "Tomorrow People ~ Ziggy Marley     ",
+  "Tom's Dinner ~ DNA & Suzanne Vega   ",
+  "Tonight (I'm Loving You) ~ Enrique Iglesias ft. Ludacris, Dj Frank E    ",
+  "Tonight, I Celebrate My Love ~ Roberta Flack & Peabo Bryson    ",
+  "Too Close ~ Alex Clare     ",
+  "Too Close ~ Next   ",
+  "Too Good ~ Drake  ft Rihanna & Popcaan ",
+  "Too Good At Goodbyes ~ Sam Smith     ",
+  "Too Much Heaven ~ Bee Gees    ",
+  "Top Of The World ~ Carpenters  ",
+  "Torn ~ Natalie Imbruglia ",
+  "Total Eclipse of The Heart ~ Bonnie Tyler    ",
+  "Touch My Body ~ Mariah Carey",
+  "Tough ~ Quavo x Lana Del Rey",
+  "Toy Soldiers ~ Martika    ",
+  "Trap Queen ~ Fetty Wap   ",
+  "Treasure ~ Bruno Mars    ",
+  "Treat You Better ~ Shawn Mendes  ",
+  "Triggered ~ Jhené Aiko     ",
+  "Trip ~ Ella Mai   ",
+  "Trouble ~ Coldpaly    ",
+  "Troublemaker ~ Olly Murs ft. Flo Rida      ",
+  "True ~ Spandau Ballet   ",
+  "True Colors ~ Cyndi Lauper  ",
+  "True Colors ~ Justin Timberlake & Anna Kendrick    ",
+  "True Colors ~ Phil Collins   ",
+  "Truely Madly Deeply ~ Savage Garden     ",
+  "Truly ~ Lionel Richie   ",
+  "Trumpets ~ Jason Derulo   ",
+  "Try ~ Dolly Parton  ",
+  "Try ~ Pink      ",
+  "Try A Little Tenderness ~ Otis Redding     ",
+  "Try It On My Own ~ Whitney Houston    ",
+  "Try Sleeping With A Broken Heart ~ Alicia Keys  ",
+  "Tsunami (Jump) ~ DVBBS & Borgeous     ",
+  "Tubthumping ~ Chumbawamba      ",
+  "Turn Me On ~ David Guetta ft. Nicki Minaj       ",
+  "Turn Me On ~ Kevin Lyttle     ",
+  "Turn Off The Lights ~ Nelly Furtado     ",
+  "Turn The Lights Down Low ~ Lauryn Hill & Bob Marley       ",
+  "Turn Up The Music ~ Chris Brown ",
+  "Turn Your Love Around ~ George Benson  ",
+  "Turn! Turn! Turn! (To Everything There Is A Season) ~ The Byrds   ",
+  "Turning Tables ~ Adele   ",
+  "Twenty Years Ago ~ Kenny Rogers    ",
+  "Twist & Shout ~ The Beatles  ",
+  "Twisted ~ Keith Sweat   ",
+  "Two Princess ~ The Spin Doctors    ",
+  "Two Wrongs ~ Wyclef Jean & Claudette Ortiz       ",
+  "U Can't Touch This ~ M.C Hammer      ",
+  "U Got It Bad ~ Usher  ",
+  "U Remind Me ~ Usher     ",
+  "U Will Know ~ B.M.U.    ",
+  "Ugly ~ Bubba Sparxxx   ",
+  "Ugly Heart ~ G.R.L.      ",
+  "Umbrella ~ Rihanna & Jay-Z    ",
+  "Umqombothi ~ Vyonne Chaka Chaka     ",
+  "Unbelievable ~ Craig David  ",
+  "Un-Break My Heart ~ Toni Braxton   ",
+  "Unbreakable ~ Westlife     ",
+  "Unchained Melody ~ The Righteous Brothers      ",
+  "Uncle John From Jamaica ~ Venga Boys      ",
+  "Unconditional Love ~ Donna Summer    ",
+  "Unconditionally ~ Katy Perry    ",
+  "Underneath It All ~ No Doubt & Lady Saw    ",
+  "Underneath your Clothes ~ Shakira     ",
+  "Unfaithful ~ Rihanna   ",
+  "Unforgettable ~ French Montana ft. Swae Lee   ",
+  "Unforgettable ~ Nat King Cole  ",
+  "Unpretty ~ TLC    ",
+  "Unwell ~ Matchbox Twenty    ",
+  "Up ~ Olly Murs ft. Demi Lovato    ",
+  "Up On The Roof ~ The Drifters    ",
+  "Uptown Funk ~ Mark Ronson ft. Bruno Mars    ",
+  "Us Against The World ~ Westlife     ",
+  "Valerie ~ Mark Ronson ft. Amy Winehouse     ",
+  "Venom ~ Eminem    ",
+  "Versace On The Floor ~ Bruno Mars    ",
+  "Video ~ India Arie     ",
+  "Viva Forever ~ Spice Girls   ",
+  "Viva La Vida ~ Coldplay  ",
+  "Vivo Per Lei ~ Andrea Bocelli & Hélène Ségara   ",
+  "Vogue ~ Madonna    ",
+  "Vossi Bop ~ Stormzy     ",
+  "Wait For You ~ Elliot Yamin   ",
+  "Waiting All Night ~ Rudimental ft. Ella Eyre   ",
+  "Waiting For Tonight ~ Jennifer Lopez     ",
+  "Waka Waka ~ Shakira     ",
+  "Wake Me Up ~ Avicii     ",
+  "Wake Me Up Before You Go Go ~ Wham      ",
+  "Walk Away (Remember Me) ~ Paula DeAnda ft. The Dey     ",
+  "Walk It Out ~ UNK     ",
+  "Walk Like An Egyptian ~ The Bangles     ",
+  "Walk Me Home ~ Pink    ",
+  "Walk Of Life ~ Dire Straits   ",
+  "Walk On ~ U2     ",
+  "Walk On By ~ Dionne Warwick   ",
+  "Walked Outta Heaven ~ Jagged Edge     ",
+  "Walkin' A Broken Heart ~ Don Williams  ",
+  "Walkin In Memphis  ~ Marc Cohen   ",
+  "Walking Away ~ Craig David     ",
+  "Walking In Memphis ~ Lonestar   ",
+  "Walking On Sunshine ~ Katrina & The Waves     ",
+  "Wanna Be Starting Somethin' ~ Michael Jackson",
+  "Wannabe ~ Spice Girls   ",
+  "Want To Want Me ~ Jason Derulo   ",
+  "Warm It Up ~ Kris Kross     ",
+  "Wasted ~ Tiësto ft. Matthew Koma    ",
+  "Water ~ Tyla     ",
+  "Water Runs Dry ~ Boyz II Men    ",
+  "Waterfalls ~ TLC   ",
+  "Waves ~ Mr. Probz     ",
+  "Waving Flag ~ K'naan ft. David Disbai    ",
+  "We All Are One ~ Jimmy Cliff     ",
+  "We Are Family ~ Sister Sledge     ",
+  "We Are Never Getting Back Together ~ Taylor Swift    ",
+  "We Are The World ~ Michael Jackson &Lionel Richie     ",
+  "We Are The World ~ USA For Africa   ",
+  "We Are Young ~ Fun ft. Janelle Monae   ",
+  "We Be Burnin' ~ Sean Paul    ",
+  "We Belong Together ~ Mariah Carey  ",
+  "We Can't Stop ~ Miley Cyrus       ",
+  "We Don't Have To Take Our Clothes Off ~ Jermaine Stewart      ",
+  "We Don't Need Another Hero ~ Tina Turner  ",
+  "We Don't Talk Anymore ~ Charlie Puth ft. Selena Gomez    ",
+  "We Found Love ~ Rihanna ft. Calvin Harris      ",
+  "We Like To Party ~ Vengaboys       ",
+  "We Will Rock You - We Are The Champions ~ Queen    ",
+  "Weak ~ SWV   ",
+  "Wellerman ~ Nathan Evans  ",
+  "Wet Dreamz ~ J. Cole  ",
+  "We've Got Tonight ~ Kenny Rogers    ",
+  "What A Wonderful World ~ Louis Armstrong     ",
+  "What About Us ~ Pink  ",
+  "What About Us ~ The Saturdays ft. Sean Paul    ",
+  "What Can I Do ~ Corrs    ",
+  "What Do you Mean ~ Justin Bieber   ",
+  "What Doesn't Kill You ~ Kelly Clarkson     ",
+  "What Goes Around, Comes Around ~ Justin Timberlake   ",
+  "What Kind of Man Would I Be ~ Mint Condition  ",
+  "What Makes A Man ~ Westlife      ",
+  "What Now ~ Rihanna   ",
+  "What You Won't Do For Love ~ Bobby Caldwell    ",
+  "Whataya Want From Me ~ Adam Lambert    ",
+  "Whatcha Say ~ Jason Derulo     ",
+  "What's Love Got To Do With It ~ ina Turner   ",
+  "What's Luv ~ Fat Joe & Ashanti     ",
+  "What's My Name ~ Rihanna ft. Drake    ",
+  "What's the Difference ~ Dr. Dre ft Eminem & Xzibit    ",
+  "Whatta Man ~ Salt-N-Pepa ft. En Vogue    ",
+  "When a Man Loves a Woman ~ Michael Bolton   ",
+  "When A Man Loves A Woman ~ Percy Sledge   ",
+  "When A Woman Loves ~ R. Kelly    ",
+  "When Can I See You ~ Babyface    ",
+  "When Doves Cry ~ Prince   ",
+  "When I Fall In Love ~ Nat King Cole  ",
+  "When I Get Where I'm Going ~ Brad Paisley & Dolly Parton   ",
+  "When I See You ~ Fantasia      ",
+  "When I Was Your Man ~ Bruno Mars    ",
+  "When I'm Gone ~ 3 Doors Down     ",
+  "When It's Over ~ Sugar Ray   ",
+  "When The Bassline Drops ~ Craig David & Big Narstie    ",
+  "When We Were Young ~ Adele   ",
+  "When You Believe ~ Whitney Houston & Mariah Carey   ",
+  "When You Say Nothing At All ~ Alison Krauss & Union Station    ",
+  "When You Tell Me That You Love Me ~ Diana Ross   ",
+  "When You Were Young ~ The Killers  ",
+  "When You're Good to Mama ~ Chicago   ",
+  "When You're In Love With A Beautiful Woman ~ Dr. Hook    ",
+  "Whenever You Need Somebody ~ Ricky Ashley   ",
+  "Where Are U Now ~ Skrilllex ft. Justin Bieber  ",
+  "Where Do Broken Hearts Go ~ Whitney Houston    ",
+  "Where Have All The Cowboys Gone ~ Paula Cole   ",
+  "Where Have You Been ~ Rihanna      ",
+  "Where Is The Love ~ Black Eyed Peas & Justin Timberlake    ",
+  "Where My Girls At ~ 702   ",
+  "Wherever You Will Go ~ The Calling     ",
+  "Whip Appeal  ~ Babyface   ",
+  "Whip My Hair ~ Willow Smith     ",
+  "Whistle ~ Flo Rida   ",
+  "White Flag ~ Dido   ",
+  "White Noise ~ Disclosure ft. Aluna George   ",
+  "Who Am I (What's My Name) ~ Snoop Dogg    ",
+  "Who Do You Love ~ Deborah Cox    ",
+  "Who Knew ~ Pink    ",
+  "Who Let The Dogs Out ~ Baha Men      ",
+  "Who Will Save Your Soul ~ Jewel   ",
+  "Who's That Girl ~ Eve     ",
+  "Why Does It Hurt So Bad ~ Whitney Houston   ",
+  "Why Have You Left The One You Left Me For ~ Crystal Gayle    ",
+  "Wide Awake ~ Katy Perry    ",
+  "Wifey ~ Next & Lil' Mo     ",
+  "Wiggle ~ Jason Derulo ft Snoop Dogg     ",
+  "Wild ~ Jessie J ft. Big Sean & Dizzee Rascal   ",
+  "Wild Ones ~ Flo Rida ft. Sia    ",
+  "Wild Thing ~ Tone Loc    ",
+  "Will You Be There ~ Michael Jackson     ",
+  "Wind Breath My Wings ~ Bette Midler    ",
+  "Wind Of Change ~ Scorpions        ",
+  "Wings ~ Little Mix   ",
+  "Wish you Were Mine ~ Philip George    ",
+  "With Arms Wide Open ~ Creed    ",
+  "With Or Without You ~ U2      ",
+  "With You ~ Chris Brown     ",
+  "With You I'm Born Again ~ Billy Preston & Syreeta       ",
+  "Without Me ~ Eminem   ",
+  "Without Me ~ Halsey     ",
+  "Without You ~ David Guetta ft. Usher     ",
+  "Without You ~ Mariah Carey      ",
+  "Woman In Love ~ Barbra Streisand     ",
+  "Wonderful ~ Everclear    ",
+  "Wonderful Tonight ~ Eric Clapton    ",
+  "Wonderwall ~ Oasis      ",
+  "Word Up ~ Cameo     ",
+  "Words Get In The Way ~ Gloria Estefan    ",
+  "Work ~ Rihanna ft. Drake    ",
+  "Work from Home ~ Fifth Harmony ft. Ty Dolla $ign    ",
+  "Work It ~ Missy Elliott  ",
+  "Wow ~ Post Malone    ",
+  "Wrapped Up ~ Olly Murs ft. Travie McCoy    ",
+  "Wrecking Ball ~ Miley Cyrus   ",
+  "Write Your Name (Across My Heart) ~ Kenny Rogers    ",
+  "XO ~ Beyonce    ",
+  "Y.M.C.A. ~ The Village People       ",
+  "Yah Mo Be There ~ James Ingram & Michael McDonald        ",
+  "Yeah ~ Usher & Ludacris & Lil' Jon          ",
+  "Year 3000 ~ Busted      ",
+  "Yellow ~ Coldplay  ",
+  "Yellow Roses ~ Dolly Parton   ",
+  "Yesterday ~ The Beatles    ",
+  "Yesterday ~ Toni Braxton Ft. Trey Songz     ",
+  "You ~ Jesse Powell    ",
+  "You Ain't Know ~ Lil Wayne ft. Birdman -  (Lyrics)   ",
+  "You Are ~ Lionel Richie  ",
+  "You Are My Sunshine ~                    ",
+  "You Are Not Alone ~ Michael Jackson    ",
+  "You Are The Reason ~ Calum Scott      ",
+  "You Can Call Me Al ~ Paul Simon    ",
+  "You Da One ~ Rihanna     ",
+  "You Decorated My Life ~ Kenny Rogers   ",
+  "You Dropped A Bomb On Me ~ The Gap Band        ",
+  "You Found Me ~ The Fray    ",
+  "You Get What You Give ~ New Radicals         ",
+  "You Girl ~ Shaggy ft. Ne-Yo  -  (Lyrics)    ",
+  "You Give Love A Bad Name ~ Bon Jovi    ",
+  "You Gotta Be ~ Des'ree      ",
+  "You Learn ~ Alanis Morissette          ",
+  "You Make Me Wanna ~ Usher         ",
+  "You Mean The World To Me ~ Toni Braxton        ",
+  "You Moght Need Somebody ~ Shola Ama    ",
+  "You Raise Me Up ~ Westlife      ",
+  "You Rock My World ~ Michael Jackson      ",
+  "You Sang To Me ~ Marc Anthony       ",
+  "You Sexy Thing ~ Hot Chocolate        ",
+  "You Were Meant For Me ~ Jewel   ",
+  "You Woman ~ White Town  ",
+  "You'll Never Find Another Love Like Mine   ",
+  "You'll Never Walk Alone ~ Carousel      ",
+  "Young, Dumb & Broke ~ Khalid  ",
+  "Youngblood ~ 5 Seconds of Summer   ",
+  "Your Body's Callin' ~ R. Kelly    ",
+  "Your Love Is King ~ Sade    ",
+  "Your Man ~ Josh Turner   ",
+  "Your Secret Love ~ Luther Vandross     ",
+  "Your Song ~ Elton John     ",
+  "You're A God ~ Vertical Horizon         ",
+  "You're Beautiful ~ James Blunt    ",
+  "You're Making Me High ~ Toni Braxton     ",
+  "You're My Best Friend ~ Don Williams      ",
+  "You're Still The One ~ Shania Twain       ",
+  "You're The First, The Last, My Everything ~ Barry White    ",
+  "You're The One ~ SWV      ",
+  "You've Lost That Lovin' Feeling ~ The Righteous Brothers     ",
+  "Zeze (Kodak Black) ~ Sunfly ft.Travis Scott & Offset  ",
+  "Zombie ~ The Cranberries     "
 
 ],
 
@@ -1300,11 +2734,23 @@ international: [
       "You Never Know ~ Willy Paul "    
      ],
     lingala: [
-    "Sample 1", 
-    "Sample 2", 
-    "Sample 3",
-    "Sample 4", 
-    "Sample 5"
+  "African Typic Collection ~ Sam Fan Thomas     ",
+"Cache Cache ~ Awilo Longomba   ",
+"Chaise Electrique ~ Fally ipupa ft. Olivia   ",
+"Coupe Bibamba ~ Awilo Longomba   ",
+"Dezo Dezo  ~ Tshala Mwana  ",
+"Every Woman Needs A Man ~ Vyonne Chaka Chaka      ",
+"Loi ~ Koffi Olomide    ",
+"Neng Makassy ~ Sam Fan Thomas    ",
+"Noa ~ Sam Fan Thomas    ",
+"Papa Lolo ~ Mose Fanfan    ",
+"Rail On ~ Papa Wemba     ",
+"Show Me The Way ~ Papa Wemba  ",
+"Umqombothi ~ Vyonne Chaka Chaka     ",
+"Vulindella ~ Brenda Fassie     ",
+"Vuluka Dilolo ~ Tshala Muana    ",
+"Wake Up ~ Koffi Olomide     " 
+ 
   ],
 
     roots: [
@@ -1318,51 +2764,118 @@ international: [
     traditional: [
     "Sample 1",
     "Sample 2", 
-    "Sample 3", 
-    "Sample 4", 
-    "Sample 5"
+    "KAMBA",
+"Kilunda Kiyisi Mbesa ~ Sammy Wambua   ",
+"Rose Watwa Wa Kisumu ~ Sammy Wambua  ",
+
+"KIKUYU",
+"Amukira Ngatho ~ Ruth Wamuyu      ",
+"Indo Ciene ~ Salim Young  ",
+"Ino Ni Momo ~ Murimi Wa Kahalf    ",
+"Kapusi Gakwa ~ Kamande Wa Kioi    ",
+"Mabataro ~ Ben Githae   ",
+"Mahiga ~ Ruth Wamuyu   ",
+"Mariru ~ Albert Gacheru    ",
+"Mugithi ~ Mr. & Mrs Nganga        ",
+"Muheani ~ Phyllis Mbuthia & Sammy Irungu   ",
+"Muiretu Wa Kabete (Ni Cori Muno) ~ JB Maina   ",
+"Mumbi  ~ Samidoh    ",
+"Mwaki ~ Zerb ft. Sofiya Nzau   ",
+"Nyau Iriaga Mbia ~ Muriithi John Walker   ",
+"Queen  ~ Loise Kim   ",
+"Ritwa Riaku ~ Eric Wainaina    ",
+"Tiga Kumute (Wendo Ni Wendo) ~ JB Maina   ",
+"Wendo Wa Cebe Cebe ~ Kamaru      ",
+
+"LUO",
+"Te Amo ~ Prince Indah    "
+
   ],
 
     naija: [ 
-    "Sample 1",
-    "Sample 2",
-    "Sample 3",
-    "Sample 4",
-    "Sample 5"
-  ],
+ "5 And 6 ~ Naeto C   ",
+"African Queen ~ 2 Face     ",
+"All Over ~ Tiwa Savage    ",
+"Amarula ~ Roberto   ",
+"Asibe Happy ~ Kabza De Small x Ami Faku  ",
+"Azonto ~ Fuse ft. Tiffany  ",
+"Baby ~ Joeboy     ",
+"Baby Riddim ~ Fave  ",
+"Bandana ~ Fireboy DML ft. Asake  ",
+"Beautiful Onyinye ~ Psquare & Rick Ross    ",
+"Beautiful Onyinye ~ P-Square Ft. Rick Ross  ",
+"Calm Down ~ Rema   ",
+"Commas ~ Ayra Starr  ",
+"Congratulations ~ Ada Ehi x Buchi    ",
+"Egwu ~ Chiké ft. Mohbad    ",
+"Ex  ~  Nikita Kering   -  (Lyrics)      ",
+"Fall ~ Davido   ",
+"Fall In Love ~ D'Banj     ",
+"Fallen in Love  ~ Chidinma  ",
+"For My Hand ~ Burna Boy ft. Ed-Sheeran    ",
+"How Are You My Friend ~ Johnny Drille   ",
+"If ~ Davido       ",
+"Ifunanya ~ P-Square      ",
+"Jennifer ~ Guchi      ",
+"Johnny ~ Yemi Alade    ",
+"Kedike  ~ Chidinma   ",
+"Khona ~ Mafikizolo  ",
+"Last Last ~ Burna Boy  ",
+"Love Nwantiti  ~ CKay  ",
+"Monalisa ~ Lojay X Sarz    ",
+"Moto ~ Lojay   ",
+"Ndihamba Nawe ~ Mafikizolo   ",
+"No One Like You ~ P-Square    ",
+"Nobody ~ DJ Neptune, Joeboy x Mr Eazi   ",
+"Ojuelegba  ~  Wizkid    ",
+"Oliver Twist ~ D'Banj    ",
+"Only Me ~ 2 Face & Idibia   ",
+"SMA ~ Nasty C    ",
+"Ta Ta Ta  ~ Bayanni   ",
+"Terminator ~ King Promise  ",
+"Tonight ~ Nonso Amadi   ",
+"Touch It  ~ KiDi         ",
+"Vulindella ~ Brenda Fassie  ",
+"Who is your Guy  ~ Spyro ft Tiwa Savage   ",
+"Wombo Lombo ~ Angélique Kidjo   ",
+"Yori Yori ~ Bracket   "
+ ],
 
     xmass: [
-   "Sample 1", 
-   "Sample 2", 
-   "Sample 3", 
-   "Sample 4", 
-   "Sample 5"
+ 
+"A Christmas to Remember ~ Dolly Parton & Kenny Rogers  ",
+"A Holy Night    ",
+"Christmas Without You ~ Dolly Parton, Kenny Rogers  ",
+"Feliz Navidad ~ Jose Feliciano    ",
+"Go Tell It On The Mountain  ",
+"I Believe In Santa Claus ~ Dolly Parton, Kenny Rogers  ",
+"Jingle Bells ~  ",
+"Joy To The World ~  ",
+"O Come All Ye Faithful ~  ",
+"Rivers Of Babylon ~ Boney M     ",
+"Silent Night ~  ",
+"The First Noel ~  ",
+"The Twelve Days Of Christmans ~  ",
+"We Three Kings Of Orient Are ~  ",
+"We Wish You A Merry christmas ~ "
   ],
 
 };
 
-document.getElementById("liveRequestBtn").addEventListener("click", () => {
-  document.getElementById("liveRequestBtn").classList.add("hidden");
-  document.getElementById("kcont").classList.add("hidden");
-  document.getElementById("ncont").classList.add("hidden");
-  document.getElementById("mixcont").classList.add("hidden");
-  document.getElementById("qr").classList.add("hidden");
-  document.getElementById("requestBox").classList.remove("hidden");
-  document.getElementById("backbtn").classList.add("hidden");
-});
-    // Select the elements
-    const kcont = document.getElementById('kcont');
-    const ncont = document.getElementById('ncont');
-    const backbtn = document.getElementById('back-btn');
-    const mixcont = document.getElementById('mixcont');
-    const liveRequestBtn = document.getElementById('liveRequestBtn');
-    const qr = document.getElementById('qr');
-    const wrappertag = document.getElementById('wrappertag');
-    const genresSection = document.getElementById('genres-section');
-    const kvidz = document.getElementById('kvidz');
-    const kvidz2 = document.getElementById('kvidz2');
-    const container1 = document.getElementById('container1');
 
+      liveRequestBtn.addEventListener('click', () => {
+      // Hide the kcont div
+      liveRequestBtn.style.display = 'none';
+      kcont.style.display = 'none';
+      ncont.style.display = 'none';
+      mixcont.style.display = 'none';
+      qr.style.display = 'none';
+      // Show the genres section      
+      requestBox.style.display = 'block';
+      backbtn.style.display = 'block';
+      searchbar.style.display = 'block';     
+    
+    });
         kcont.addEventListener('click', () => {
       // Hide the kcont div
       kcont.style.display = 'none';
@@ -1374,6 +2887,23 @@ document.getElementById("liveRequestBtn").addEventListener("click", () => {
       // Show the genres section
       genresSection.style.display = 'block';
       kvidz.style.display = 'block';
+      backbtn.style.display = 'block';
+      searchbar.style.display = 'block';
+    });
+        backbtn.addEventListener('click', () => {
+      // Hide the kcont div
+      kcont.style.display = 'block';     
+      ncont.style.display = 'block';
+      mixcont.style.display = 'block';
+      liveRequestBtn.style.display = 'block';
+      qr.style.display = 'block';
+      // Show the genres section
+      genresSection.style.display = 'none';
+      kvidz.style.display = 'none';
+      backbtn.style.display = 'none';
+      searchbar.style.display = 'none';
+      requestBox.style.display = 'none';
+      mixxez.style.display = 'none';
     });
 
         mixcont.addEventListener('click', () => {
@@ -1385,7 +2915,8 @@ document.getElementById("liveRequestBtn").addEventListener("click", () => {
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       // Show the genres section
-      
+      backbtn.style.display = 'block';
+      searchbar.style.display = 'block';
          
     });
         ncont.addEventListener('click', () => {
@@ -1397,8 +2928,11 @@ document.getElementById("liveRequestBtn").addEventListener("click", () => {
       liveRequestBtn.style.display = 'none';
       qr.style.display = 'none';
       // Show the genres section
-      genresSection.style.display = 'block'; 
+      genresSection.style.display = 'block';
       kvidz.style.display = 'block';
+      backbtn.style.display = 'block';
+      searchbar.style.display = 'block';
+     
     });
 
  
@@ -1414,8 +2948,27 @@ document.getElementById("liveRequestBtn").addEventListener("click", () => {
       kvidz.style.display = 'none';
       container1.style.display = 'none';
       // Show the genres section
-      wrappertag.style.display = 'block';
+      genresSection2.style.display = 'block';
+      videoGridSection.style.display = 'block';
+      backbtn2.style.display = 'block';
+      searchbar.style.display = 'block';
     });
+    backbtn2.addEventListener('click', () => {
+      // Hide the live div
+      kcont.style.display = 'none';
+      backbtn2.style.display = 'none';
+      ncont.style.display = 'none';
+      mixcont.style.display = 'none';
+      liveRequestBtn.style.display = 'none';
+      qr.style.display = 'none';
+      videoGridSection.style.display = 'none';
+      genresSection2.style.display = 'none'; 
+      // Show the genres section
+      container1.style.display = 'block';
+      kvidz.style.display = 'block';
+      backbtn.style.display = 'block';
+      searchbar.style.display = 'block';
+      });
 
 
  
@@ -1452,7 +3005,37 @@ document.getElementById("category-list").addEventListener("click", (e) => {
 // Default view
 displayItems();
 
-let genreHistory = [];
+
+function openGenre(genre) {
+  const genreContent = document.getElementById("genre-content");
+  const genresSection = document.getElementById("genres-section");
+
+  // Add current state to history
+  genreHistory.push(genresSection.style.display === "none" ? "genre-content" : "genres-section");
+
+  // Show genre content, hide genres list
+  genresSection.style.display = "none";
+  genreContent.style.display = "block";
+
+  // Update genre title
+  const genreTitle = document.getElementById("genre-title");
+  genreTitle.textContent = genre;
+}
+returnBtn.addEventListener("click", () => {
+  const genreContent = document.getElementById("genre-content");
+  const genresSection = document.getElementById("genres-section");
+
+  // Navigate to the last screen
+  const lastScreen = genreHistory.pop();
+  if (lastScreen === "genres-section") {
+    genresSection.style.display = "block";
+    genreContent.style.display = "none";
+  } else if (lastScreen === "genre-content") {
+    genreContent.style.display = "block";
+    genresSection.style.display = "none";
+  }
+});
+
 
 // Open a genre and display its content
 function openGenre(genre) {
@@ -1461,7 +3044,7 @@ function openGenre(genre) {
   const musicList = document.getElementById('music-list');
   const genresSection = document.getElementById('genres-section');
   const karaokeLogo = document.querySelector('.karaoke-logo');
-  const backButton = document.getElementById('back-button');
+
 
   // Update genre title
   genreTitle.textContent = "Genre: " + capitalizeFirstLetter(genre);
@@ -1473,8 +3056,6 @@ function openGenre(genre) {
   genreContent.classList.remove('hidden');
   genresSection.classList.add('hidden');
   
-  // Show back button
-  backButton.classList.remove('hidden');
   
   // Toggle karaoke logo visibility
   if (genre === 'karaoke') {
@@ -1522,22 +3103,7 @@ function openGenre(genre) {
 }
 
 //go back code
-function goBack() {
-  if (genreHistory.length > 0) {
-    genreHistory.pop(); // Remove the last genre from history
-    if (genreHistory.length === 0) {
-      // Show the home section
-      document.getElementById('genres-section').classList.remove('hidden');
-      document.getElementById('genre-content').classList.add('hidden');
-      document.getElementById('back-button').classList.add('hidden');
-    } else {
-      openGenre(genreHistory[genreHistory.length - 1]); // Open the previous genre
-    }
-  } else {
-    // Navigate to the previous page if no genre history
-    window.history.back();
-  }
-}
+
 
 // Play selected media (video or audio)
 function playAudioOrVideo(track) {
@@ -1594,10 +3160,6 @@ function closePlayer() {
   closeButton.classList.remove('visible');
 }
 
-// Navigate back to the previous genre or home
-
-
-
 // Toggle fullscreen for video player
 function toggleFullScreen() {
   const videoPlayer = document.getElementById('video-player');
@@ -1651,123 +3213,4 @@ window.onresize = function() {
     positionMediaPlayer();
   }
 }
-
-// Data for categories and their video files
-const category2Data = {
-  arabic: [
-    { src: "soap1.mp4", title: "Soap Video 1" },
-    { src: "soap2.mp4", title: "Soap Video 2" },
-  ],
-  chinese: [
-    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
-    { src: "electronics2.mp4", title: "Electronics Video 2" },
-  ],
-dancehall: [
-    { src: "soap1.mp4", title: "Soap Video 1" },
-    { src: "soap2.mp4", title: "Soap Video 2" },
-  ],
-  eastAfrican: [
-    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
-    { src: "electronics2.mp4", title: "Electronics Video 2" },
-  ],
-gospel: [
-    { src: "soap1.mp4", title: "Soap Video 1" },
-    { src: "soap2.mp4", title: "Soap Video 2" },
-  ],
-  international: [
-    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
-    { src: "electronics2.mp4", title: "Electronics Video 2" },
-  ],
-lingala: [
-    { src: "soap1.mp4", title: "Soap Video 1" },
-    { src: "soap2.mp4", title: "Soap Video 2" },
-  ],
-  roots: [
-    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
-    { src: "electronics2.mp4", title: "Electronics Video 2" },
-  ],
-traditional: [
-    { src: "soap1.mp4", title: "Soap Video 1" },
-    { src: "soap2.mp4", title: "Soap Video 2" },
-  ],
-  naija: [
-    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
-    { src: "electronics2.mp4", title: "Electronics Video 2" },
-  ],
-xmass: [
-    { src: "./resouces/karaoke/setit.mp4", title: "set it"},
-    { src: "electronics2.mp4", title: "Electronics Video 2" },
-  ],
-};
-
-// References to DOM elements
-const categoryList = document.getElementById("category2-list");
-const videoList = document.getElementById("video-list");
-const detailsTitle = document.getElementById("details2-title");
-const videoPlayer = document.getElementById("video-player");
-const player = document.getElementById("player");
-const closeBtn = document.getElementById("close-btn");
-const fullscreenBtn = document.getElementById("fullscreen-btn");
-const backBtn = document.getElementById("back-btn");
-
-// Function to render videos based on category
-function displayVideos(category2) {
-  videoList.innerHTML = "";
-  details2Title.textContent2 = category2 ? `Videos in ${category2}` : "Select a Category2";
-
-  if (category2Data[category2]) {
-    category2Data[category2].forEach((video) => {
-      const videoElement = document.createElement("video");
-      videoElement.src = video.src;
-      videoElement.title = video.title;
-
-      videoElement.addEventListener("click", () => {
-        player.src = video.src;
-        videoPlayer.classList.remove("hidden");
-        player.play();
-      });
-
-      videoList.appendChild(videoElement);
-    });
-  }
-}
-
-// Close video player
-closeBtn.addEventListener("click", () => {
-  player.pause();
-  videoPlayer.classList.add("hidden");
-  player.src = "";
-});
-
-// Automatically close player at the end of the video
-player.addEventListener("ended", () => {
-  player.pause();
-  videoPlayer.classList.add("hidden");
-  player.src = "";
-});
-
-// Toggle fullscreen mode
-fullscreenBtn.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    videoPlayer.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-});
-
-// Event listener for category clicks
-categoryList.addEventListener("click", (e) => {
-  if (e.target.tagName === "LI") {
-    const selectedCategory2 = e.target.getAttribute("data-category2");
-    displayVideos(selectedCategory2);
-  }
-});
-
-// Back button functionality
-backBtn.addEventListener("click", () => {
-  window.history.back();
-});
-
-// Default view
-displayVideos();
 
