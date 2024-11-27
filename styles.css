@@ -846,7 +846,7 @@ header {
   #qr-back-container {
     flex-direction: column;
     transform: translateY(250px);
-    margin-left: -100px;
+    margin-left: -130px;
   }
 
   .genres, .genre-content {
@@ -860,6 +860,9 @@ header {
 }
 /* Hide menu items and show hamburger menu on small screens */
 @media (max-width: 768px) {
+  nav{
+    width: 100%;
+  }
   nav ul {
     display: none; /* Hide menu items by default */
     flex-direction: column;
