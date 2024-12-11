@@ -9,9 +9,10 @@
 </head>
 <body>
   <!-- Header Section -->
-  <header  class="menu">
+  <header class="menu">
     <img id="logoimg" src="./images/nodaylogo.png" alt="Logo" class="menu-logo">
-    <h1 id="topz"> NODAY'Z ENTERTAINMENT</h1>
+    <h1 id="topz"><span>NO</span>DAY'Z ENTERTAINMENT</h1>
+    <img id="logoimg" src="./images/nodaylogo.png" alt="Logo" class="menu-logo">
   </header>
   
     <input type="text" class="hidden"placeholder="Search..." id="search-input">
@@ -83,49 +84,33 @@
         </div>
         </div>
 
-        <div class="content2 hidden" >        
-    <div id="kvidz2">
-          <!-- Categories Sidebar -->
-          <aside class="categories1">
-            <h2>Categories</h2>
-            <ul id="category2-list">
-                <li data-category2="arabic">Arabic</li>
-                   <li data-category2="chinese">Chinese</li>
-                   <li data-category2="dancehall">Dancehall,Ragga,Riddims</li>
-                   <li data-category2="eastAfrican">East African</li>
-                   <li data-category2="gospel">gospel</li>
-                   <li data-category2="international">International</li>
-                   <li data-category2="lingala">Lingala & Rhumba</li>
-                   <li data-category2="roots">Reggae & Roots</li>
-                   <li data-category2="traditional">Traditional</li>
-                   <li data-category2="naija">West & South Africa</li>
-                   <li data-category2="xmass">Xmass</li>
-            </ul>
-          </aside>
-    
-          <!-- Video Section -->
-          <main2 class="details">
-            <h2 id="details2-title">Select a Category</h2>
-            <div id="video-list" class="video-list"></div>
-          </main2>
-        </div>
+        <div class="content"class="genre">      
       </div>
-        <!-- Video Player -->
-        <div id="video-player" class="video-player hidden">
-          <video id="player" controls></video>
-          <div class="player-controls">
-            <button id="fullscreen-btn" class="fullscreen-btn">Toggle Fullscreen</button>
-            <button id="close-btn" class="close-btn">X</button>
+       <!-- Genre and Video Sections -->
+          <div id="content" class="hidden">
+              <div id="genresColumn"class="hidden">
+                  <h2>Genres</h2>
+                  <ul id="genreList" class="hidden"></ul>
+              </div>
+              <div id="itemsColumn" class="hidden">
+                  <ul id="videoList"></ul>
+              </div>
           </div>
-        </div>
+      
+  
+      <!-- Video Player Modal -->
+      <div id="playerModal" class="hidden">
+          <video id="mediaPlayer" controls></video>
+          <button id="closePlayer" onclick="closePlayer()">Close</button>
       </div>
+  
        </div>
         <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo"></div>
         <div id="ncont" class="genre"> DJ NODAY & SAX-AFROPHONIST </div>
-        <div id="kvidz"  >Karaoke videos</div>
-        <div id="mixcont" class="genre" onclick="openGenre('KARAOKE)">MIXXEZ</div>
+        <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
+        <div id="mixcont" class="genre" onclick="openGenre(KARAOKE)">MIXXEZ</div>
         <div class="container">
-          <button id="liveRequestBtn" class="genre" >LIVE REQUEST</button>
+          <button id="live-request"class="genre">Live Request</button>
           <div id="requestBox" class="hidden">
             <div id="requestsDisplay" class="requests-display"></div>
             <form id="requestForm">
@@ -149,14 +134,6 @@
     <h3 id="genre-title"> Enjoy: </h3>
     <ul id="music-list"></ul>
   </section>
-
-  <!-- Media Player -->
-  <div id="media-player" class="media-player hidden">
-    <button id="close-button" onclick="closePlayer()">✖</button>
-    <video id="video-player" controls class="hidden" onended="closePlayer()"></video>
-    <audio id="audio-player" controls class="hidden"></audio>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
