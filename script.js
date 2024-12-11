@@ -1,157 +1,144 @@
-let genreHistory = [];
-////////////////////////////////////////////live request
-const videoGroups = {
-  arabicv: [
-    { src: "soap1.mp4", title: "Set It" },
-    { src: "./resouces/karaoke/setit", title: "Soap Brand 2" },
+
+const videoData = {
+  "Chinese": [
+      { title: "Because Of Lov", path: "ngoma/Chinese/Because Of Lov.mp4" },
+      { title: "Jin Sheng Yuan ( 今生缘 )", path: "ngoma/Chinese/Jin Sheng Yuan.mp4" },
+      { title: "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng ", path: "ngoma/Chinese/Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng .mp4" },
+      { title: "Peng You (朋友) ~ Wakin Chau", path: "ngoma/Chinese/Peng You (朋友) ~ Wakin Chau.mp4" },
+      { title: "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução", path: "ngoma/Chinese/Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução.mp4" },
+      { title: "因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID", path: "ngoma/Chinese/因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID.mp4" }
   ],
-  chinesev: [
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-     { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  "East": [
+      { title: "Amina By sanaipe Tande", path: "ngoma/East/Amina.mp4" },
+      { title: "Bebi Bebi By Nyashinski", path: "ngoma/East/Bebi.mp4" },
+      { title: "Chaguo la moyo By Otile Brown", path: "ngoma/East/Chaguo.mp4" },
+      { title: "Deadly By Nameless", path: "ngoma/East/Deadly  Nameless.mp4" },
+      { title: "Extra pressure By Bensoul", path: "ngoma/East/Extra Bensoul.mp4" },
+      { title: "Free By Nyashinski", path: "ngoma/East/Free  Nyashinski.mp4" },
+      { title: "Isabella By Sauti Sol", path: "ngoma/East/Isabella  Sauti Sol.mp4" },
+      { title: "Koo Koo By Elain", path: "ngoma/East/Koo Koo  Elani.mp4" },
+      { title: "Mapenzi By Kidum", path: "ngoma/East/Mapenzi  Kidum.mp4" },
+      { title: "Midnight Train By Sauti sol", path: "ngoma/East/Midnight Train  Sauti Sol.mp4" },
+      { title: "Moto Moto By Ray C", path: "ngoma/East/Moto Moto  Ray C ft. French Boy.mp4" },
+      { title: "Nenda lote By Sauti Sol", path: "ngoma/East/Nenda Lote  Sauti Sol.mp4" },
+      { title: "Rhumba By Wanavokali", path: "ngoma/East/Rhumba  Wanavokali.mp4" },
+      { title: "Set IT By Dyana Cods", path: "ngoma/East/Set It  Dyana Cods ft. Ajay.mp4" },
+      { title: "Sinzia By Nameless", path: "ngoma/East/Sinzia  Nameless.mp4" }
   ],
-  dancehallv: [
-    { src: "soap1.mp4", title: "Soap Brand 1" },
-    { src: "soap2.mp4", title: "Soap Brand 2" },
+  "Gospel": [
+      { title: "Amazing Grace By Praise & Worship", path: "ngoma/Gospel/Amazing.mp4" },
+      { title: "Appointment By  Jimmy Gait", path: "ngoma/Gospel/Appointment By  Jimmy Gait.mp4" },
+      { title: "Everything (Amen) By Timi Dakolo", path: "ngoma/Gospel/Everything (Amen) By Timi Dakolo.mp4" },
+      { title: "Hallelujah By Alexandra Burke", path: "ngoma/Gospel/Hallelujah By Alexandra Burke.mp4" },
+      { title: "One Of Us By Joan Osborne", path: "ngoma/Gospel/One Of Us By Joan Osborne.mp4" },
+      { title: "Take My Hand Precious Lord By Elvis Presley", path: "ngoma/Gospel/Take My Hand Precious Lord By Elvis Presley.mp4" },
+      { title: "Trust & Obey By  Gospel", path: "ngoma/Gospel/Trust & Obey By  Gospel.mp4" }
   ],
-  eastAfricanv: [
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
+  "Lingala": [
+      { title: "Dezo Dezo  By Tshala Mwana", path: "ngoma/Lingala/Dezo Dezo  By Tshala Mwana.mp4" },
+      { title: "Show Me The Way By Papa Wemba", path: "ngoma/Lingala/Show Me The Way By Papa Wemba.mp4" }
   ],
-  gospelv: [
-    { src: "soap1.mp4", title: "Soap Brand 1" },
-    { src: "soap2.mp4", title: "Soap Brand 2" },
+  "International": [
+      { title: "1 2 Step By  Ciara Ft Missy Elliott", path: "ngoma/International/1 2 Step By  Ciara.mp4" },
+      { title: "7 Rings By  Ariana Grande", path: "ngoma/International/7 Rings By  Ariana Grande.mp4" },
+      { title: "A Thousand Years By  Christina Perri", path: "ngoma/International/A Thousand Years By  Christina Perri.mp4" },
+      { title: "Back At One By Brian McKnight", path: "ngoma/International/Back At One By Brian McKnight.mp4" },
+      { title: "Back For Good By Take That", path: "ngoma/International/Back For Good By Take That.mp4" },
+      { title: "Be Without You By Mary J. Blige", path: "ngoma/International/Be Without You By Mary J. Blige.mp4" },
+      { title: "Call Me By Spagna", path: "ngoma/International/Call Me By Spagna.mp4" },
+      { title: "Can We Talk By Tevin Campbell", path: "ngoma/International/Can We Talk By Tevin Campbell.mp4" },
+      { title: "Dance With My Father By  Luther Vandross", path: "ngoma/International/Dance With My Father By  Luther Vandross.mp4" },
+      { title: "Endless Love By Lionel Richie & Diana Ross", path: "ngoma/International/Endless Love By Lionel Richie & Diana Ross.mp4" },
+      { title: "Give Me One Reason By Tracy Chapman", path: "ngoma/International/Give Me One Reason By Tracy Chapman.mp4" },
+      { title: "How Will I Know By Whitney Houston", path: "ngoma/International/How Will I Know By Whitney Houston.mp4" },
+      { title: "I Have A Dream By ABBA", path: "ngoma/International/I Have A Dream By ABBA.mp4" },
+      { title: "True Colors By Phil Collins", path: "ngoma/International/True Colors By Phil Collins.mp4" },
+      { title: "Walkin In Memphis  By Marc Cohen", path: "ngoma/International/Walkin In Memphis  By Marc Cohen.mp4" },
+      { title: "You're Still The One By Shania Twain", path: "ngoma/International/You're Still The One By Shania Twain.mp4" }
   ],
-  internationalv: [
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
-  ],
-  lingalav: [
-    { src: "soap1.mp4", title: "Soap Brand 1" },
-    { src: "soap2.mp4", title: "Soap Brand 2" },
-  ],
-  rootsv: [
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
-  ],
-  traditionalv: [
-    { src: "soap1.mp4", title: "Soap Brand 1" },
-    { src: "soap2.mp4", title: "Soap Brand 2" },
-  ],
-  naijav: [
-    { src: "./resouces/karaoke/setit.mp4", title: "setit" },
-    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
-  ],
-  xmassv: [
-    { src: "./resouces/karaoke/video2.mp4", title: "setit" },
-    { src: "eastafrican2.mp4", title: "eastafrican Brand 2" },
-  ],
+  "Reggae": [
+      { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
+      { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
+      { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
+      { title: "Is This Love By Bob Marley & The Wailers", path: "ngoma/Reggae/Is This Love By Bob Marley & The Wailers.mp4" },
+      { title: "Kingston Town By UB40", path: "ngoma/Reggae/Kingston Town By UB40.mp4" },
+      { title: "Red Red Wine By UB40", path: "ngoma/Reggae/Red Red Wine By UB40.mp4" },
+      { title: "Skankin Sweet By Chronixx", path: "ngoma/Reggae/Skankin Sweet By Chronixx.mp4" },
+      { title: "The Way You Do The Things You Do By  UB-40", path: "ngoma/Reggae/The Way You Do The Things You Do By  UB-40.mp4" },
+      { title: "Three Little Birds By Bob Marley & The Wailers", path: "ngoma/Reggae/Three Little Birds By Bob Marley & The Wailers.mp4" }
+  ]
 };
 
-// DOM References
-const groupList = document.getElementById("group-list");
-const videoGrid = document.getElementById("video-grid");
-const sectionHeading = document.getElementById("section-heading");
-const playerContainer = document.getElementById("player-container");
-const videoElement = document.getElementById("video-element");
-const exitBtn = document.getElementById("exit-btn");
-const expandBtn = document.getElementById("expand-btn");
-const returnBtn = document.getElementById("return-btn");
-const closebtn = document.getElementById("close-btn");
-const genresSection2 = document.getElementById("genres-section2");
-const videoGridSection = document.getElementById("video-grid-section");
-//
-let currentView = "genres";
+// Function to show video clips for a genre
+function showVideos(genre) {
+  const videoList = document.getElementById('videoList');
+  const videos = videoData[genre] || [];
 
-// Function to play a selected video
-function playVideo(src) {
-  videoElement.src = src;
-  playerContainer.classList.remove("hidden");
-  videoElement.play();
+  // Populate video list dynamically
+  videoList.innerHTML = videos
+      .map(
+          video =>
+              `<li><a href="#" onclick="playMedia('${video.path}')">${video.title}</a></li>`
+      )
+      .join('');
 }
 
-// Event listener for group selection
-groupList.addEventListener("click", (e) => {
-  if (e.target.tagName === "LI") {
-    const selectedGroup = e.target.getAttribute("data-group");
-    showVideos(selectedGroup);
-  }
-});
-   
+// Show Genres on Button Click
+function showGenres() {
+  const videoButton = document.getElementById('videoButton');
+  const content = document.getElementById('content');
+  const genresColumn = document.getElementById('genresColumn');
+  const itemsColumn = document.getElementById('itemsColumn');
+  const genreList = document.getElementById('genreList');
+  const liveRequest = document.getElementById('live-request');
+  // Hide the button and display genres
+  videoButton.classList.add('hidden');
+  liveRequest.classList.add('hidden');
+  content.classList.remove('hidden');
+  itemsColumn.classList.remove('hidden');
+  genresColumn.classList.remove('hidden');
+  genreList.classList.remove('hidden');
 
-// Display Videos in Selected Group
-function showVideos(group) {
-  videoGrid.innerHTML = "";
-  sectionHeading.textContent = group ? `Videos in ${group}` : "Choose a Video Group";
+  // Populate genres
+  genreList.innerHTML = Object.keys(videoData)
+      .map(genre => `<li><a href="#" onclick="showVideos('${genre}')">${genre}</a></li>`)
+      .join('');
+}
+// Play Media
+function playMedia(src) {
+  const modal = document.getElementById('playerModal');
+  const videoPlayer = document.getElementById('mediaPlayer');
+  videoPlayer.src = src;
 
-  if (videoGroups[group]) {
-    videoGroups[group].forEach((video) => {
-      const videoItem = document.createElement("video");
-      videoItem.src = video.src;
-      videoItem.title = video.title;
+  modal.classList.remove('hidden');
+  videoPlayer.play();
 
-      videoItem.addEventListener("click", () => {
-        videoElement.src = video.src;
-        playerContainer.classList.remove("hidden");
-        videoElement.play();
-      });
 
-      videoGrid.appendChild(videoItem);
-    });
-  }
+
+// Close Player
+function closePlayer() {
+  const modal = document.getElementById('closePlayer');
+  const videoPlayer = document.getElementById('mediaPlayer');
+  videoPlayer.pause();
+  videoPlayer.src = '';
+  modal.classList.add('hidden');
 }
 
-// Close Video Player
-exitBtn.addEventListener("click", () => {
-  videoElement.pause();
-  playerContainer.classList.add("hidden");
-  videoElement.src = "";
-});
-
-// Auto-close Player at Video End
-videoElement.addEventListener("ended", () => {
-  videoElement.pause();
-  playerContainer.classList.add("hidden");
-  videoElement.src = "";
-});
-
-// Toggle Fullscreen
-expandBtn.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    playerContainer.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-});
-
-// Category Selection
-groupList.addEventListener("click", (e) => {
-  if (e.target.tagName === "LI") {
-    const selectedGroup = e.target.getAttribute("data-group");
-    showVideos(selectedGroup);
-  }
-});
-
-////////////////////////////////////////////////////////////////////////////////// Back Button Functionality
-returnBtn.addEventListener("click", () => {
-  window.history.back();
-});
-
-
-// Initial State
-showVideos();
-
+  // Close player automatically when video ends
+  videoPlayer.onended = () => {
+    closePlayer();
+};
+}
 // Select the elements
 const kcont = document.getElementById('kcont');
 const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
 const backbtn2 = document.getElementById('back-btn2');
 const mixcont = document.getElementById('mixcont');
-const liveRequestBtn = document.getElementById('liveRequestBtn');
+const liveRequestBtn = document.getElementById('live-request');
 const qr = document.getElementById('qr');
 const genresSection = document.getElementById('genres-section');
-const kvidz = document.getElementById('kvidz');
+const kvidz = document.getElementById('videoButton');
 const kvidz2 = document.getElementById('kvidz2');
 const searchbar = document.getElementById('search-input');
 const container1 = document.getElementById('container1');
@@ -2929,7 +2916,7 @@ international: [
       qr.style.display = 'none';
       // Show the genres section
       genresSection.style.display = 'block';
-      kvidz.style.display = 'block';
+      kvidz.style.display = 'none';
       backbtn.style.display = 'block';
       searchbar.style.display = 'block';
      
@@ -2948,8 +2935,7 @@ international: [
       kvidz.style.display = 'none';
       container1.style.display = 'none';
       // Show the genres section
-      genresSection2.style.display = 'block';
-      videoGridSection.style.display = 'block';
+      
       backbtn2.style.display = 'block';
       searchbar.style.display = 'block';
     });
@@ -2964,8 +2950,8 @@ international: [
       videoGridSection.style.display = 'none';
       genresSection2.style.display = 'none'; 
       // Show the genres section
-      container1.style.display = 'block';
-      kvidz.style.display = 'block';
+      container1.style.display = 'none';
+      kvidz.style.display = 'none';
       backbtn.style.display = 'block';
       searchbar.style.display = 'block';
       });
