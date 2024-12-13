@@ -923,6 +923,13 @@ header {
 }
 /* Hide menu items and show hamburger menu on small screens */
 @media (max-width: 768px) {
+  .menu,#menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
   nav ul {
     display: none; /* Hide menu items by default */
     flex-direction: column;
