@@ -909,7 +909,7 @@ header {
   #qr-back-container {
     flex-direction: column;
     transform: translateY(250px);
-    margin-left: -16px;
+    margin-left: -20px;
   }
 
   .genres, .genre-content {
