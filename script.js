@@ -153,7 +153,6 @@ liveRequestBtn.addEventListener("click", () => {
   liveRequestBtn.classList.add("hidden");
   requestBox.classList.remove("hidden");
 });
-
 // Fetch and display existing requests
 async function fetchRequests() {
   try {
@@ -161,7 +160,6 @@ async function fetchRequests() {
     if (!response.ok) {
       throw new Error("Failed to fetch requests");
     }
-
     const requests = await response.json();
 
     // Clear and populate the request display
