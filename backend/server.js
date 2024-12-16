@@ -92,6 +92,7 @@ app.delete("/requests/:id", async (req, res) => {
   }
 });
 
+
 // Function to auto-delete posts older than 12 hours
 const autoDeleteRequests = async () => {
   const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000);
