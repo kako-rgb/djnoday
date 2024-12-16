@@ -39,12 +39,11 @@ mongoose
     console.error("MongoDB connection error:", err.message);
     process.exit(1); // Exit the application if the connection fails
   });
- 
+
 // Schema and Model
 const requestSchema = new mongoose.Schema({
   name: { type: String, default: "User" },
   request: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now } // Add this line
 });
 
 const Request = mongoose.model("Request", requestSchema);
@@ -91,7 +90,6 @@ app.delete("/requests/:id", async (req, res) => {
     res.status(500).json({ error: "Error deleting request" });
   }
 });
-
 
 // Function to auto-delete posts older than 12 hours
 const autoDeleteRequests = async () => {
