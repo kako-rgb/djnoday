@@ -148,6 +148,14 @@ const requestsDisplay = document.getElementById("requestsDisplay");
 const duplicateMessage = document.getElementById("duplicateMessage");
 const API_URL = "https://nodayz.onrender.com/requests"; // Replace with your deployed backend URL
 
+// DOM Elements
+const liveRequestBtn = document.getElementById("liveRequestBtn");
+const requestBox = document.getElementById("requestBox");
+const requestForm = document.getElementById("requestForm");
+const requestsDisplay = document.getElementById("requestsDisplay");
+const duplicateMessage = document.getElementById("duplicateMessage");
+
+
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
   liveRequestBtn.classList.add("hidden");
@@ -278,8 +286,6 @@ function addLongPressListener(element, requestId) {
 
 // Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
 setInterval(fetchRequests, 60000);
-
-
       liveRequestBtn.addEventListener('click', () => {
       // Hide the kcont div
       liveRequestBtn.style.display = 'none';
