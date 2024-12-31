@@ -107,19 +107,16 @@
         <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
         <div id="mixcont" class="genre" onclick="openGenre(KARAOKE)">MIXXEZ</div>
         <div class="container">
-          <button id="live-request"class="genre">Live Request</button>
-          <div id="requestBox" class="hidden">
-            <div id="requestsDisplay" class="requests-display"></div>
-            <form id="requestForm">
-              <input type="text" id="musicRequest" maxlength="25" placeholder="Enter music request" required>
-              <input type="text" id="userName" placeholder="Enter your name (optional)">
-              <button type="submit"id="postbt">Post</button>
-            </form>
-            <div id="duplicateMessage" class="hidden">This song has already been requested!</div>
-          </div>
-        </div>
-    </section>
-  <div> 
+    <button id="liveRequestBtn">Live Request</button>
+    <div id="requestBox" class="hidden">
+      <div id="requestsDisplay" class="requests-display"></div>
+      <form id="requestForm">
+        <input type="text" id="musicRequest" maxlength="25" placeholder="Enter music request" required>
+        <input type="text" id="userName" placeholder="Enter your name (optional)">
+        <button type="submit">Post</button>
+      </form>
+      <div id="duplicateMessage" class="hidden">This song has already been requested!</div>
+    </div>
   </div>
     <div id="qr-back-container">
      
