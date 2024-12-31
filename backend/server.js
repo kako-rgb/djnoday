@@ -39,12 +39,11 @@ mongoose
     console.error("MongoDB connection error:", err.message);
     process.exit(1); // Exit the application if the connection fails
   });
- 
+
 // Schema and Model
 const requestSchema = new mongoose.Schema({
   name: { type: String, default: "User" },
   request: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now } // Add this line
 });
 
 const Request = mongoose.model("Request", requestSchema);
@@ -77,35 +76,6 @@ app.post("/requests", async (req, res) => {
     res.status(500).json({ error: "Error adding request" });
   }
 });
-// Delete a request by ID (for long press functionality)
-app.delete("/requests/:id", async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const deletedRequest = await Request.findByIdAndDelete(id);
-    if (!deletedRequest) {
-      return res.status(404).json({ error: "Request not found" });
-    }
-    res.json({ message: "Request deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ error: "Error deleting request" });
-  }
-});
-
-// Function to auto-delete posts older than 12 hours
-const autoDeleteRequests = async () => {
-  const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000);
-
-  try {
-    const result = await Request.deleteMany({ createdAt: { $lt: twelveHoursAgo } });
-    console.log(`${result.deletedCount} requests older than 12 hours were deleted.`);
-  } catch (error) {
-    console.error("Error during auto-delete process:", error);
-  }
-};
-
-// Schedule the auto-delete function to run every hour
-setInterval(autoDeleteRequests, 60 * 60 * 1000);
 
 // Dynamic Port
 const PORT = process.env.PORT || 10000;
