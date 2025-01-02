@@ -924,7 +924,7 @@ header {
 }
 /* Hide menu items and show hamburger menu on small screens */
 @media (max-width: 768px) {
-  .menu,#menu {
+  .menu,#menu,.header {
     width: 100%;
     
   }
