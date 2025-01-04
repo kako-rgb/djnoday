@@ -386,7 +386,96 @@ setInterval(fetchRequests, 60000);
       searchbar.style.display = 'block';
       });
 
+// Data for categories and items
+const categoryData = {
+  arabic: [
+  "Sample 1",
+  "Sample 2",
+  "Sample 3",
+  "Sample 4",
+  "Sample 5"
+      ],
+      
+    chinese: [
+    "Because Of Lov ~ Yin Wei Ai Qing-因为爱情 - 伴奏 KTV  pinyin ", 
+    "Jin Sheng Yuan ~ ( 今生缘 )",
+    "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng",
+    "Peng You (朋友) ~ Wakin Chau",
+    " 因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID",
+     "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução "
+        ],
 
+    dancehall: [
+      "Sample 1", 
+      "Sample 2", 
+      "Sample 3", 
+      "Sample 4", 
+      "Sample 5"],
+
+    eastAfrican: [
+      "2 In 1 ~ Naiboi ",
+      "A Woman In Love ~ Vivian ",
+      " Africa ~ Sauti Sol & Yemi Alade",
+      
+      "You Guy ~ P-Unit ft. Collo     "
+    ],
+
+international: [
+  "(There's Gotta Be) More To Life ~ Stacy Orrico",      
+  "1, 2 Step ~ Ciara Ft. Missy Elliott ",
+  "2 In The Morning ~ New Kids On The Block",       
+ 
+  "I Love Me Some Him ~ Toni Braxton    "
+
+],
+
+
+    gospel: [
+      "11th Hour ~ Betty Bayo ",
+     
+      "You Never Know ~ Willy Paul "    
+     ],
+    lingala: [
+    "Sample 1", 
+    "Sample 2", 
+    "Sample 3",
+    "Sample 4", 
+    "Sample 5"
+  ],
+
+    roots: [
+    "Sample 1", 
+    "Sample 2", 
+    "Sample 3", 
+    "Sample 4",
+    "Sample 5"
+    ],
+
+    traditional: [
+    "Sample 1",
+    "Sample 2", 
+    "Sample 3", 
+    "Sample 4", 
+    "Sample 5"
+  ],
+
+    naija: [ 
+    "Sample 1",
+    "Sample 2",
+    "Sample 3",
+    "Sample 4",
+    "Sample 5"
+  ],
+
+    xmass: [
+   "Sample 1", 
+   "Sample 2", 
+   "Sample 3", 
+   "Sample 4", 
+   "Sample 5"
+  ],
+
+};
  
 // Function to render item list based on category
 function displayItems(category) {
