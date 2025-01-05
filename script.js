@@ -1,4 +1,4 @@
-
+//djnoday plus live j.s
 const videoData = {
   "Chinese": [
       { title: "Because Of Lov", path: "ngoma/Chinese/Because Of Lov.mp4" },
@@ -135,18 +135,24 @@ const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
 const backbtn2 = document.getElementById('back-btn2');
 const mixcont = document.getElementById('mixcont');
-const liveRequestBtn = document.getElementById('live-request');
+
 const qr = document.getElementById('qr');
 const genresSection = document.getElementById('genres-section');
 const kvidz = document.getElementById('videoButton');
 const kvidz2 = document.getElementById('kvidz2');
 const searchbar = document.getElementById('search-input');
 const container1 = document.getElementById('container1');
-const requestForm = document.getElementById("requestForm");
+
+//////////////put here
+const API_URL = "https://nodayz.onrender.com/requests"; // Replace with your deployed backend URL
+
+// DOM Elements
+const liveRequestBtn = document.getElementById("liveRequestBtn");
 const requestBox = document.getElementById("requestBox");
+const requestForm = document.getElementById("requestForm");
 const requestsDisplay = document.getElementById("requestsDisplay");
 const duplicateMessage = document.getElementById("duplicateMessage");
-const API_URL = "https://nodayz.onrender.com/requests"; // Replace with your deployed backend URL
+
 
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
@@ -278,6 +284,7 @@ function addLongPressListener(element, requestId) {
 
 // Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
 setInterval(fetchRequests, 60000);
+
 
 
       liveRequestBtn.addEventListener('click', () => {
