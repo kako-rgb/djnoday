@@ -1,15 +1,16 @@
+live request working html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODAY'Z ENTERTAINMENT</title>
+  <title>Live Music Requests</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="./images/nodaylogo.png"> <!-- Favicon -->
 </head>
 <body>
-  <!-- Header Section -->
-  <header class="menu">
+  djnoday repo html
+
+<header class="menu">
     <img id="logoimg" src="./images/nodaylogo.png" alt="Logo" class="menu-logo">
     <h1 id="topz">NODAY'Z <span>ENTERTAINMENT</span></h1>
     <img id="logoimg" src="./images/nodaylogo.png" alt="Logo" class="menu-logo">
@@ -110,20 +111,17 @@
         <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
         <div id="mixcont" class="genre" onclick="openGenre(KARAOKE)">MIXXEZ</div>
         <div class="container">
-          <button id="live-request"class="genre">Live Request</button>
-          <div id="requestBox" class="hidden">
-            <div id="requestsDisplay" class="requests-display"></div>
-            <form id="requestForm">
-              <input type="text" id="musicRequest" maxlength="25" placeholder="Enter music request" required>
-              <input type="text" id="userName" placeholder="Enter your name (optional)">
-              <button type="submit"id="postbt">Post</button>
-            </form>
-            <div id="duplicateMessage" class="hidden">This song has already been requested!</div>
-          </div>
-        </div>
-    </section>
-  <div> 
-  </div>
+    <button id="liveRequestBtn">Live Request</button>
+    <div id="requestBox" class="hidden">
+      <div id="requestsDisplay" class="requests-display"></div>
+      <form id="requestForm">
+        <input type="text" id="musicRequest" maxlength="25" placeholder="Enter music request" required>
+        <input type="text" id="userName" placeholder="Enter your name (optional)">
+        <button type="submit">Post</button>
+      </form>
+      <div id="duplicateMessage" class="hidden">This song has already been requested!</div>
+    </div>
+  </div>
     <div id="qr-back-container">
      
       <img id="qr" src="./images/qr.jpeg" alt="Scan to Access Music Site">
