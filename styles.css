@@ -516,75 +516,66 @@ a:hover {
   margin-left:-20px;
 }
 
-#requestBox {
-  margin-top: 20px;
-}
 
-.hidden {
-  display: none;
-}
-
-.requests-display {
-  width: 400px;
-  height: 400px;
-  text-align: left;
-  font-style: italic;
-  margin-top: -70px;
-  margin-left: 20px;
-  overflow-y: auto;
-  border: 1px solid #333;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #fff;
-  color:blueviolet;
-}
-#musicRequest{
-  margin-top: 10px;
-  color: orange;
-  font-weight: bold;
-}
-#postbt{
-  margin-top: 2px;
-  margin-left: 8px;
-}
-.request-item {
-  margin-bottom: 10px;
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
-}
-
-.request-item span {
-  display: block;
-  font-weight: bold;
- }
 span{
   color: #39FF14;
 }
 #topz{
   color: gold;
 }
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form input {
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 14px;
-}
-
-form button {
-  padding: 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
- }
-
-form button:hover {
-  background-color: #0056b3;
-}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #requestBox {
+    margin-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .requests-display {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto 20px;
+    overflow-y: auto;
+    border: 2px solid #333;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .request-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .request-item span {
+    display: block;
+    font-weight: bold;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  form button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
 
 /***********************************************END**********************/
 /* Main Container */
