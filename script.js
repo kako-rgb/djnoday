@@ -265,7 +265,7 @@ const categoryData = {
   "Yo Yo Honey Singh ~ DIL Chori -Simar-Kaur"
       ],
       
-    Chinese: [
+    chinese: [
     "Because Of Lov ~ Yin Wei Ai Qing-因为爱情 - 伴奏 KTV  pinyin ", 
     "Jin Sheng Yuan ~ ( 今生缘 )",
     "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng",
@@ -274,7 +274,7 @@ const categoryData = {
      "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução "
         ],
 
-    Dancehall: [
+    dancehall: [
 "A Woman Like You ~ Gramps Morgan  ",
 "Andas en mi Cabeza ~ Chino & Nacho ft. Daddy Yankee   ",
 "Back To My Roots ~ Lucky Dube    ",
@@ -386,7 +386,7 @@ const categoryData = {
 "Your Best Friend ~ Morgan Heritage     " 
       ],
 
-    EastAfrican: [
+    eastAfrican: [
       "2 In 1 ~ Naiboi ",
       "A Woman In Love ~ Vivian ",
       " Africa ~ Sauti Sol & Yemi Alade",
