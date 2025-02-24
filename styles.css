@@ -216,10 +216,10 @@ Layout**************************************** */
 
 #genresColumn {
   flex: 1;
-   margin: 10px;
+  margin: 10px;
   width: 120px;
   height: 500px;
-   padding: 20px;
+  padding: 20px;
   background-color: rgba(255, 0, 0, 0.3);
   border-bottom: 1px solid white;
   border-radius: 5px;
