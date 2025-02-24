@@ -72,6 +72,10 @@ const videoData = {
       { title: "Dezo Dezo  By Tshala Mwana", path: "ngoma/Lingala/Dezo Dezo  By Tshala Mwana.mp4" },
       { title: "Show Me The Way By Papa Wemba", path: "ngoma/Lingala/Show Me The Way By Papa Wemba.mp4" }
   ],
+    "Naija": [
+      { title: "Dezo Dezo  By Tshala Mwana", path: "ngoma/Lingala/Dezo Dezo  By Tshala Mwana.mp4" },
+      { title: "Show Me The Way By Papa Wemba", path: "ngoma/Lingala/Show Me The Way By Papa Wemba.mp4" }
+  ],
   "Reggae & Roots": [
       { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
       { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
@@ -94,7 +98,7 @@ const videoData = {
       { title: "The Way You Do The Things You Do By  UB-40", path: "ngoma/Reggae/The Way You Do The Things You Do By  UB-40.mp4" },
       { title: "Three Little Birds By Bob Marley & The Wailers", path: "ngoma/Reggae/Three Little Birds By Bob Marley & The Wailers.mp4" }
   ],
-  "West & South Africa": [
+  "S.Africa - Amapiano": [
       { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
       { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
       { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
