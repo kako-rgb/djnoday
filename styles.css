@@ -225,7 +225,7 @@ Layout**************************************** */
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+#genresColumn{border-bottom: 1px solid white;}
  #videoList{
   flex: 1;
   overflow-y: auto;
