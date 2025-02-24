@@ -382,7 +382,7 @@ const categoryData = {
 "Your Best Friend ~ Morgan Heritage     " 
       ],
 
-    eastAfrican: [
+    EastAfrican: [
       "2 In 1 ~ Naiboi ",
       "A Woman In Love ~ Vivian ",
       " Africa ~ Sauti Sol & Yemi Alade",
@@ -576,7 +576,7 @@ const categoryData = {
       "You Guy ~ P-Unit ft. Collo     "
     ],
 
-international: [
+International: [
   "(There's Gotta Be) More To Life ~ Stacy Orrico",      
   "1, 2 Step ~ Ciara Ft. Missy Elliott ",
   "2 In The Morning ~ New Kids On The Block",       
