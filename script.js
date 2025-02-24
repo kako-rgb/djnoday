@@ -204,14 +204,14 @@ setInterval(() => {
 // Data for categories and items
 const categoryData = {
   arabic: [
-  "Sample 1",
-  "Sample 2",
-  "Sample 3",
-  "Sample 4",
-  "Sample 5"
+  "Amarain ~ Amr Diab",
+  "Macarena ~ Los Del Rio",
+  "Nour El Ein (Habibi) (Inst.) ~ Amr Diab ",
+  "Simarik ~ Tarkan ",
+  "Yo Yo Honey Singh ~ DIL Chori -Simar-Kaur"
       ],
       
-    chinese: [
+    Chinese: [
     "Because Of Lov ~ Yin Wei Ai Qing-因为爱情 - 伴奏 KTV  pinyin ", 
     "Jin Sheng Yuan ~ ( 今生缘 )",
     "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng",
@@ -220,7 +220,7 @@ const categoryData = {
      "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução "
         ],
 
-    dancehall: [
+    Dancehall: [
 "A Woman Like You ~ Gramps Morgan  ",
 "Andas en mi Cabeza ~ Chino & Nacho ft. Daddy Yankee   ",
 "Back To My Roots ~ Lucky Dube    ",
