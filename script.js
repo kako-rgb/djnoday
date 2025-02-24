@@ -1,4 +1,12 @@
 const videoData = {
+  "Arabic": [
+      { title: "Because Of Lov", path: "ngoma/Chinese/Because Of Lov.mp4" },
+      { title: "Jin Sheng Yuan ( 今生缘 )", path: "ngoma/Chinese/Jin Sheng Yuan.mp4" },
+      { title: "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng ", path: "ngoma/Chinese/Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng .mp4" },
+      { title: "Peng You (朋友) ~ Wakin Chau", path: "ngoma/Chinese/Peng You (朋友) ~ Wakin Chau.mp4" },
+      { title: "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução", path: "ngoma/Chinese/Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução.mp4" },
+      { title: "因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID", path: "ngoma/Chinese/因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID.mp4" }
+  ],
   "Chinese": [
       { title: "Because Of Lov", path: "ngoma/Chinese/Because Of Lov.mp4" },
       { title: "Jin Sheng Yuan ( 今生缘 )", path: "ngoma/Chinese/Jin Sheng Yuan.mp4" },
@@ -7,7 +15,15 @@ const videoData = {
       { title: "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução", path: "ngoma/Chinese/Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução.mp4" },
       { title: "因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID", path: "ngoma/Chinese/因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID.mp4" }
   ],
-  "East": [
+  "Dancehall": [
+      { title: "Because Of Lov", path: "ngoma/Chinese/Because Of Lov.mp4" },
+      { title: "Jin Sheng Yuan ( 今生缘 )", path: "ngoma/Chinese/Jin Sheng Yuan.mp4" },
+      { title: "Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng ", path: "ngoma/Chinese/Ni Wen Wo Ai Ni (Lyrics) ~ Teresa Teng .mp4" },
+      { title: "Peng You (朋友) ~ Wakin Chau", path: "ngoma/Chinese/Peng You (朋友) ~ Wakin Chau.mp4" },
+      { title: "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução", path: "ngoma/Chinese/Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução.mp4" },
+      { title: "因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID", path: "ngoma/Chinese/因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID.mp4" }
+  ],
+  "East African": [
       { title: "Amina By sanaipe Tande", path: "ngoma/East/Amina.mp4" },
       { title: "Bebi Bebi By Nyashinski", path: "ngoma/East/Bebi.mp4" },
       { title: "Chaguo la moyo By Otile Brown", path: "ngoma/East/Chaguo.mp4" },
@@ -33,10 +49,7 @@ const videoData = {
       { title: "Take My Hand Precious Lord By Elvis Presley", path: "ngoma/Gospel/Take My Hand Precious Lord By Elvis Presley.mp4" },
       { title: "Trust & Obey By  Gospel", path: "ngoma/Gospel/Trust & Obey By  Gospel.mp4" }
   ],
-  "Lingala": [
-      { title: "Dezo Dezo  By Tshala Mwana", path: "ngoma/Lingala/Dezo Dezo  By Tshala Mwana.mp4" },
-      { title: "Show Me The Way By Papa Wemba", path: "ngoma/Lingala/Show Me The Way By Papa Wemba.mp4" }
-  ],
+
   "International": [
       { title: "1 2 Step By  Ciara Ft Missy Elliott", path: "ngoma/International/1 2 Step By  Ciara.mp4" },
       { title: "7 Rings By  Ariana Grande", path: "ngoma/International/7 Rings By  Ariana Grande.mp4" },
@@ -55,7 +68,44 @@ const videoData = {
       { title: "Walkin In Memphis  By Marc Cohen", path: "ngoma/International/Walkin In Memphis  By Marc Cohen.mp4" },
       { title: "You're Still The One By Shania Twain", path: "ngoma/International/You're Still The One By Shania Twain.mp4" }
   ],
-  "Reggae": [
+    "Lingala & Rhumba": [
+      { title: "Dezo Dezo  By Tshala Mwana", path: "ngoma/Lingala/Dezo Dezo  By Tshala Mwana.mp4" },
+      { title: "Show Me The Way By Papa Wemba", path: "ngoma/Lingala/Show Me The Way By Papa Wemba.mp4" }
+  ],
+  "Reggae & Roots": [
+      { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
+      { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
+      { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
+      { title: "Is This Love By Bob Marley & The Wailers", path: "ngoma/Reggae/Is This Love By Bob Marley & The Wailers.mp4" },
+      { title: "Kingston Town By UB40", path: "ngoma/Reggae/Kingston Town By UB40.mp4" },
+      { title: "Red Red Wine By UB40", path: "ngoma/Reggae/Red Red Wine By UB40.mp4" },
+      { title: "Skankin Sweet By Chronixx", path: "ngoma/Reggae/Skankin Sweet By Chronixx.mp4" },
+      { title: "The Way You Do The Things You Do By  UB-40", path: "ngoma/Reggae/The Way You Do The Things You Do By  UB-40.mp4" },
+      { title: "Three Little Birds By Bob Marley & The Wailers", path: "ngoma/Reggae/Three Little Birds By Bob Marley & The Wailers.mp4" }
+  ],
+  "Traditional": [
+      { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
+      { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
+      { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
+      { title: "Is This Love By Bob Marley & The Wailers", path: "ngoma/Reggae/Is This Love By Bob Marley & The Wailers.mp4" },
+      { title: "Kingston Town By UB40", path: "ngoma/Reggae/Kingston Town By UB40.mp4" },
+      { title: "Red Red Wine By UB40", path: "ngoma/Reggae/Red Red Wine By UB40.mp4" },
+      { title: "Skankin Sweet By Chronixx", path: "ngoma/Reggae/Skankin Sweet By Chronixx.mp4" },
+      { title: "The Way You Do The Things You Do By  UB-40", path: "ngoma/Reggae/The Way You Do The Things You Do By  UB-40.mp4" },
+      { title: "Three Little Birds By Bob Marley & The Wailers", path: "ngoma/Reggae/Three Little Birds By Bob Marley & The Wailers.mp4" }
+  ],
+  "West & South Africa": [
+      { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
+      { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
+      { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
+      { title: "Is This Love By Bob Marley & The Wailers", path: "ngoma/Reggae/Is This Love By Bob Marley & The Wailers.mp4" },
+      { title: "Kingston Town By UB40", path: "ngoma/Reggae/Kingston Town By UB40.mp4" },
+      { title: "Red Red Wine By UB40", path: "ngoma/Reggae/Red Red Wine By UB40.mp4" },
+      { title: "Skankin Sweet By Chronixx", path: "ngoma/Reggae/Skankin Sweet By Chronixx.mp4" },
+      { title: "The Way You Do The Things You Do By  UB-40", path: "ngoma/Reggae/The Way You Do The Things You Do By  UB-40.mp4" },
+      { title: "Three Little Birds By Bob Marley & The Wailers", path: "ngoma/Reggae/Three Little Birds By Bob Marley & The Wailers.mp4" }
+  ],
+  "Xmass": [
       { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
       { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
       { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
