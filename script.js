@@ -23,7 +23,7 @@ const videoData = {
       { title: "Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução", path: "ngoma/Chinese/Somewhere Over The Rainbow (Lyrics) ~ Israel Kamakawiwoole & Tradução.mp4" },
       { title: "因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID", path: "ngoma/Chinese/因为爱情 Yin Wei Ai Qing Karena Cinta – 陈奕迅 Eason Chan & 王菲 Faye Wong -Lirik terjemahan ID.mp4" }
   ],
-  "East African": [
+  "EastAfrican-KE,TZ,UG,RW": [
       { title: "Amina By sanaipe Tande", path: "ngoma/East/Amina.mp4" },
       { title: "Bebi Bebi By Nyashinski", path: "ngoma/East/Bebi.mp4" },
       { title: "Chaguo la moyo By Otile Brown", path: "ngoma/East/Chaguo.mp4" },
@@ -98,7 +98,7 @@ const videoData = {
       { title: "The Way You Do The Things You Do By  UB-40", path: "ngoma/Reggae/The Way You Do The Things You Do By  UB-40.mp4" },
       { title: "Three Little Birds By Bob Marley & The Wailers", path: "ngoma/Reggae/Three Little Birds By Bob Marley & The Wailers.mp4" }
   ],
-  "S.Africa - Amapiano": [
+  "SouthAfrica - Amapiano": [
       { title: "A Woman Like You By  Gramps Morgan", path: "ngoma/Reggae/A Woman Like You By  Gramps Morgan.mp4" },
       { title: "Buffalo Soldier By Bob Marley & The Wailers", path: "ngoma/Reggae/Buffalo Soldier By Bob Marley & The Wailers.mp4" },
       { title: "Iron, Lion, Zion By Bob Marley", path: "ngoma/Reggae/Iron, Lion, Zion By Bob Marley.mp4" },
