@@ -166,22 +166,25 @@ const videoData = {
     modal.classList.remove('hidden');
     videoPlayer.play();
   
-  
+    // Close player automatically when video ends
+    videoPlayer.onended = () => {
+        closePlayer();
+    };
+  }
   
   // Close Player
   function closePlayer() {
+    console.log('closePlayer function called');
     const modal = document.getElementById('playerModal');
     const videoPlayer = document.getElementById('mediaPlayer');
+    console.log('modal:', modal);
+    console.log('videoPlayer:', videoPlayer);
     videoPlayer.pause();
     videoPlayer.src = '';
     modal.classList.add('hidden');
+    console.log('player closed');
   }
   
-    // Close player automatically when video ends
-    videoPlayer.onended = () => {
-      closePlayer();
-  };
-  }
   // Select the elements
   const API_URL = "https://nodayz.onrender.com/requests";
   const kcont = document.getElementById('kcont');
@@ -711,8 +714,7 @@ setInterval(fetchRequests, 60000);
     "All About That Bass ~ Meghan Trainor",    
     "All Cried Out ~ Allure ft. 112",        
     "All I Ask ~ Adele",     
-    "All I Ask of You ~ from The Phantom of the Opera ",       
-    "All I Ask Of You ~ Phantom Of The Opera",        
+    "All I Ask Of You ~ Raphael Saadiq",   
     "All I Ever Need Is You ~ Kenny Rogers & Dottie West",   
     "All I Have ~ Jennifer Lopez & LL Cool J ",     
     "All I Have To Do Is Dream ~ Everly Brothers ",    
@@ -1398,7 +1400,6 @@ setInterval(fetchRequests, 60000);
     "How Long Will I Love You ~ Ellie Goulding  ",
     "How We Do ~ The Game   ",
     "How Will I Know ~ Whitney Houston     ",
-    "How You Remind Me ~ Nickelback      ",
     "How's It Going To Be ~ Third Eye Blind     ",
     "Human ~ Pretenders       ",
     "Human ~ Rag'n'Bone Man    ",
@@ -1494,12 +1495,6 @@ setInterval(fetchRequests, 60000);
     "If I Can't Have You ~ Shawn Mendes   ",
     "If I Let You Go ~ Westlife   ",
     "If I Ruled the World (Imagine That) ~ Nas  ft. Lauryn Hill    ",
-    "If I Was your Man ~ Joe       ",
-    "If I Were A Boy ~ Beyonce      ",
-    "If It Makes you Happy ~ Sheryl Crow    ",
-    "If That's Ok With You ~ Shayne Ward       ",
-    "If The World Was Ending ~ JP Saxe  ft. Julia Michaels       ",
-    "If There's Any Justice ~ Lemar     ",
     "If This Isn't Love ~ Jennifer Hudson          ",
     "If Tomorrow Never Comes ~ Garth Brooks    ",
     "If Tomorrow Never Comes ~ Ronan Keating   ",
@@ -1621,8 +1616,6 @@ setInterval(fetchRequests, 60000);
     "Just Like A Pill ~ Pink      ",
     "Just Like Fire ~ Pink (Pi!nk)    ",
     "Just Like It ~ Eminem      ",
-    "Just My Imagination (Running Away With Me) ~ The Temptations   ",
-    "Just Once ~ James Ingram   ",
     "Just The Two Of Us ~ Grover Washington Jr ft. Bill Withers    ",
     "Just The Way You Are ~ Billy Joel      ",
     "Just The Way You Are ~ Bruno Mars      ",
@@ -1916,11 +1909,11 @@ setInterval(fetchRequests, 60000);
     "Not Gon' Cry ~ Mary J. Blige     ",
     "Not Letting Go ~ Tinie Tempah ft Jess Glynne     ",
     "Not Like Us ~ Kendrick Lamar      ",
-    "Nothin' On You ~ B.O.B. ft. Bruno Mars      ",
+    "Nothin' But A ''G'' Thang ~ Dr. Dre & Snoop Doggy Dogg    ",
     "Nothing Breaks Like a Heart ~ Mark Ronson ft. Miley Cyrus     ",
     "Nothing Compares To You ~ Sinead O'Connar     ",
     "Nothing Like This ~ Blonde & Craig David   ",
-    "Nothing’s Gonna Change My Love For You ~ George Benson  ",
+    "Nothing's Gonna Change My Love For You ~ George Benson  ",
     "Nothing's Gonna Stop Us Now ~ Starship      ",
     "Numb ~ Linkin Park       ",
     "Numb Encore ~ Linkin Park ft. Jay-Z      ",
@@ -2091,8 +2084,6 @@ setInterval(fetchRequests, 60000);
     "Rock DJ ~ Robbie Williams    ",
     "Rock Me Amadeus ~ Falco      ",
     "Rock The Boat ~ Aaliyah      ",
-    "Rock Wit U (Awww Baby) ~ Ashanti   ",
-    "Rockabye ~ Clean Bandit  ft. Sean Paul & Anne Marie   ",
     "Rockstar ~ Nickelback      ",
     "Rockstar ~ Post Malone ft. 21 Savage    ",
     "Roll It Gal ~ Alison Hinds     ",
@@ -2364,7 +2355,7 @@ setInterval(fetchRequests, 60000);
     "Thank You In Advance ~ Boyz II Men    ",
     "Thank You, Next ~ Ariana Grande      ",
     "That Don't Impress Me Much ~ Shaania Twain    ",
-    "That’s What I Like ~ Bruno Mars   ",
+    "That's What I Like ~ Bruno Mars   ",
     "That's The Thing About Love ~ Don Williams   ",
     "That's The Way It Is ~ Celine Dion       ",
     "Thats The Way Love Goes ~ Janet Jackson      ",
@@ -3261,20 +3252,15 @@ setInterval(fetchRequests, 60000);
   
   // Close the media player
   function closePlayer() {
-    const mediaPlayer = document.getElementById('media-player');
-    const videoPlayer = document.getElementById('video-player');
-    const audioPlayer = document.getElementById('audio-player');
-    const closeButton = document.getElementById('close-button');
-  
-    // Pause and hide media players
+    console.log('closePlayer function called');
+    const modal = document.getElementById('playerModal');
+    const videoPlayer = document.getElementById('mediaPlayer');
+    console.log('modal:', modal);
+    console.log('videoPlayer:', videoPlayer);
     videoPlayer.pause();
-    audioPlayer.pause();
-    videoPlayer.classList.add('hidden');
-    audioPlayer.classList.add('hidden');
-  
-    // Hide media player and close button
-    mediaPlayer.classList.add('hidden');
-    closeButton.classList.remove('visible');
+    videoPlayer.src = '';
+    modal.classList.add('hidden');
+    console.log('player closed');
   }
   
   // Toggle fullscreen for video player
@@ -3331,3 +3317,4 @@ setInterval(fetchRequests, 60000);
     }
   }
   
+
