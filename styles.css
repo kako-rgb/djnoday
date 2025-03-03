@@ -329,6 +329,21 @@ a:hover {
       opacity: 1;
   }
 }
+  /* this website is under construction*/
+  .construction-notice {
+    font-size: 15px;
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    animation: blink 1s infinite;
+    animation-delay: 5s;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
 /********************************************************END*/
 #kcont{
   margin-left: 82px;
