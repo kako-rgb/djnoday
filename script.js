@@ -170,7 +170,7 @@ const videoData = {
   
   // Close Player
   function closePlayer() {
-    const modal = document.getElementById('closePlayer');
+    const modal = document.getElementById('playerModal');
     const videoPlayer = document.getElementById('mediaPlayer');
     videoPlayer.pause();
     videoPlayer.src = '';
