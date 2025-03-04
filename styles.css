@@ -200,6 +200,19 @@ ul#video-grid{
 .menu nav ul li a:hover {
   text-decoration: underline;
 }
+
+.menu a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#title-link:hover {
+    cursor: pointer;
+}
+
+.menu-logo:hover {
+    cursor: pointer;
+}
 /***********************************************************NEW****************************/
 Layout**************************************** */
 #content {
