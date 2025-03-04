@@ -937,12 +937,36 @@ header {
     background: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 50px;
-    right: 10px;
-    border-radius: 5px;
+    right: 0; /* Changed from right: 10px to align with screen edge */
+    width: 100%; /* Added to make nav full width on mobile */
+    border-radius: 0; /* Remove border radius for full-width look */
+    z-index: 1000; /* Ensure nav appears above other content */
   }
 
   nav ul.active {
     display: flex; /* Show when active */
+  }
+}
+
+/* Add media query for mobile devices */
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+  }
+  
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  nav ul li a {
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
   }
 }
 
