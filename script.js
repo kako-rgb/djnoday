@@ -2803,7 +2803,7 @@ international: [
       // Show the genres section      
       requestBox.style.display = 'block';
       backbtn.style.display = 'block';
-      searchbar.style.display = 'block';     
+      searchbar.style.display = 'none';     
     
     });
         kcont.addEventListener('click', () => {
