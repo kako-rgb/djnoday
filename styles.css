@@ -370,10 +370,10 @@ a:hover {
 #videoButton{
   display: none;
 }
-#videoButton{
+#videoButton {
   font-size: 15px;
   cursor: pointer;
-  margin-left:45px;
+  margin-left: 45px;
   transform: translateY(220px);
   cursor: pointer;
   border-radius: 5px;
@@ -381,8 +381,10 @@ a:hover {
   text-align: center;
   font-weight: bold;
   background-color: rgb(150, 92, 216);
-  height: 30px;
-  width: 130px;
+  height: auto;
+  width: auto;
+  padding: 8px 15px;
+  white-space: nowrap;
   transition: background-color 0.3s, transform 0.2s;
 }
 
