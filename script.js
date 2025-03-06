@@ -2882,25 +2882,6 @@ international: [
       backbtn2.style.display = 'block';
       searchbar.style.display = 'block';
     });
-    backbtn2.addEventListener('click', () => {
-      // Hide the live div
-      kcont.style.display = 'none';
-      backbtn2.style.display = 'none';
-      ncont.style.display = 'none';
-      content.style.display = 'none';
-      mixcont.style.display = 'none';
-      liveRequestBtn.style.display = 'none';
-      qr.style.display = 'none';
-      videoGridSection.style.display = 'none';
-      genresSection2.style.display = 'none'; 
-      // Show the genres section
-      container1.style.display = 'block';
-      kvidz.style.display = 'block';
-      backbtn.style.display = 'block';
-      searchbar.style.display = 'block';
-      });
-
-
  
 // Function to render item list based on category
 function displayItems(category) {
