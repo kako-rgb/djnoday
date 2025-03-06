@@ -200,19 +200,6 @@ ul#video-grid{
 .menu nav ul li a:hover {
   text-decoration: underline;
 }
-
-.menu a {
-    text-decoration: none;
-    color: inherit;
-}
-
-#title-link:hover {
-    cursor: pointer;
-}
-
-.menu-logo:hover {
-    cursor: pointer;
-}
 /***********************************************************NEW****************************/
 Layout**************************************** */
 #content {
@@ -356,7 +343,6 @@ a:hover {
 /********************************************************END*/
 #kcont{
   margin-left: 82px;
-  margin-top: -50px;
   width: 300px;
   cursor: pointer;
   background-color: rgb(150, 92, 216);
@@ -371,10 +357,10 @@ a:hover {
 #videoButton{
   display: none;
 }
-#videoButton {
+#videoButton{
   font-size: 15px;
   cursor: pointer;
-  margin-left: 45px;
+  margin-left:45px;
   transform: translateY(220px);
   cursor: pointer;
   border-radius: 5px;
@@ -382,10 +368,8 @@ a:hover {
   text-align: center;
   font-weight: bold;
   background-color: rgb(150, 92, 216);
-  height: auto;
-  width: auto;
-  padding: 8px 15px;
-  white-space: nowrap;
+  height: 30px;
+  width: 130px;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -399,7 +383,7 @@ a:hover {
   height: 100px;
 }
 .categories2 {
-  width: 300px;
+  width: 200px;
   height: 500px;
   color: white;
   background-color:rgba(0, 0, 0, 0.7);
@@ -555,15 +539,10 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.1s ease;
-}
-
-button:active {
-    transform: scale(0.95); /* Makes button slightly smaller when clicked */
-}
+  }
   
   #requestBox {
-    margin-top: -80px;
+    margin-top: 20px;
   }
   
   .hidden {
@@ -958,36 +937,12 @@ header {
     background: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 50px;
-    right: 0; /* Changed from right: 10px to align with screen edge */
-    width: 100%; /* Added to make nav full width on mobile */
-    border-radius: 0; /* Remove border radius for full-width look */
-    z-index: 1000; /* Ensure nav appears above other content */
+    right: 10px;
+    border-radius: 5px;
   }
 
   nav ul.active {
     display: flex; /* Show when active */
-  }
-}
-
-/* Add media query for mobile devices */
-@media screen and (max-width: 768px) {
-  nav ul {
-    width: 100%;
-    left: 0;
-    right: 0;
-    padding: 10px 0;
-  }
-  
-  nav ul li {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
-  
-  nav ul li a {
-    width: 100%;
-    display: block;
-    padding: 10px 20px;
   }
 }
 
