@@ -1,3 +1,22 @@
+// Select the elements
+const API_URL = "https://nodayz.onrender.com/requests";
+const kcont = document.getElementById('kcont');
+const ncont = document.getElementById('ncont');
+const backbtn = document.getElementById('back-btn');
+const backbtn2 = document.getElementById('back-btn2');
+const mixcont = document.getElementById('mixcont');
+const liveRequestBtn = document.getElementById('liveRequestBtn');
+const qr = document.getElementById('qr');
+const genresSection = document.getElementById('genres-section');
+const kvidz = document.getElementById('videoButton');
+const kvidz2 = document.getElementById('kvidz2');
+const searchbar = document.getElementById('search-input');
+const container1 = document.getElementById('container1');
+const requestForm = document.getElementById("requestForm");
+const requestBox = document.getElementById("requestBox");
+const requestsDisplay = document.getElementById("requestsDisplay");
+const duplicateMessage = document.getElementById("duplicateMessage");
+
 const videoData = {
   "Arabic": [
       { title: "Because Of Lov", path: "ngoma/Chinese/Because Of Lov.mp4" },
@@ -866,21 +885,6 @@ const ncontVideoData =
 "Zero  ~ Chris Brown     "
 ]
 };
-
-// Function to show video clips for a genre
-function showVideos(genre) {
-  const videoList = document.getElementById('videoList');
-  const videos = videoData[genre] || [];
-
-  // Populate video list dynamically
-  videoList.innerHTML = videos
-      .map(
-          video =>
-              `<li><a href="#" onclick="playMedia('${video.path}')">${video.title}</a></li>`
-      )
-      .join('');
-}
-
 // Show Genres on Button Click
 function showGenres() {
   const videoButton = document.getElementById('videoButton');
@@ -902,6 +906,21 @@ function showGenres() {
       .map(genre => `<li><a href="#" onclick="showVideos('${genre}')">${genre}</a></li>`)
       .join('');
 }
+// Function to show video clips for a genre
+function showVideos(genre) {
+  const videoList = document.getElementById('videoList');
+  const videos = videoData[genre] || [];
+
+  // Populate video list dynamically
+  videoList.innerHTML = videos
+      .map(
+          video =>
+              `<li><a href="#" onclick="playMedia('${video.path}')">${video.title}</a></li>`
+      )
+      .join('');
+}
+
+
 // Play Media
 function playMedia(src) {
   const modal = document.getElementById('playerModal');
@@ -930,24 +949,6 @@ function closePlayer() {
   console.log('player closed');
 }
 
-// Select the elements
-const API_URL = "https://nodayz.onrender.com/requests";
-const kcont = document.getElementById('kcont');
-const ncont = document.getElementById('ncont');
-const backbtn = document.getElementById('back-btn');
-const backbtn2 = document.getElementById('back-btn2');
-const mixcont = document.getElementById('mixcont');
-const liveRequestBtn = document.getElementById('liveRequestBtn');
-const qr = document.getElementById('qr');
-const genresSection = document.getElementById('genres-section');
-const kvidz = document.getElementById('videoButton');
-const kvidz2 = document.getElementById('kvidz2');
-const searchbar = document.getElementById('search-input');
-const container1 = document.getElementById('container1');
-const requestForm = document.getElementById("requestForm");
-const requestBox = document.getElementById("requestBox");
-const requestsDisplay = document.getElementById("requestsDisplay");
-const duplicateMessage = document.getElementById("duplicateMessage");
 
 
 // Show request form when button is clicked
@@ -3574,10 +3575,11 @@ international: [
             
             // Style the item list for scrolling
             itemList.style.maxHeight = '500px';
+            itemList.style.maxWidth = '500px';
             itemList.style.overflowY = 'auto';
-            itemList.style.padding = '10px';
+            itemList.style.padding = '3px';
             itemList.style.margin = '0';
-            itemList.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+            itemList.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
             itemList.style.borderRadius = '5px';
             
             // Update titles
@@ -3675,22 +3677,7 @@ international: [
                 });
             }
         }
-        backbtn.addEventListener('click', () => {
-      // Hide the kcont div
-      kcont.style.display = 'block';     
-      ncont.style.display = 'block';
-      mixcont.style.display = 'block';
-      liveRequestBtn.style.display = 'block';
-      qr.style.display = 'block';
-      // Show the genres section
-      genresSection.style.display = 'none';
-      kvidz.style.display = 'none';
-      backbtn.style.display = 'none';
-      searchbar.style.display = 'none';
-      requestBox.style.display = 'none';
-      mixxez.style.display = 'none';
-    });
-
+   
         mixcont.addEventListener('click', () => {
       // Hide the mix div
       kcont.style.display = 'none';
