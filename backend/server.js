@@ -21,6 +21,7 @@ app.use(
       const allowedOrigins = [
         "https://live-request-test.netlify.app", // Production frontend
         "http://127.0.0.1:5500", // Local frontend for testing
+        "http://localhost:5501" // Additional localhost for testing
       ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
@@ -30,6 +31,9 @@ app.use(
     },
   })
 );
+
+// Enable pre-flight requests for all routes
+app.options('*', cors());
 
 // MongoDB Connection
 mongoose
