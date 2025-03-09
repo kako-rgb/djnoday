@@ -4150,9 +4150,6 @@ mixcont.addEventListener('click', () => {
     backbtn.style.display = 'block';
 });
 
-audioMix.addEventListener('click', () => {
-    displayMixContent('audio');
-});
 
 videoMix.addEventListener('click', () => {
     displayMixContent('video');
