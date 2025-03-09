@@ -1,5 +1,4 @@
 // Select the elements
-const API_URL = "https://nodayz.onrender.com/requests";
 const kcont = document.getElementById('kcont');
 const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
@@ -950,41 +949,43 @@ function closePlayer() {
 }
 
 
+// Define API_URL to ensure it's available
+const API_URL = "http://localhost:10000/requests"; // Adjust the URL as needed for production
 
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
-liveRequestBtn.classList.add("hidden");
-requestBox.classList.remove("hidden");
+  liveRequestBtn.classList.add("hidden");
+  requestBox.classList.remove("hidden");
 });
 
 // Fetch and display existing requests
 async function fetchRequests() {
-try {
-  const response = await fetch(API_URL);
-  if (!response.ok) {
-    throw new Error("Failed to fetch requests");
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch requests");
+    }
+
+    const requests = await response.json();
+
+    // Clear and populate the request display
+    requestsDisplay.innerHTML = "";
+    requests.forEach(({ _id, name, request }) => {
+      const requestItem = document.createElement("div");
+      requestItem.className = "request-item";
+      requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
+      requestItem.innerHTML = `
+        <strong>${name || "User"}:</strong> ${request}
+      `;
+      
+      // Add long-press event listener for deletion
+      addLongPressListener(requestItem, _id);
+
+      requestsDisplay.appendChild(requestItem);
+    });
+  } catch (error) {
+    console.error("Error fetching requests:", error);
   }
-
-  const requests = await response.json();
-
-  // Clear and populate the request display
-  requestsDisplay.innerHTML = "";
-  requests.forEach(({ _id, name, request }) => {
-    const requestItem = document.createElement("div");
-    requestItem.className = "request-item";
-    requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
-    requestItem.innerHTML = `
-      <strong>${name || "User"}:</strong> ${request}
-    `;
-    
-    // Add long-press event listener for deletion
-    addLongPressListener(requestItem, _id);
-
-    requestsDisplay.appendChild(requestItem);
-  });
-} catch (error) {
-  console.error("Error fetching requests:", error);
-}
 }
 
 // Load requests on page load
@@ -992,96 +993,95 @@ fetchRequests();
 
 // Handle form submission
 requestForm.addEventListener("submit", async (e) => {
-e.preventDefault();
+  e.preventDefault();
 
-const musicRequest = document.getElementById("musicRequest").value.trim();
-const userName = document.getElementById("userName").value.trim() || "User";
+  const musicRequest = document.getElementById("musicRequest").value.trim();
+  const userName = document.getElementById("userName").value.trim() || "User";
 
-if (!musicRequest) {
-  alert("Please enter a music request!");
-  return;
-}
-
-try {
-  // Check for duplicates
-  const response = await fetch(API_URL);
-  if (!response.ok) {
-    throw new Error("Failed to fetch requests");
-  }
-
-  const requests = await response.json();
-  const duplicate = requests.some(
-    (req) => req.request.toLowerCase() === musicRequest.toLowerCase()
-  );
-
-  if (duplicate) {
-    duplicateMessage.classList.remove("hidden");
-    setTimeout(() => duplicateMessage.classList.add("hidden"), 3000); // Hide after 3 seconds
+  if (!musicRequest) {
+    alert("Please enter a music request!");
     return;
   }
 
-  // Post new request
-  const newRequest = { name: userName, request: musicRequest };
-  const postResponse = await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newRequest),
-  });
+  try {
+    // Check for duplicates
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch requests");
+    }
 
-  if (!postResponse.ok) {
-    throw new Error("Failed to post new request");
+    const requests = await response.json();
+    const duplicate = requests.some(
+      (req) => req.request.toLowerCase() === musicRequest.toLowerCase()
+    );
+
+    if (duplicate) {
+      duplicateMessage.classList.remove("hidden");
+      setTimeout(() => duplicateMessage.classList.add("hidden"), 3000); // Hide after 3 seconds
+      return;
+    }
+
+    // Post new request
+    const newRequest = { name: userName, request: musicRequest };
+    const postResponse = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRequest),
+    });
+
+    if (!postResponse.ok) {
+      throw new Error("Failed to post new request");
+    }
+
+    // Clear form fields
+    document.getElementById("musicRequest").value = "";
+    document.getElementById("userName").value = "";
+
+    // Refresh the display with the updated list of requests
+    fetchRequests();
+  } catch (error) {
+    console.error("Error posting request:", error);
   }
-
-  // Clear form fields
-  document.getElementById("musicRequest").value = "";
-  document.getElementById("userName").value = "";
-
-  // Refresh the display with the updated list of requests
-  fetchRequests();
-} catch (error) {
-  console.error("Error posting request:", error);
-}
 });
 
 // Add long-press functionality to delete a request
 function addLongPressListener(element, requestId) {
-let pressTimer;
+  let pressTimer;
 
-// Start timer on mouse down or touch start
-const startPress = () => {
-  pressTimer = setTimeout(async () => {
-    try {
-      const deleteResponse = await fetch(`${API_URL}/${requestId}`, {
-        method: "DELETE",
-      });
+  // Start timer on mouse down or touch start
+  const startPress = () => {
+    pressTimer = setTimeout(async () => {
+      try {
+        const deleteResponse = await fetch(`${API_URL}/${requestId}`, {
+          method: "DELETE",
+        });
 
-      if (!deleteResponse.ok) {
-        throw new Error("Failed to delete request");
+        if (!deleteResponse.ok) {
+          throw new Error("Failed to delete request");
+        }
+
+        // Refresh the display with the updated list of requests
+        fetchRequests();
+      } catch (error) {
+        console.error("Error deleting request:", error);
       }
+    }, 500); // Reduced to a more reasonable time for long press (0.5 seconds)
+  };
 
-      // Refresh the display with the updated list of requests
-      fetchRequests();
-    } catch (error) {
-      console.error("Error deleting request:", error);
-    }
-  }, 5000); // 5 seconds for long press
-};
+  // Clear timer on mouse up, touch end, or leave
+  const cancelPress = () => {
+    clearTimeout(pressTimer);
+  };
 
-// Clear timer on mouse up, touch end, or leave
-const cancelPress = () => {
-  clearTimeout(pressTimer);
-};
-
-element.addEventListener("mousedown", startPress);
-element.addEventListener("touchstart", startPress);
-element.addEventListener("mouseup", cancelPress);
-element.addEventListener("touchend", cancelPress);
-element.addEventListener("mouseleave", cancelPress);
+  element.addEventListener("mousedown", startPress);
+  element.addEventListener("touchstart", startPress);
+  element.addEventListener("mouseup", cancelPress);
+  element.addEventListener("touchend", cancelPress);
+  element.addEventListener("mouseleave", cancelPress);
 }
 
-// Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
+// Periodically refresh requests to reflect auto-deletion (optional, every minute)
 setInterval(fetchRequests, 60000);
-
 // Data for categories and items
 const categoryData = {
   arabic: [
@@ -2115,7 +2115,6 @@ international: [
   "Hit The Road Jack ~ Ray Charles    ",
   "Ho Hey ~ The Lumineers   ",
   "Hold Back The River ~ James Bay     ",
-  "Hold Me ~ Whitney Houston & Teddy Pendergrass      ",
   "Hold My Hand ~ Jess Glynne    ",
   "Hold My Hand ~ Michael Jackson ft. Akon  ",
   "Hold On ~ Wilson Phillips      ",
@@ -3893,22 +3892,6 @@ function openGenre(genre) {
   const genreTitle = document.getElementById("genre-title");
   genreTitle.textContent = genre;
 }
-returnBtn.addEventListener("click", () => {
-  const genreContent = document.getElementById("genre-content");
-  const genresSection = document.getElementById("genres-section");
-
-  // Navigate to the last screen
-  const lastScreen = genreHistory.pop();
-  if (lastScreen === "genres-section") {
-    genresSection.style.display = "block";
-    genreContent.style.display = "none";
-  } else if (lastScreen === "genre-content") {
-    genreContent.style.display = "block";
-    genresSection.style.display = "none";
-  }
-});
-
-
 // Open a genre and display its content
 function openGenre(genre) {
   const genreContent = document.getElementById('genre-content');
@@ -4137,4 +4120,174 @@ document.getElementById('requestForm').addEventListener('submit', async function
   }
 });
 
+// Add these button click handlers after your existing event listeners
+const audioMix = document.getElementById('audio-mix');
+const videoMix = document.getElementById('video-mix');
+const mixContainer = document.getElementById('mix-container');
 
+mixcont.addEventListener('click', () => {
+    // Hide all main elements
+    kcont.style.display = 'none';
+    ncont.style.display = 'none';
+    mixcont.style.display = 'none';
+    liveRequestBtn.style.display = 'none';
+    qr.style.display = 'none';
+    kvidz.style.display = 'none';
+    container1.style.display = 'none';
+    genresSection.style.display = 'none';
+    
+    // Show only mix container and back button
+    mixContainer.style.display = 'flex';
+    backbtn.style.display = 'block';
+});
+
+audioMix.addEventListener('click', () => {
+    displayMixContent('audio');
+});
+
+videoMix.addEventListener('click', () => {
+    displayMixContent('video');
+});
+
+function displayMixContent(type) {
+    // Show the genres section
+    genresSection.style.display = 'block';
+    mixContainer.style.display = 'none';
+    
+    // Get elements
+    const categoryList = document.getElementById('category-list');
+    const detailsTitle = document.getElementById('details-title');
+    const itemList = document.getElementById('item-list');
+    const sectionTitle = document.getElementById('kwanza');
+    
+    // Update titles
+    sectionTitle.textContent = type === 'audio' ? 'DJ NODAY AUDIO MIXES' : 'DJ NODAY VIDEO SETS';
+    detailsTitle.textContent = 'Select Mix Category';
+    
+    // Clear existing items
+    categoryList.innerHTML = '';
+    itemList.innerHTML = '';
+    
+    // Get appropriate mix data based on type
+    const mixData = type === 'audio' ? {
+        "Club Mixes": [
+            "Afrobeats Club Mix 2024",
+            "Bongo Mix Volume 1",
+            "Dancehall Club Mix",
+            "Gengetone Mix 2024",
+            "Reggae Club Mix",
+            "Rhumba Club Mix"
+        ],
+        "Slow Jams": [
+            "RnB Love Mix Vol 1",
+            "Soul Mix 2024",
+            "Smooth Jazz Mix",
+            "Reggae Love Songs Mix"
+        ]
+    } : {
+        "Live Sets": [
+            "Amka Cafe Live Mix Jan 2024",
+            "Club Blend Live Set",
+            "Rhumba Night Live Mix",
+            "Valentine Special Live Set"
+        ],
+        "Music Videos": [
+            "Afrobeats Visual Mix 2024",
+            "Best of Bongo Video Mix",
+            "Gengetone Video Mix",
+            "Reggae Classics Video Mix"
+        ]
+    };
+
+    // Add categories
+    Object.keys(mixData).forEach(category => {
+        const li = document.createElement('li');
+        li.textContent = category;
+        li.style.cssText = `
+            cursor: pointer;
+            padding: 8px;
+            margin: 2px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            color: white;
+        `;
+        
+        // Hover effect
+        li.onmouseover = () => {
+            li.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+        };
+        li.onmouseout = () => {
+            if (li.style.color !== 'rgb(57, 255, 20)') {
+                li.style.backgroundColor = 'transparent';
+            }
+        };
+        
+        // Click handler
+        li.onclick = () => {
+            displayMixItems(category, mixData[category], type);
+            
+            // Reset all categories
+            categoryList.querySelectorAll('li').forEach(catItem => {
+                catItem.style.backgroundColor = 'transparent';
+                catItem.style.color = 'white';
+            });
+            
+            // Highlight selected category
+            li.style.backgroundColor = 'rgba(57, 255, 20, 0.1)';
+            li.style.color = '#39FF14';
+        };
+        
+        categoryList.appendChild(li);
+    });
+}
+
+function displayMixItems(category, items, type) {
+    const itemList = document.getElementById('item-list');
+    const detailsTitle = document.getElementById('details-title');
+    
+    detailsTitle.textContent = category;
+    itemList.innerHTML = '';
+    
+    items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        li.style.cssText = `
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            color: white;
+        `;
+        
+        // Hover effect
+        li.onmouseover = () => {
+            li.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+        };
+        li.onmouseout = () => {
+            if (li.style.color !== 'rgb(57, 255, 20)') {
+                li.style.backgroundColor = 'transparent';
+            }
+        };
+        
+        // Click handler
+        li.onclick = () => {
+            // Reset all items
+            itemList.querySelectorAll('li').forEach(item => {
+                item.style.color = 'white';
+                item.style.backgroundColor = 'transparent';
+            });
+            
+            // Highlight selected item
+            li.style.color = '#39FF14';
+            li.style.backgroundColor = 'rgba(57, 255, 20, 0.1)';
+            
+            // Play the mix
+            const extension = type === 'audio' ? 'mp3' : 'mp4';
+            const mediaPath = `mixes/${type}/${item}.${extension}`;
+            playMedia(mediaPath);
+        };
+        
+        itemList.appendChild(li);
+    });
+}

@@ -59,6 +59,7 @@ app.get("/requests", async (req, res) => {
     const requests = await Request.find();
     res.json(requests);
   } catch (error) {
+    console.error("Error fetching requests:", error.message); // Log detailed error message
     res.status(500).json({ error: "Error fetching requests" });
   }
 });
@@ -66,6 +67,8 @@ app.get("/requests", async (req, res) => {
 // Add a new request
 app.post("/requests", async (req, res) => {
   const { name, request } = req.body;
+  
+  // Validate request body
   if (!request) return res.status(400).json({ error: "Request is required" });
 
   try {
@@ -73,6 +76,7 @@ app.post("/requests", async (req, res) => {
     await newRequest.save();
     res.status(201).json({ message: "Request added successfully", data: newRequest });
   } catch (error) {
+    console.error("Error adding request:", error.message); // Log detailed error message
     res.status(500).json({ error: "Error adding request" });
   }
 });
