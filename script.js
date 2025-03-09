@@ -950,7 +950,7 @@ function closePlayer() {
 
 
 // Define API_URL to ensure it's available
-const API_URL = "http://localhost:10000/requests"; // Adjust the URL as needed for production
+const API_URL = "https://nodayz.onrender.com/requests"; // Adjust the URL as needed for production
 
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
