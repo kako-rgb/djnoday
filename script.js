@@ -952,136 +952,145 @@ function closePlayer() {
 // Define API_URL to ensure it's available
 const API_URL = "https://nodayz.onrender.com/requests"; // Adjust the URL as needed for production
 
-// Show request form when button is clicked
-liveRequestBtn.addEventListener("click", () => {
-  liveRequestBtn.classList.add("hidden");
-  requestBox.classList.remove("hidden");
-});
+// Wait for the DOM to load before executing any code
+document.addEventListener("DOMContentLoaded", () => {
+  // Show request form when button is clicked
+  const liveRequestBtn = document.getElementById("liveRequestBtn");
+  const requestBox = document.getElementById("requestBox");
+  const requestsDisplay = document.getElementById("requestsDisplay");
+  const requestForm = document.getElementById("requestForm");
+  const duplicateMessage = document.getElementById("duplicateMessage");
 
-// Fetch and display existing requests
-async function fetchRequests() {
-  try {
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error("Failed to fetch requests");
+  liveRequestBtn.addEventListener("click", () => {
+    liveRequestBtn.classList.add("hidden");
+    requestBox.classList.remove("hidden");
+  });
+
+  // Fetch and display existing requests
+  async function fetchRequests() {
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error("Failed to fetch requests");
+      }
+
+      const requests = await response.json();
+
+      // Clear and populate the request display
+      requestsDisplay.innerHTML = "";
+      requests.forEach(({ _id, name, request }) => {
+        const requestItem = document.createElement("div");
+        requestItem.className = "request-item";
+        requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
+        requestItem.innerHTML = `
+          <strong>${name || "User"}:</strong> ${request}
+        `;
+        
+        // Add long-press event listener for deletion
+        addLongPressListener(requestItem, _id);
+
+        requestsDisplay.appendChild(requestItem);
+      });
+    } catch (error) {
+      console.error("Error fetching requests:", error);
     }
-
-    const requests = await response.json();
-
-    // Clear and populate the request display
-    requestsDisplay.innerHTML = "";
-    requests.forEach(({ _id, name, request }) => {
-      const requestItem = document.createElement("div");
-      requestItem.className = "request-item";
-      requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
-      requestItem.innerHTML = `
-        <strong>${name || "User"}:</strong> ${request}
-      `;
-      
-      // Add long-press event listener for deletion
-      addLongPressListener(requestItem, _id);
-
-      requestsDisplay.appendChild(requestItem);
-    });
-  } catch (error) {
-    console.error("Error fetching requests:", error);
-  }
-}
-
-// Load requests on page load
-fetchRequests();
-
-// Handle form submission
-requestForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const musicRequest = document.getElementById("musicRequest").value.trim();
-  const userName = document.getElementById("userName").value.trim() || "User";
-
-  if (!musicRequest) {
-    alert("Please enter a music request!");
-    return;
   }
 
-  try {
-    // Check for duplicates
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error("Failed to fetch requests");
-    }
+  // Load requests on page load
+  fetchRequests();
 
-    const requests = await response.json();
-    const duplicate = requests.some(
-      (req) => req.request.toLowerCase() === musicRequest.toLowerCase()
-    );
+  // Handle form submission
+  requestForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    if (duplicate) {
-      duplicateMessage.classList.remove("hidden");
-      setTimeout(() => duplicateMessage.classList.add("hidden"), 3000); // Hide after 3 seconds
+    const musicRequest = document.getElementById("musicRequest").value.trim();
+    const userName = document.getElementById("userName").value.trim() || "User";
+
+    if (!musicRequest) {
+      alert("Please enter a music request!");
       return;
     }
 
-    // Post new request
-    const newRequest = { name: userName, request: musicRequest };
-    const postResponse = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newRequest),
-    });
-
-    if (!postResponse.ok) {
-      throw new Error("Failed to post new request");
-    }
-
-    // Clear form fields
-    document.getElementById("musicRequest").value = "";
-    document.getElementById("userName").value = "";
-
-    // Refresh the display with the updated list of requests
-    fetchRequests();
-  } catch (error) {
-    console.error("Error posting request:", error);
-  }
-});
-
-// Add long-press functionality to delete a request
-function addLongPressListener(element, requestId) {
-  let pressTimer;
-
-  // Start timer on mouse down or touch start
-  const startPress = () => {
-    pressTimer = setTimeout(async () => {
-      try {
-        const deleteResponse = await fetch(`${API_URL}/${requestId}`, {
-          method: "DELETE",
-        });
-
-        if (!deleteResponse.ok) {
-          throw new Error("Failed to delete request");
-        }
-
-        // Refresh the display with the updated list of requests
-        fetchRequests();
-      } catch (error) {
-        console.error("Error deleting request:", error);
+    try {
+      // Check for duplicates
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error("Failed to fetch requests");
       }
-    }, 500); // Reduced to a more reasonable time for long press (0.5 seconds)
-  };
 
-  // Clear timer on mouse up, touch end, or leave
-  const cancelPress = () => {
-    clearTimeout(pressTimer);
-  };
+      const requests = await response.json();
+      const duplicate = requests.some(
+        (req) => req.request.toLowerCase() === musicRequest.toLowerCase()
+      );
 
-  element.addEventListener("mousedown", startPress);
-  element.addEventListener("touchstart", startPress);
-  element.addEventListener("mouseup", cancelPress);
-  element.addEventListener("touchend", cancelPress);
-  element.addEventListener("mouseleave", cancelPress);
-}
+      if (duplicate) {
+        duplicateMessage.classList.remove("hidden");
+        setTimeout(() => duplicateMessage.classList.add("hidden"), 3000); // Hide after 3 seconds
+        return;
+      }
 
-// Periodically refresh requests to reflect auto-deletion (optional, every minute)
-setInterval(fetchRequests, 60000);
+      // Post new request
+      const newRequest = { name: userName, request: musicRequest };
+      const postResponse = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newRequest),
+      });
+
+      if (!postResponse.ok) {
+        throw new Error("Failed to post new request");
+      }
+
+      // Clear form fields
+      document.getElementById("musicRequest").value = "";
+      document.getElementById("userName").value = "";
+
+      // Refresh the display with the updated list of requests
+      fetchRequests();
+    } catch (error) {
+      console.error("Error posting request:", error);
+    }
+  });
+
+  // Add long-press functionality to delete a request
+  function addLongPressListener(element, requestId) {
+    let pressTimer;
+
+    // Start timer on mouse down or touch start
+    const startPress = () => {
+      pressTimer = setTimeout(async () => {
+        try {
+          const deleteResponse = await fetch(`${API_URL}/${requestId}`, {
+            method: "DELETE",
+          });
+
+          if (!deleteResponse.ok) {
+            throw new Error("Failed to delete request");
+          }
+
+          // Refresh the display with the updated list of requests
+          fetchRequests();
+        } catch (error) {
+          console.error("Error deleting request:", error);
+        }
+      }, 500); // Reduced to a more reasonable time for long press (0.5 seconds)
+    };
+
+    // Clear timer on mouse up, touch end, or leave
+    const cancelPress = () => {
+      clearTimeout(pressTimer);
+    };
+
+    element.addEventListener("mousedown", startPress);
+    element.addEventListener("touchstart", startPress);
+    element.addEventListener("mouseup", cancelPress);
+    element.addEventListener("touchend", cancelPress);
+    element.addEventListener("mouseleave", cancelPress);
+  }
+
+  // Periodically refresh requests to reflect auto-deletion (optional, every minute)
+  setInterval(fetchRequests, 60000);
+});
 // Data for categories and items
 const categoryData = {
   arabic: [
