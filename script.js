@@ -949,8 +949,10 @@ function closePlayer() {
 }
 
 
-const API_URL = "https://nodayz.onrender.com/requests";
+  // Select the elements
+  const API_URL = "https://nodayz.onrender.com/requests";
 
+  
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
   liveRequestBtn.classList.add("hidden");
