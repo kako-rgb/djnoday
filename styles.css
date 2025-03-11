@@ -629,8 +629,8 @@ button:active {
 }
 #saxcont{
   width: 300px;
-  transform: translateY(-320px);
-  margin-left: 305px;
+  transform: translateY(-120px);
+  margin-left: 321px;
   display: none;
   color: #39FF14
   
@@ -944,7 +944,14 @@ header {
     border-radius: 5px;
     animation: fadeIn 0.5s ease-out forwards;
   }
-
+  #saxcont{
+    width: 300px;
+    transform: translateY(-320px);
+    margin-left: 305px;
+    display: none;
+    color: #39FF14
+    
+  }
   #qr-back-container {
     flex-direction: column;
     transform: translateY(250px);
@@ -1004,3 +1011,4 @@ header {
     padding: 10px 20px;
   }
 }
+
