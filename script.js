@@ -4,6 +4,10 @@ const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
 const backbtn2 = document.getElementById('back-btn2');
 const mixcont = document.getElementById('mixcont');
+const saxcont = document.getElementById('saxcont');
+const kconcat = document.getElementById('kconcat');
+const mixVideoButton = document.getElementById('mixVideoButton');
+const mixAudioButton = document.getElementById('mixAudioButton');
 const liveRequestBtn = document.getElementById('liveRequestBtn');
 const qr = document.getElementById('qr');
 const genresSection = document.getElementById('genres-section');
@@ -928,6 +932,8 @@ function playMedia(src) {
 
   modal.classList.remove('hidden');
   videoPlayer.play();
+  // Position media player based on screen size
+
 
   // Close player automatically when video ends
   videoPlayer.onended = () => {
@@ -948,11 +954,23 @@ function closePlayer() {
   console.log('player closed');
 }
 
+/////////////////////////////////////////////////// REQUEST START ///////////////////////////////////////////////
 
-  // Select the elements
-  const API_URL = "https://nodayz.onrender.com/requests";
+liveRequestBtn.addEventListener('click', () => {
+  // Hide the kcont div
+  liveRequestBtn.style.display = 'none';
+  kcont.style.display = 'none';
+  ncont.style.display = 'none';
+  mixcont.style.display = 'none';
+  qr.style.display = 'none';
+  // Show the genres section      
+  requestBox.style.display = 'block';
+  backbtn.style.display = 'block';
+  searchbar.style.display = 'none';     
 
-  
+});
+const API_URL = "https://nodayz.onrender.com/requests";
+
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
   liveRequestBtn.classList.add("hidden");
@@ -1083,7 +1101,7 @@ function addLongPressListener(element, requestId) {
 
 // Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
 setInterval(fetchRequests, 60000);
-
+/////////////////////////////////////////////////////////////////////////REQUEST END////////////////////////////////
 // Data for categories and items
 const categoryData = {
   arabic: [
@@ -3538,21 +3556,6 @@ international: [
   ],
 
 };
-
-
-      liveRequestBtn.addEventListener('click', () => {
-      // Hide the kcont div
-      liveRequestBtn.style.display = 'none';
-      kcont.style.display = 'none';
-      ncont.style.display = 'none';
-      mixcont.style.display = 'none';
-      qr.style.display = 'none';
-      // Show the genres section      
-      requestBox.style.display = 'block';
-      backbtn.style.display = 'block';
-      searchbar.style.display = 'none';     
-    
-    });
         kcont.addEventListener('click', () => {
             // Hide main menu items
             kcont.style.display = 'none';
@@ -3679,19 +3682,7 @@ international: [
             }
         }
    
-        mixcont.addEventListener('click', () => {
-      // Hide the mix div
-      kcont.style.display = 'none';
-      backbtn.style.display = 'none';
-      ncont.style.display = 'none';
-      mixcont.style.display = 'none';
-      liveRequestBtn.style.display = 'none';
-      qr.style.display = 'none';
-      // Show the genres section
-      backbtn.style.display = 'block';
-      searchbar.style.display = 'block';
-         
-    });
+ 
         ncont.addEventListener('click', () => {
             // Hide main menu items
             kcont.style.display = 'none';
@@ -3700,33 +3691,35 @@ international: [
             liveRequestBtn.style.display = 'none';
             qr.style.display = 'none';
             kvidz.style.display = 'none';
+            kconcat.style.display = 'none';
             
             // Show performance section
-            genresSection.style.display = 'block';
+            genresSection.style.display = 'block';          
+            saxcont.style.display = 'block';
             backbtn.style.display = 'block';
             searchbar.style.display = 'block';
             
             // Get elements
-            const categoryList = document.getElementById('category-list');
-            const detailsTitle = document.getElementById('details-title');
-            const itemList = document.getElementById('item-list');
+           const categoryList = document.getElementById('category-list');
+            const detailsTitle3 = document.getElementById('details-title3');
+            const itemList3 = document.getElementById('item-list3');
             const sectionTitle = document.getElementById('kwanza');
             
             // Style the item list for scrolling
-            itemList.style.maxHeight = '500px';
-            itemList.style.overflowY = 'auto';
-            itemList.style.padding = '10px';
-            itemList.style.margin = '0';
-            itemList.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-            itemList.style.borderRadius = '5px';
+            itemList3.style.maxHeight = '500px';
+            itemList3.style.overflowY = 'auto';
+            itemList3.style.padding = '10px';
+            itemList3.style.margin = '0';
+            itemList3.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+            itemList3.style.borderRadius = '5px';
             
             // Update titles
             sectionTitle.textContent = 'DJ & Sax Performances';
-            detailsTitle.textContent = 'Select a Category';
+            detailsTitle3.textContent = 'Select a Category';
             
             // Clear existing items
             categoryList.innerHTML = '';
-            itemList.innerHTML = '';
+            itemList3.innerHTML = '';
             
             // Style for category list items
             const categoryStyle = 'cursor: pointer; padding: 8px; margin: 2px 0; border-radius: 4px; transition: all 0.3s ease;';
@@ -3765,12 +3758,12 @@ international: [
         });
 
         function displayNcontItems(category) {
-            const itemList = document.getElementById('item-list');
-            const detailsTitle = document.getElementById('details-title');
+            const itemList3 = document.getElementById('item-list3');
+            const detailsTitle3 = document.getElementById('details-title3');
             
             // Update title and clear list
-            detailsTitle.textContent = category;
-            itemList.innerHTML = '';
+            detailsTitle3.textContent = category;
+            itemList3.innerHTML = '';
             
             // Get songs for the category
             if (ncontVideoData[category]) {
@@ -3798,7 +3791,7 @@ international: [
                     
                     songItem.onclick = () => {
                         // Reset all song items
-                        itemList.querySelectorAll('li').forEach(s => {
+                        itemList3.querySelectorAll('li').forEach(s => {
                             s.style.color = 'white';
                             s.style.fontWeight = 'normal';
                             s.style.backgroundColor = 'transparent';
@@ -3814,21 +3807,18 @@ international: [
                         playMedia(mediaPath);
                     };
                     
-                    itemList.appendChild(songItem);
+                    itemList3.appendChild(songItem);
                 });
             }
             
             // Style the container
-            itemList.style.maxHeight = '500px';
-            itemList.style.overflowY = 'auto';
-            itemList.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-            itemList.style.padding = '10px';
-            itemList.style.borderRadius = '10px';
-            itemList.style.margin = '10px 0';
+            itemList3.style.maxHeight = '500px';
+            itemList3.style.overflowY = 'auto';
+            itemList3.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            itemList3.style.padding = '10px';
+            itemList3.style.borderRadius = '10px';
+            itemList3.style.margin = '10px 0';
         }
-
- 
-
     kvidz.addEventListener('click', () => {
       // Hide the live div
       kcont.style.display = 'none';
@@ -3925,43 +3915,12 @@ function openGenre(genre) {
   genreHistory.push(genre);
 
 
-  // Sample media data for genres
-  const mediaData = {
-    karaoke: [
-      { name: "Song 1", files: ["./resouces/karaoke/video1.mp4", "./resouces/karaoke/audio1.mp3"] },
-      { name: "Song 2", files: ["./resouces/karaoke/video2.mp4"] },
-      { name: "Song 3", files: ["./resouces/karaoke/audio2.mp3"] }
-    ],
-    
-    mixxez: [
-      "./resouces/videos/1.mp4",
-      "./resouces/videos/2.mp4",
-      "./resouces/videos/audio1.mp3",
-      "./resouces/videos/audio2.mp3"
-    ],
-   
-  };
-
-  ////////////////////////////////////////////////// Populate media list based on genre///////////////////////////////////////////////////////////////////////////
-  const tracks = mediaData[genre] || [];
-  tracks.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = typeof item === 'string' ? item : item.name;
-    li.classList.add('clickable');
-    li.onclick = () => playAudioOrVideo(item.files ? item.files[0] : item);
-    musicList.appendChild(li);
-  });
-
   // Animate genres section fading out
   genresSection.style.animation = "fadeOut 0.5s forwards";
   
   // Animate genre content fading in
   genreContent.style.animation = "fadeIn 0.5s forwards";
 }
-
-//go back code
-
-
 // Play selected media (video or audio)
 function playAudioOrVideo(track) {
   const mediaPlayer = document.getElementById('media-player');
@@ -4023,270 +3982,18 @@ function toggleFullScreen() {
     document.exitFullscreen();
   }
 }
-
-// Helper function to capitalize first letter
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-// Position media player based on screen size
-function positionMediaPlayer() {
-  const mediaPlayer = document.getElementById('media-player');
-  const container = document.querySelector('.container');
-
-  if (window.innerWidth > 768) {
-    // Desktop: Position below genre content
-    mediaPlayer.style.position = 'absolute';
-    mediaPlayer.style.top = '60%';
-    mediaPlayer.style.left = '50%';
-    mediaPlayer.style.transform = 'translate(-50%, -50%)';
-    mediaPlayer.style.width = '50%';
-  } else {
-    // Mobile: Position below content and QR
-    mediaPlayer.style.position = 'relative';
-    mediaPlayer.style.top = 'auto';
-    mediaPlayer.style.left = 'auto';
-    mediaPlayer.style.transform = 'none';
-    mediaPlayer.style.width = '90%';
-  }
-}
-
-// Close player when clicking outside of it
-window.onclick = function(event) {
-  const mediaPlayer = document.getElementById('media-player');
-  if (event.target == mediaPlayer) {
-    closePlayer();
-  }
-}
-
-// Adjust media player position on window resize
-window.onresize = function() {
-  if (!document.getElementById('media-player').classList.contains('hidden')) {
-    positionMediaPlayer();
-  }
-}
-
-// Handle request form submission
-document.getElementById('requestForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  
-  const musicRequest = document.getElementById('musicRequest').value.trim();
-  const userName = document.getElementById('userName').value.trim() || 'Anonymous';
-  const requestsDisplay = document.getElementById('requestsDisplay');
-  const duplicateMessage = document.getElementById('duplicateMessage');
-
-  // Basic validation
-  if (!musicRequest) {
-    alert('Please enter a music request');
-    return;
-  }
-
-  try {
-    const response = await fetch('https://nodayz.onrender.com/requests', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        request: musicRequest,
-        name: userName,
-        timestamp: new Date().toISOString()
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-
-    // Add new request to display immediately
-    const requestElement = document.createElement('div');
-    requestElement.className = 'request-item';
-    requestElement.innerHTML = `
-      <strong>${userName}:</strong> ${musicRequest}
-      <span class="timestamp">${new Date().toLocaleTimeString()}</span>
-    `;
-    requestsDisplay.appendChild(requestElement);
-
-    // Clear form
-    document.getElementById('musicRequest').value = '';
-    document.getElementById('userName').value = '';
-
-    // Auto-scroll to bottom
-    requestsDisplay.scrollTop = requestsDisplay.scrollHeight;
-
-  } catch (error) {
-    console.error('Error:', error);
-    alert('Failed to submit request. Please try again.');
-  }
-});
-
-// Add these button click handlers after your existing event listeners
-const audioMix = document.getElementById('audio-mix');
-const videoMix = document.getElementById('video-mix');
-const mixContainer = document.getElementById('mix-container');
-
 mixcont.addEventListener('click', () => {
-    // Hide all main elements
-    kcont.style.display = 'none';
-    ncont.style.display = 'none';
-    mixcont.style.display = 'none';
-    liveRequestBtn.style.display = 'none';
-    qr.style.display = 'none';
-    kvidz.style.display = 'none';
-    container1.style.display = 'none';
-    genresSection.style.display = 'none';
-    
-    // Show only mix container and back button
-    mixContainer.style.display = 'flex';
-    backbtn.style.display = 'block';
+  // Hide the mix div
+  kcont.style.display = 'none';
+  backbtn.style.display = 'none';
+  ncont.style.display = 'none';
+  mixcont.style.display = 'none';
+  liveRequestBtn.style.display = 'none';
+  qr.style.display = 'none';
+  // Show the genres section
+  backbtn.style.display = 'block';
+  searchbar.style.display = 'none';
+  mixAudioButton.style.display = 'block';
+  mixVideoButton.style.display = 'block';
+     
 });
-
-
-videoMix.addEventListener('click', () => {
-    displayMixContent('video');
-});
-
-function displayMixContent(type) {
-    // Show the genres section
-    genresSection.style.display = 'block';
-    mixContainer.style.display = 'none';
-    
-    // Get elements
-    const categoryList = document.getElementById('category-list');
-    const detailsTitle = document.getElementById('details-title');
-    const itemList = document.getElementById('item-list');
-    const sectionTitle = document.getElementById('kwanza');
-    
-    // Update titles
-    sectionTitle.textContent = type === 'audio' ? 'DJ NODAY AUDIO MIXES' : 'DJ NODAY VIDEO SETS';
-    detailsTitle.textContent = 'Select Mix Category';
-    
-    // Clear existing items
-    categoryList.innerHTML = '';
-    itemList.innerHTML = '';
-    
-    // Get appropriate mix data based on type
-    const mixData = type === 'audio' ? {
-        "Club Mixes": [
-            "Afrobeats Club Mix 2024",
-            "Bongo Mix Volume 1",
-            "Dancehall Club Mix",
-            "Gengetone Mix 2024",
-            "Reggae Club Mix",
-            "Rhumba Club Mix"
-        ],
-        "Slow Jams": [
-            "RnB Love Mix Vol 1",
-            "Soul Mix 2024",
-            "Smooth Jazz Mix",
-            "Reggae Love Songs Mix"
-        ]
-    } : {
-        "Live Sets": [
-            "Amka Cafe Live Mix Jan 2024",
-            "Club Blend Live Set",
-            "Rhumba Night Live Mix",
-            "Valentine Special Live Set"
-        ],
-        "Music Videos": [
-            "Afrobeats Visual Mix 2024",
-            "Best of Bongo Video Mix",
-            "Gengetone Video Mix",
-            "Reggae Classics Video Mix"
-        ]
-    };
-
-    // Add categories
-    Object.keys(mixData).forEach(category => {
-        const li = document.createElement('li');
-        li.textContent = category;
-        li.style.cssText = `
-            cursor: pointer;
-            padding: 8px;
-            margin: 2px 0;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            color: white;
-        `;
-        
-        // Hover effect
-        li.onmouseover = () => {
-            li.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-        };
-        li.onmouseout = () => {
-            if (li.style.color !== 'rgb(57, 255, 20)') {
-                li.style.backgroundColor = 'transparent';
-            }
-        };
-        
-        // Click handler
-        li.onclick = () => {
-            displayMixItems(category, mixData[category], type);
-            
-            // Reset all categories
-            categoryList.querySelectorAll('li').forEach(catItem => {
-                catItem.style.backgroundColor = 'transparent';
-                catItem.style.color = 'white';
-            });
-            
-            // Highlight selected category
-            li.style.backgroundColor = 'rgba(57, 255, 20, 0.1)';
-            li.style.color = '#39FF14';
-        };
-        
-        categoryList.appendChild(li);
-    });
-}
-
-function displayMixItems(category, items, type) {
-    const itemList = document.getElementById('item-list');
-    const detailsTitle = document.getElementById('details-title');
-    
-    detailsTitle.textContent = category;
-    itemList.innerHTML = '';
-    
-    items.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        li.style.cssText = `
-            cursor: pointer;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            color: white;
-        `;
-        
-        // Hover effect
-        li.onmouseover = () => {
-            li.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-        };
-        li.onmouseout = () => {
-            if (li.style.color !== 'rgb(57, 255, 20)') {
-                li.style.backgroundColor = 'transparent';
-            }
-        };
-        
-        // Click handler
-        li.onclick = () => {
-            // Reset all items
-            itemList.querySelectorAll('li').forEach(item => {
-                item.style.color = 'white';
-                item.style.backgroundColor = 'transparent';
-            });
-            
-            // Highlight selected item
-            li.style.color = '#39FF14';
-            li.style.backgroundColor = 'rgba(57, 255, 20, 0.1)';
-            
-            // Play the mix
-            const extension = type === 'audio' ? 'mp3' : 'mp4';
-            const mediaPath = `mixes/${type}/${item}.${extension}`;
-            playMedia(mediaPath);
-        };
-        
-        itemList.appendChild(li);
-    });
-}

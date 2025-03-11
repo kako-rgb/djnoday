@@ -508,11 +508,11 @@ a:hover {
 
 /* Main details section */
 .details {
-  width: 250px;
-  height: 600px;
+  width: 400px;
+  height: 550px;
   background-color:rgba(0, 0, 0, 0.7);
   padding: 1rem;
-  overflow-y: auto;
+  
 }
 #details-title{
   color: red;
@@ -627,6 +627,14 @@ button:active {
   max-width: 400px;
   animation: fadeIn 0.5s ease-out forwards;
 }
+#saxcont{
+  width: 300px;
+  transform: translateY(-320px);
+  margin-left: 305px;
+  display: none;
+  color: #39FF14
+  
+}
 #genres-section{
   display: none;
   margin-top: -45px;
@@ -668,6 +676,12 @@ button:active {
 #amkalogo2{
   width:25px ;
   margin-bottom: -10px;
+}
+#mixAudioButton {
+  display: none;
+}
+#mixVideoButton{
+  display: none;
 }
 /*****************************************************************************test***************************/
 /* Header */
@@ -990,4 +1004,3 @@ header {
     padding: 10px 20px;
   }
 }
-

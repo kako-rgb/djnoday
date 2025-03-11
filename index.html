@@ -14,31 +14,13 @@
     <a href="/" id="title-link"><h1 id="topz">NODAY'Z <span>ENTERTAINMENT</span></h1></a>
     <a href="/" id="logo-link-2"><img id="logoimg-2" src="./images/nodaylogo.png" alt="Logo" class="menu-logo"></a>
   </header>
- <!--  <div class="construction-notice">This website is under construction</div>  --> 
+ <!--<div class="construction-notice">This website is under construction</div>  -->  
     <input type="text" class="hidden"placeholder="Search..." id="search-input">
     <p><a href="/"class="backbutton hidden" id="back-btn">Back</a></p>
     <p><a href="/"class="backbutton hidden" id="back-btn2">home</a></p>
     
       <!-- Back Button -->
       <button id="return-btn" class="return-btn hidden" >Back</button>
-
-      <!-- Sidebar for Categories -->
-      <aside id="genres-section2"class="categories1">
-        <h2 id="vgroups">Video Groups</h2>
-        <ul id="group-list">
-          <li data-category="arabicv">Arabic</li>
-          <li data-category="chinesev">Chinese</li>
-          <li data-category="dancehallv">Dancehall,Ragga,Riddims</li>
-          <li data-category="eastAfricanv">East African</li>
-          <li data-category="gospelv">gospel</li>
-          <li data-category="internationalv">International</li>
-          <li data-category="lingalav">Lingala & Rhumba</li>
-          <li data-category="rootsv">Reggae & Roots</li>
-          <li data-category="traditionalv">Traditional</li>
-          <li data-category="naijav">West & South Africa</li>
-          <li data-category="xmassv">Xmass</li>
-        </ul>
-      </aside>
 
       <!-- Main Display Area -->
       <section id="video-grid-section"class="details">
@@ -76,14 +58,18 @@
                 <li data-category="xmass">Xmass</li>
               </ul>
             </aside>
-            <main class="details">
+            <main class="details" id="kconcat">
               <h2 id="details-title">Song</h2>
               <ul id="item-list" class="item-list"></ul>
             </main>
+           
           </div>
         </div>
         </div>
-
+        <main class="details" id="saxcont" >
+          <h2 id="details-title3">Song</h2>
+          <ul id="item-list3" class="item-list"></ul>
+        </main>
         <div class="content"class="genre">      
       </div>
        <!-- Genre and Video Sections -->
@@ -108,7 +94,11 @@
         <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo"></div>
         <div id="ncont" class="genre"> DJ NODAY & SAX-AFROPHONIST </div>
         <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
-        <div id="mixcont" class="genre" onclick="openGenre(KARAOKE)">MIXXEZ</div>
+        <div id="mixcont" class="genre" >MIXXEZ</div>
+        <button id="mixAudioButton" class="genre">audio</button>
+        <button id="mixVideoButton" class="genre">videos</button>
+      
+       
         <div class="container">
           <button id="liveRequestBtn"class="genre">Live Request</button>
           <div id="requestBox" class="hidden">
