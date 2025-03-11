@@ -3773,39 +3773,10 @@ international: [
                     
                     const songItem = document.createElement('li');
                     songItem.textContent = cleanTitle;
-                    songItem.style.cursor = 'pointer';
                     songItem.style.padding = '8px 15px';
                     songItem.style.margin = '5px 0';
                     songItem.style.borderRadius = '5px';
-                    songItem.style.transition = 'all 0.3s ease';
-                    
-                    // Hover effect for songs
-                    songItem.onmouseover = () => {
-                        songItem.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                    };
-                    songItem.onmouseout = () => {
-                        if (songItem.style.color !== 'rgb(57, 255, 20)') { // Don't reset if it's the active song
-                            songItem.style.backgroundColor = 'transparent';
-                        }
-                    };
-                    
-                    songItem.onclick = () => {
-                        // Reset all song items
-                        itemList3.querySelectorAll('li').forEach(s => {
-                            s.style.color = 'white';
-                            s.style.fontWeight = 'normal';
-                            s.style.backgroundColor = 'transparent';
-                        });
-                        
-                        // Highlight playing song
-                        songItem.style.color = '#39FF14';
-                        songItem.style.fontWeight = 'bold';
-                        songItem.style.backgroundColor = 'rgba(57, 255, 20, 0.1)';
-                        
-                        // Play the song - construct path based on clean title
-                        const mediaPath = `ngoma/${category}/${cleanTitle}.mp4`;
-                        playMedia(mediaPath);
-                    };
+                    songItem.style.color = 'white';
                     
                     itemList3.appendChild(songItem);
                 });
