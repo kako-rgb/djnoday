@@ -3951,8 +3951,30 @@ function toggleFullScreen() {
     document.exitFullscreen();
   }
 }
+
+kvidz.addEventListener('click', () => {
+  // Hide the live div
+  kcont.style.display = 'none';
+  backbtn.style.display = 'none';
+  ncont.style.display = 'none';
+  mixcont.style.display = 'none';
+  liveRequestBtn.style.display = 'none';
+  qr.style.display = 'none';
+  kvidz.style.display = 'none';
+  container1.style.display = 'none';
+  // Show the genres section
+  
+  backbtn2.style.display = 'block';
+  searchbar.style.display = 'block';
+});
+
+
 document.getElementById('startBtn').addEventListener('click', function() {
   this.style.display = 'none';
+  kcont.style.display = 'none';
+  ncont.style.display = 'none';
+  liveRequestBtn.style.display = 'none';
+  qr.style.display = 'none';
   document.getElementById('playerSection').style.display = 'block';
   initializePlaylist();
 });
