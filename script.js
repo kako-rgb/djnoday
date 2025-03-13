@@ -3975,6 +3975,7 @@ document.getElementById('startBtn').addEventListener('click', function() {
   ncont.style.display = 'none';
   liveRequestBtn.style.display = 'none';
   qr.style.display = 'none';
+  backbtn.style.display = 'block';
   document.getElementById('playerSection').style.display = 'block';
   initializePlaylist();
 });
