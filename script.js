@@ -3981,7 +3981,7 @@ document.getElementById('startBtn').addEventListener('click', function() {
 });
 
 const songs = [
-  { title: "Because Of Lov",  artist: "DJ Noday", src: "ngoma/Chinese/Because Of Lov.mp4" },
+  { title: "Isabella By Sauti Sol", artist: "DJ Noday", src: "ngoma/East/Isabella  Sauti Sol.mp4" },
   { title: "Bebi Bebi By Nyashinski", artist: "DJ Noday", src: "ngoma/East/Bebi.mp4"  },
   { title: "Amina By sanaipe Tande", artist: "DJ Noday", src: "ngoma/East/Amina.mp4" }
 ];
