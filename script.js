@@ -3980,9 +3980,9 @@ document.getElementById('startBtn').addEventListener('click', function() {
 });
 
 const songs = [
-  { title: "Summer Vibes", artist: "DJ Cool", src: "songs/song1.mp4" },
-  { title: "Mountain High", artist: "The Band", src: "songs/song2.mp4" },
-  { title: "Electronic Dreams", artist: "Synth Master", src: "songs/song3.mp4" }
+  { title: "Because Of Lov",  artist: "DJ Noday", src: "ngoma/Chinese/Because Of Lov.mp4" },
+  { title: "Bebi Bebi By Nyashinski", artist: "DJ Noday", src: "ngoma/East/Bebi.mp4"  },
+  { title: "Amina By sanaipe Tande", artist: "DJ Noday", src: "ngoma/East/Amina.mp4" }
 ];
 
 function initializePlaylist() {
