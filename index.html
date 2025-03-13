@@ -87,7 +87,7 @@
       <!-- Video Player Modal -->
       <div id="playerModal" class="hidden">
           <video id="mediaPlayer" controls></video>
-          <button id="closePlayer" onclick="closePlayer()">Close</button>
+          <button id="closePlayer" onclick="closePlayer1()">Close</button>
       </div>
   
        </div>
@@ -95,17 +95,15 @@
         <div id="ncont" class="genre"> DJ NODAY & SAX-AFROPHONIST </div>
         <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
         <div id="startBtn" class="genre" >MIXXEZ</div>
-        <div id="playerSection" class="player-container">
-          <audio id="audioPlayer" controls class="audio-player">
-              Your browser does not support the audio element.
-          </audio>
-          
-          <div id="playlist" class="playlist-container"></div>
-      </div>
-        <button id="mixAudioButton" class="genre">audio</button>
-        <button id="mixVideoButton" class="genre">videos</button>
-      
-       
+         <div class="content-container">
+            <div id="playerContainer" class="player-container">
+                <div class="close-player-btn" id="closePlayerBtn">✕</div>
+                <video id="mediaPlayer" class="media-player" controls></video>
+            </div>            
+            <div class="media-list-container" id="mediaListContainer">
+                <div class="media-list" id="mediaList"></div>
+            </div>
+        </div>
         <div class="container">
           <button id="liveRequestBtn"class="genre">Live Request</button>
           <div id="requestBox" class="hidden">

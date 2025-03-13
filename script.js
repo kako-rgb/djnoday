@@ -935,12 +935,12 @@ function playMedia(src) {
 
   // Close player automatically when video ends
   videoPlayer.onended = () => {
-      closePlayer();
+      closePlayer1();
   };
 }
 
 // Close Player
-function closePlayer() {
+function closePlayer1() {
   console.log('closePlayer function called');
   const modal = document.getElementById('playerModal');
   const videoPlayer = document.getElementById('mediaPlayer');
@@ -3968,55 +3968,114 @@ kvidz.addEventListener('click', () => {
   searchbar.style.display = 'block';
 });
 
-
-document.getElementById('startBtn').addEventListener('click', function() {
-  this.style.display = 'none';
-  kcont.style.display = 'none';
-  ncont.style.display = 'none';
-  liveRequestBtn.style.display = 'none';
-  qr.style.display = 'none';
-  backbtn.style.display = 'block';
-  document.getElementById('playerSection').style.display = 'block';
-  initializePlaylist();
-});
-
-const songs = [
-  { title: "Isabella By Sauti Sol", artist: "DJ Noday", src: "ngoma/East/Isabella  Sauti Sol.mp4" },
-  { title: "Bebi Bebi By Nyashinski", artist: "DJ Noday", src: "ngoma/East/Bebi.mp4"  },
-  { title: "Amina By sanaipe Tande", artist: "DJ Noday", src: "ngoma/East/Amina.mp4" }
+const mediaLibrary = [
+    { 
+        title: "Amina By sanaipe Tande",
+        artist: "DJ Noday",
+        file: "ngoma/East/Amina.mp4",
+        thumbnail: "thumbnails/song1.jpg"
+    },
+    {
+        title: "Bebi Bebi By Nyashinski",
+        artist: "DJ Noday",
+        file: "ngoma/East/Bebi.mp4",
+        thumbnail: "thumbnails/song2.jpg"
+    },
+    { 
+      title: "Chaguo la moyo By Otile Brown",
+      artist: "DJ Noday",
+      file: "ngoma/East/Chaguo.mp4",
+      thumbnail: "thumbnails/song1.jpg"
+  },
+  {
+      title: "Deadly By Nameless",
+      artist: "DJ Noday",
+      file: "ngoma/East/Deadly  Nameless.mp4",
+      thumbnail: "thumbnails/song2.jpg"
+  },{ 
+    title: "Extra pressure By Bensoul",
+    artist: "DJ Noday",
+    file: "ngoma/East/Extra Bensoul.mp4",
+    thumbnail: "thumbnails/song1.jpg"
+},
+{
+    title: "Free By Nyashinski",
+    artist: "DJ Noday",
+    file: "ngoma/East/Free  Nyashinski.mp4",
+    thumbnail: "thumbnails/song2.jpg"
+},
+    // Add more media items as needed
 ];
 
-function initializePlaylist() {
-  const playlist = document.getElementById('playlist');
-  const audioPlayer = document.getElementById('audioPlayer');
+// Initialize button click
+document.getElementById('startBtn').addEventListener('click', function() {
+    this.style.display = 'none';
+    kcont.style.display = 'none';
+    ncont.style.display = 'none';
+    liveRequestBtn.style.display = 'none';
+    qr.style.display = 'none';
+    backbtn.style.display = 'block';
+    document.querySelector('.content-container').style.display = 'block';
+    initializeMediaList();
+});
 
-  songs.forEach((song, index) => {
-      const songElement = document.createElement('div');
-      songElement.className = 'playlist-item';
-      songElement.innerHTML = `
-          <div>${index + 1}. ${song.title}</div>
-          <div class="artist">${song.artist}</div>
-      `;
-      
-      songElement.addEventListener('click', () => {
-          // Remove current-song class from all items
-          document.querySelectorAll('.playlist-item').forEach(item => {
-              item.classList.remove('current-song');
-          });
-          
-          // Set new song
-          audioPlayer.src = song.src;
-          audioPlayer.play();
-          songElement.classList.add('current-song');
-      });
-
-      playlist.appendChild(songElement);
-  });
-
-  // Auto-play next song
-  audioPlayer.addEventListener('ended', () => {
-      const currentIndex = songs.findIndex(s => s.src === audioPlayer.src);
-      const nextIndex = (currentIndex + 1) % songs.length;
-      playlist.children[nextIndex].click();
-  });
+function initializeMediaList() {
+    const mediaList = document.getElementById('mediaList');
+    
+    mediaLibrary.forEach(media => {
+        const mediaItem = createMediaItem(media);
+        mediaList.appendChild(mediaItem);
+    });
 }
+
+function createMediaItem(media) {
+    const mediaItem = document.createElement('div');
+    mediaItem.className = 'media-item';
+    mediaItem.innerHTML = `
+        <img src="${media.thumbnail}" class="thumbnail-image" alt="${media.title}">
+        <div class="media-info">
+            <div class="title">${media.title}</div>
+            <div class="artist">${media.artist}</div>
+        </div>
+    `;
+    
+    mediaItem.addEventListener('click', () => {
+        showMediaPlayer(media.file);
+    });
+    
+    return mediaItem;
+}
+
+function showMediaPlayer(mediaSrc) {
+    const playerContainer = document.getElementById('playerContainer');
+    const mediaPlayer = document.getElementById('mediaPlayer');
+    
+    playerContainer.style.display = 'block';
+    mediaPlayer.src = mediaSrc;
+    mediaPlayer.play();
+    
+    // Scroll to top when new song is selected
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Close player functionality
+document.getElementById('closePlayerBtn').addEventListener('click', closePlayer);
+
+function closePlayer() {
+    const playerContainer = document.getElementById('playerContainer');
+    const mediaPlayer = document.getElementById('mediaPlayer');
+    
+    mediaPlayer.pause();
+    mediaPlayer.currentTime = 0;
+    playerContainer.style.display = 'none';
+}
+
+// Auto-close when media ends
+document.getElementById('mediaPlayer').addEventListener('ended', closePlayer);
+
+// Handle ESC key to close player
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closePlayer();
+    }
+});
