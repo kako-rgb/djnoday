@@ -3,11 +3,9 @@ const kcont = document.getElementById('kcont');
 const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
 const backbtn2 = document.getElementById('back-btn2');
-const mixcont = document.getElementById('mixcont');
+const mixcont = document.getElementById('startBtn');
 const saxcont = document.getElementById('saxcont');
 const kconcat = document.getElementById('kconcat');
-const mixVideoButton = document.getElementById('mixVideoButton');
-const mixAudioButton = document.getElementById('mixAudioButton');
 const liveRequestBtn = document.getElementById('liveRequestBtn');
 const qr = document.getElementById('qr');
 const genresSection = document.getElementById('genres-section');
@@ -3953,18 +3951,49 @@ function toggleFullScreen() {
     document.exitFullscreen();
   }
 }
-mixcont.addEventListener('click', () => {
-  // Hide the mix div
-  kcont.style.display = 'none';
-  backbtn.style.display = 'none';
-  ncont.style.display = 'none';
-  mixcont.style.display = 'none';
-  liveRequestBtn.style.display = 'none';
-  qr.style.display = 'none';
-  // Show the genres section
-  backbtn.style.display = 'block';
-  searchbar.style.display = 'none';
-  mixAudioButton.style.display = 'block';
-  mixVideoButton.style.display = 'block';
-     
+document.getElementById('startBtn').addEventListener('click', function() {
+  this.style.display = 'none';
+  document.getElementById('playerSection').style.display = 'block';
+  initializePlaylist();
 });
+
+const songs = [
+  { title: "Summer Vibes", artist: "DJ Cool", src: "songs/song1.mp4" },
+  { title: "Mountain High", artist: "The Band", src: "songs/song2.mp4" },
+  { title: "Electronic Dreams", artist: "Synth Master", src: "songs/song3.mp4" }
+];
+
+function initializePlaylist() {
+  const playlist = document.getElementById('playlist');
+  const audioPlayer = document.getElementById('audioPlayer');
+
+  songs.forEach((song, index) => {
+      const songElement = document.createElement('div');
+      songElement.className = 'playlist-item';
+      songElement.innerHTML = `
+          <div>${index + 1}. ${song.title}</div>
+          <div class="artist">${song.artist}</div>
+      `;
+      
+      songElement.addEventListener('click', () => {
+          // Remove current-song class from all items
+          document.querySelectorAll('.playlist-item').forEach(item => {
+              item.classList.remove('current-song');
+          });
+          
+          // Set new song
+          audioPlayer.src = song.src;
+          audioPlayer.play();
+          songElement.classList.add('current-song');
+      });
+
+      playlist.appendChild(songElement);
+  });
+
+  // Auto-play next song
+  audioPlayer.addEventListener('ended', () => {
+      const currentIndex = songs.findIndex(s => s.src === audioPlayer.src);
+      const nextIndex = (currentIndex + 1) % songs.length;
+      playlist.children[nextIndex].click();
+  });
+}

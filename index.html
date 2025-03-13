@@ -94,7 +94,14 @@
         <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo"></div>
         <div id="ncont" class="genre"> DJ NODAY & SAX-AFROPHONIST </div>
         <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
-        <div id="mixcont" class="genre" >MIXXEZ</div>
+        <div id="startBtn" class="genre" >MIXXEZ</div>
+        <div id="playerSection" class="player-container">
+          <audio id="audioPlayer" controls class="audio-player">
+              Your browser does not support the audio element.
+          </audio>
+          
+          <div id="playlist" class="playlist-container"></div>
+      </div>
         <button id="mixAudioButton" class="genre">audio</button>
         <button id="mixVideoButton" class="genre">videos</button>
       
