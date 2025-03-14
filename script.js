@@ -1,5 +1,4 @@
 // Select the elements
-// Select the elements
 const kcont = document.getElementById('kcont');
 const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
@@ -954,26 +953,18 @@ function closePlayer1() {
 }
 
 /////////////////////////////////////////////////// REQUEST START ///////////////////////////////////////////////
-
-liveRequestBtn.addEventListener('click', () => {
-  // Hide the kcont div
-  liveRequestBtn.style.display = 'none';
-  kcont.style.display = 'none';
-  ncont.style.display = 'none';
-  mixcont.style.display = 'none';
-  qr.style.display = 'none';
-  // Show the genres section      
-  requestBox.style.display = 'block';
-  backbtn.style.display = 'block';
-  searchbar.style.display = 'none';     
-
-});
 const API_URL = "https://nodayz.onrender.com/requests";
 
 // Show request form when button is clicked
 liveRequestBtn.addEventListener("click", () => {
   liveRequestBtn.classList.add("hidden");
+  kcont.classList.add("hidden");
+  ncont.classList.add("hidden");
+  qr.classList.add("hidden");
+  searchbar.classList.add("hidden");
+  mixcont.classList.add("hidden");
   requestBox.classList.remove("hidden");
+  backbtn.classList.remove("hidden");
 });
 
 // Fetch and display existing requests
@@ -986,16 +977,16 @@ async function fetchRequests() {
 
     const requests = await response.json();
 
-  // Clear and populate the request display
-  requestsDisplay.innerHTML = "";
-  requests.forEach(({ _id, name, request }, index) => {
-    const requestItem = document.createElement("div");
-    requestItem.className = "request-item";
-    requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
-    requestItem.innerHTML = `
-    <strong>${requests.length - index}. ${name || "User"}:</strong> ${request}
-`;
-    
+    // Clear and populate the request display
+    requestsDisplay.innerHTML = "";
+    requests.forEach(({ _id, name, request }, index) => {
+      const requestItem = document.createElement("div");
+      requestItem.className = "request-item";
+      requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
+      requestItem.innerHTML = `
+        <strong>${requests.length - index}. ${name || "User"}:</strong> ${request}
+      `;
+
       // Add long-press event listener for deletion
       addLongPressListener(requestItem, _id);
 
@@ -1015,6 +1006,12 @@ requestForm.addEventListener("submit", async (e) => {
 
   const musicRequest = document.getElementById("musicRequest").value.trim();
   const userName = document.getElementById("userName").value.trim() || "User";
+
+  // Validate music request length
+  if (musicRequest.length > 40) {
+    alert("Music request must be 40 characters or less!");
+    return;
+  }
 
   if (!musicRequest) {
     alert("Please enter a music request!");
@@ -1099,8 +1096,7 @@ function addLongPressListener(element, requestId) {
 }
 
 // Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
-setInterval(fetchRequests, 60000);
-/////////////////////////////////////////////////////////////////////////REQUEST END////////////////////////////////
+setInterval(fetchRequests, 60000);/////////////////////////////////////////////////////////////////////////REQUEST END////////////////////////////////
 // Data for categories and items
 const categoryData = {
   arabic: [
@@ -3974,19 +3970,19 @@ const mediaLibrary = [
         title: "Amina By sanaipe Tande",
         artist: "DJ Noday",
         file: "ngoma/East/Amina.mp4",
-        thumbnail: "resouces/thumbnails/mob.jpg"
+        thumbnail: "thumbnails/song1.jpg"
     },
     {
         title: "Bebi Bebi By Nyashinski",
         artist: "DJ Noday",
         file: "ngoma/East/Bebi.mp4",
-        thumbnail: "resouces/thumbnails/xzibit.jpg"
+        thumbnail: "thumbnails/song2.jpg"
     },
     { 
       title: "Chaguo la moyo By Otile Brown",
       artist: "DJ Noday",
       file: "ngoma/East/Chaguo.mp4",
-      thumbnail: "resouces/thumbnails/mob2.jpg"
+      thumbnail: "thumbnails/song1.jpg"
   },
   {
       title: "Deadly By Nameless",
