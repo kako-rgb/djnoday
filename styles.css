@@ -1084,6 +1084,7 @@ header {
 
 .media-item {
   position: relative;
+  margin: 10px;
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
