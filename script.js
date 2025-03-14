@@ -3974,19 +3974,19 @@ const mediaLibrary = [
         title: "Amina By sanaipe Tande",
         artist: "DJ Noday",
         file: "ngoma/East/Amina.mp4",
-        thumbnail: "thumbnails/song1.jpg"
+        thumbnail: "resouces/thumbnails/mob.jpg"
     },
     {
         title: "Bebi Bebi By Nyashinski",
         artist: "DJ Noday",
         file: "ngoma/East/Bebi.mp4",
-        thumbnail: "thumbnails/song2.jpg"
+        thumbnail: "resouces/thumbnails/xzibit.jpg"
     },
     { 
       title: "Chaguo la moyo By Otile Brown",
       artist: "DJ Noday",
       file: "ngoma/East/Chaguo.mp4",
-      thumbnail: "thumbnails/song1.jpg"
+      thumbnail: "resouces/thumbnails/mob2.jpg"
   },
   {
       title: "Deadly By Nameless",
