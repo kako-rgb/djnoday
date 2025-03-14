@@ -986,15 +986,15 @@ async function fetchRequests() {
 
     const requests = await response.json();
 
-    // Clear and populate the request display
-    requestsDisplay.innerHTML = "";
-    requests.forEach(({ _id, name, request }) => {
-      const requestItem = document.createElement("div");
-      requestItem.className = "request-item";
-      requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
-      requestItem.innerHTML = `
-        <strong>${name || "User"}:</strong> ${request}
-      `;
+   // Clear and populate the request display
+   requestsDisplay.innerHTML = "";
+   requests.forEach(({ _id, name, request }, index) => {
+     const requestItem = document.createElement("div");
+     requestItem.className = "request-item";
+     requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
+     requestItem.innerHTML = `
+       <strong>${index + 1}.${name || "User"}:</strong> ${request}
+     `;
       
       // Add long-press event listener for deletion
       addLongPressListener(requestItem, _id);
