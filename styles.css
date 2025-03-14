@@ -613,13 +613,21 @@ button:active {
     border: none;
     cursor: pointer;
   }
+  #postbt{
+    border-radius: 5px;
+  }
+
   #userName{
     color: orange;
     font-weight: bold;
+    margin-bottom: 1px;
+    border-radius: 5px;
   }
   #musicRequest{
     color: blueviolet;
     font-style: italic;
+    margin-bottom: 1px;
+    border-radius: 5px;
   }
 /***********************************************END**********************/
 /* Main Container */
