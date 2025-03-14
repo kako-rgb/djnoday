@@ -611,7 +611,14 @@ button:active {
     border: none;
     cursor: pointer;
   }
-
+  #userName{
+    color: orange;
+    font-weight: bold;
+  }
+  #musicRequest{
+    color: blueviolet;
+    font-style: italic;
+  }
 /***********************************************END**********************/
 /* Main Container */
 .container {
