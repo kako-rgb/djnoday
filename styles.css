@@ -543,7 +543,9 @@ a:hover {
   width: 480px;
   margin-left:-20px;
 }
-
+#requestsDisplay{
+  text-align: left;
+  }
 
 span{
   color: #39FF14;
@@ -905,7 +907,7 @@ header {
 
 #fullscreen-toggle {
   margin-top: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(167, 38, 38, 0.2);
   border: none;
   color: #fff;
   padding: 8px 12px;
