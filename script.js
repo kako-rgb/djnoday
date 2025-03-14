@@ -1,4 +1,5 @@
 // Select the elements
+// Select the elements
 const kcont = document.getElementById('kcont');
 const ncont = document.getElementById('ncont');
 const backbtn = document.getElementById('back-btn');
@@ -967,62 +968,51 @@ liveRequestBtn.addEventListener('click', () => {
   searchbar.style.display = 'none';     
 
 });
-const API_BASE = "https://nodayz.onrender.com";
+const API_URL = "https://nodayz.onrender.com/requests";
 
-// Helper function for API calls
-async function fetchAPI(endpoint, options = {}) {
-  try {
-    const url = `${PROXY_URL}${encodeURIComponent(API_BASE + endpoint)}`;
-    const response = await fetch(url, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...options.headers
-      }
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || `HTTP error ${response.status}`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error(`API Error (${endpoint}):`, error);
-    throw error;
-  }
-}
-//////////////////////////////////////// Add to server.js
-app.enable('trust proxy');
-app.use((req, res, next) => {
-  if(req.secure) {
-    next();
-  } else {
-    res.redirect(301, `https://${req.headers.host}${req.url}`);
-  }
+// Show request form when button is clicked
+liveRequestBtn.addEventListener("click", () => {
+  liveRequestBtn.classList.add("hidden");
+  requestBox.classList.remove("hidden");
 });
 
-// Fetch and display requests
+// Fetch and display existing requests
 async function fetchRequests() {
   try {
-    const requests = await fetchAPI("/requests");
-    requestsDisplay.innerHTML = requests
-      .map(({ _id, name, request }) => `
-        <div class="request-item" data-id="${_id}">
-          <strong>${name}:</strong> ${request}
-        </div>
-      `).join("");
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch requests");
+    }
+
+    const requests = await response.json();
+
+    // Clear and populate the request display
+    requestsDisplay.innerHTML = "";
+    requests.forEach(({ _id, name, request }) => {
+      const requestItem = document.createElement("div");
+      requestItem.className = "request-item";
+      requestItem.setAttribute("data-id", _id); // Store the request ID for deletion
+      requestItem.innerHTML = `
+        <strong>${name || "User"}:</strong> ${request}
+      `;
       
-    document.querySelectorAll('.request-item').forEach(item => {
-      addLongPressListener(item, item.dataset.id);
+      // Add long-press event listener for deletion
+      addLongPressListener(requestItem, _id);
+
+      requestsDisplay.appendChild(requestItem);
     });
-  }  
+  } catch (error) {
+    console.error("Error fetching requests:", error);
+  }
 }
 
-// Form submission handler
+// Load requests on page load
+fetchRequests();
+
+// Handle form submission
 requestForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  
+
   const musicRequest = document.getElementById("musicRequest").value.trim();
   const userName = document.getElementById("userName").value.trim() || "User";
 
@@ -1033,71 +1023,83 @@ requestForm.addEventListener("submit", async (e) => {
 
   try {
     // Check for duplicates
-    const existing = await fetchAPI("/requests");
-    if (existing.some(req => req.request.toLowerCase() === musicRequest.toLowerCase())) {
-      showTempMessage("This request already exists!");
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch requests");
+    }
+
+    const requests = await response.json();
+    const duplicate = requests.some(
+      (req) => req.request.toLowerCase() === musicRequest.toLowerCase()
+    );
+
+    if (duplicate) {
+      duplicateMessage.classList.remove("hidden");
+      setTimeout(() => duplicateMessage.classList.add("hidden"), 3000); // Hide after 3 seconds
       return;
     }
 
-    // Submit new request
-    await fetchAPI("/requests", {
+    // Post new request
+    const newRequest = { name: userName, request: musicRequest };
+    const postResponse = await fetch(API_URL, {
       method: "POST",
-      body: JSON.stringify({ name: userName, request: musicRequest })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRequest),
     });
 
+    if (!postResponse.ok) {
+      throw new Error("Failed to post new request");
+    }
+
+    // Clear form fields
     document.getElementById("musicRequest").value = "";
     document.getElementById("userName").value = "";
+
+    // Refresh the display with the updated list of requests
     fetchRequests();
   } catch (error) {
-    showError("Submission failed. Please try again.");
+    console.error("Error posting request:", error);
   }
 });
 
-// Enhanced long-press handler
+// Add long-press functionality to delete a request
 function addLongPressListener(element, requestId) {
   let pressTimer;
 
+  // Start timer on mouse down or touch start
   const startPress = () => {
     pressTimer = setTimeout(async () => {
       try {
-        await fetchAPI(`/requests/${requestId}`, { method: "DELETE" });
+        const deleteResponse = await fetch(`${API_URL}/${requestId}`, {
+          method: "DELETE",
+        });
+
+        if (!deleteResponse.ok) {
+          throw new Error("Failed to delete request");
+        }
+
+        // Refresh the display with the updated list of requests
         fetchRequests();
       } catch (error) {
-        showError("Deletion failed. Please try again.");
+        console.error("Error deleting request:", error);
       }
-    }, 5000);
+    }, 5000); // 5 seconds for long press
   };
 
-  const cancelPress = () => clearTimeout(pressTimer);
+  // Clear timer on mouse up, touch end, or leave
+  const cancelPress = () => {
+    clearTimeout(pressTimer);
+  };
 
-  ['mousedown', 'touchstart'].forEach(e => element.addEventListener(e, startPress));
-  ['mouseup', 'touchend', 'mouseleave'].forEach(e => element.addEventListener(e, cancelPress));
+  element.addEventListener("mousedown", startPress);
+  element.addEventListener("touchstart", startPress);
+  element.addEventListener("mouseup", cancelPress);
+  element.addEventListener("touchend", cancelPress);
+  element.addEventListener("mouseleave", cancelPress);
 }
 
-// UI Helpers
-function showTempMessage(message, duration = 3000) {
-  const msgElement = document.createElement('div');
-  msgElement.className = 'temp-message';
-  msgElement.textContent = message;
-  document.body.appendChild(msgElement);
-  setTimeout(() => msgElement.remove(), duration);
-}
-
-function showError(message) {
-  console.error(message);
-  alert(message);
-}
-
-// Initialization
-liveRequestBtn.addEventListener("click", () => {
-  liveRequestBtn.classList.add("hidden");
-  requestBox.classList.remove("hidden");
-});
-
-// Refresh every 60 seconds
+// Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
 setInterval(fetchRequests, 60000);
-window.addEventListener('load', fetchRequests);
-
 /////////////////////////////////////////////////////////////////////////REQUEST END////////////////////////////////
 // Data for categories and items
 const categoryData = {
@@ -3972,13 +3974,13 @@ const mediaLibrary = [
         title: "Amina By sanaipe Tande",
         artist: "DJ Noday",
         file: "ngoma/East/Amina.mp4",
-        thumbnail: "resouces/thumbnails/mob.jpg"
+        thumbnail: "thumbnails/song1.jpg"
     },
     {
         title: "Bebi Bebi By Nyashinski",
         artist: "DJ Noday",
         file: "ngoma/East/Bebi.mp4",
-        thumbnail: "resouces/thumbnails/xzibit.jpg"
+        thumbnail: "thumbnails/song2.jpg"
     },
     { 
       title: "Chaguo la moyo By Otile Brown",
@@ -4078,3 +4080,4 @@ document.addEventListener('keydown', (e) => {
         closePlayer();
     }
 });
+
