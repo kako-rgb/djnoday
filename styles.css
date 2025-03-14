@@ -1078,7 +1078,7 @@ header {
 .media-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 20px;
+  gap: 10px; /* Default gap */
   padding: 10px;
 }
 
@@ -1117,27 +1117,23 @@ header {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+
+/* For smaller screens */
+@media (max-width: 768px) {
   .media-list {
-      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); /* Adjust column size for smaller thumbnails */
+      gap: 15px; /* Increase gap for better spacing */
   }
   
-  .media-player {
-      height: 200px;
-  }
-  
-  .close-player-btn {
-      top: -10px;
-      right: -10px;
-  }
-  
-  .media-list-container {
-      height: calc(100vh - 130px);
+  .media-item {
+      width: 60px;
+      height: 60px;
   }
 }
 
+/* For even smaller screens */
 @media (max-width: 400px) {
-  .media-info {
-      font-size: 8px;
+  .media-list {
+      gap: 20px; /* Further increase gap for better readability */
   }
 }
