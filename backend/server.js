@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       const allowedOrigins = [
-        "https://live-request-test.netlify.app", // Production frontend
+        "nodayzentertainment.co.ke", // Production frontend
         "http://127.0.0.1:5500", // Local frontend for testing
       ];
       if (!origin || allowedOrigins.includes(origin)) {
