@@ -968,7 +968,6 @@ liveRequestBtn.addEventListener('click', () => {
 
 });
 const API_BASE = "https://nodayz.onrender.com";
-const PROXY_URL = "https://corsproxy.io/?";
 
 // Helper function for API calls
 async function fetchAPI(endpoint, options = {}) {
@@ -993,6 +992,15 @@ async function fetchAPI(endpoint, options = {}) {
     throw error;
   }
 }
+//////////////////////////////////////// Add to server.js
+app.enable('trust proxy');
+app.use((req, res, next) => {
+  if(req.secure) {
+    next();
+  } else {
+    res.redirect(301, `https://${req.headers.host}${req.url}`);
+  }
+});
 
 // Fetch and display requests
 async function fetchRequests() {
@@ -1008,9 +1016,7 @@ async function fetchRequests() {
     document.querySelectorAll('.request-item').forEach(item => {
       addLongPressListener(item, item.dataset.id);
     });
-  } catch (error) {
-    showError("Failed to load requests. Please refresh the page.");
-  }
+  } catch (error) 
 }
 
 // Form submission handler

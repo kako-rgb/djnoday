@@ -10,24 +10,19 @@ if (!process.env.MONGO_URI) {
 }
 
 const app = express();
+// Add OPTIONS method handling
+app.options('*', cors(corsOptions)); // Handle all OPTIONS requests
 
-// Enhanced CORS Configuration
+// Existing CORS config update
 const corsOptions = {
-  origin: (origin, callback) => {
-    const allowedOrigins = [
-      "https://nodayzentertainment.co.ke",
-      "http://127.0.0.1:5500"
-    ];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: "GET,POST,DELETE",
+  origin: [
+    "https://nodayzentertainment.co.ke",
+    "https://www.nodayzentertainment.co.ke"
+  ],
+  methods: "GET,POST,DELETE,OPTIONS", // Add OPTIONS
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 204 // Required for some CORS implementations
 };
 
 app.use(cors(corsOptions));
