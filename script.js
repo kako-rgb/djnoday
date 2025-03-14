@@ -1096,7 +1096,10 @@ function addLongPressListener(element, requestId) {
 }
 
 // Periodically refresh requests to reflect auto-deletion (optional, every 1 min)
-setInterval(fetchRequests, 60000);/////////////////////////////////////////////////////////////////////////REQUEST END////////////////////////////////
+setInterval(fetchRequests, 1000);
+
+
+/////////////////////////////////////////////////////////////////////////REQUEST END////////////////////////////////
 // Data for categories and items
 const categoryData = {
   arabic: [
