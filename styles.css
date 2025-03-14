@@ -1089,8 +1089,8 @@ header {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 
 .media-item:hover {
