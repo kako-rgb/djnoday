@@ -1016,7 +1016,7 @@ async function fetchRequests() {
     document.querySelectorAll('.request-item').forEach(item => {
       addLongPressListener(item, item.dataset.id);
     });
-  } catch (error) 
+  }  
 }
 
 // Form submission handler
