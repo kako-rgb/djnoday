@@ -10,10 +10,8 @@ if (!process.env.MONGO_URI) {
 }
 
 const app = express();
-// Add OPTIONS method handling
-app.options('*', cors(corsOptions)); // Handle all OPTIONS requests
 
-// Existing CORS config update
+// ✅ Move corsOptions ABOVE its usage
 const corsOptions = {
   origin: [
     "https://nodayzentertainment.co.ke",
@@ -25,7 +23,10 @@ const corsOptions = {
   optionsSuccessStatus: 204 // Required for some CORS implementations
 };
 
+// ✅ Apply CORS middleware after definition
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle all OPTIONS requests
+
 app.use(express.json());
 
 // MongoDB Connection with improved error handling
