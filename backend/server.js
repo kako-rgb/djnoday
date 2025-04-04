@@ -14,7 +14,7 @@ const app = express();
 // ✅ Move corsOptions ABOVE its usage
 const corsOptions = {
   origin: [
-    "https://nodayzentertainment.co.ke",
+    //"https://nodayzentertainment.co.ke",
     "https://www.nodayzentertainment.co.ke"
   ],
   methods: "GET,POST,DELETE,OPTIONS", // Add OPTIONS
