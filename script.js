@@ -5512,16 +5512,7 @@ international: [
       backbtn2.style.display = 'block';
       searchbar.style.display = 'block';
     });
- // ...existing code...
 
-document.getElementById('back-btn2').addEventListener('click', function(e) {
-  e.preventDefault(); // Prevent default link behavior
-  if (kcont && typeof kcont.addEventListener === 'function') {
-      kcont.click(); // Simulate click on kcont element
-  }
-});
-
-// ...existing code...
 // Function to render item list based on category
 function displayItems(category) {
   const itemList = document.getElementById("item-list");
@@ -5797,4 +5788,24 @@ document.addEventListener('keydown', (e) => {
         closePlayer();
     }
 });
+// ...existing code...
 
+document.getElementById('back-btn2').addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default link behavior
+  
+  kcont.style.display = 'none';
+  ncont.style.display = 'none';
+  mixcont.style.display = 'none';
+  liveRequestBtn.style.display = 'none';
+  qr.style.display = 'none';
+  kvidz.style.display = 'none';
+  videoButton.style.display = 'block';
+  
+  // Show karaoke section
+  genresSection.style.display = 'block';
+  backbtn.style.display = 'block';
+  searchbar.style.display = 'block';
+  
+});
+
+// ...existing code...
