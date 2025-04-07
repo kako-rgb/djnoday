@@ -2746,12 +2746,15 @@ requestForm.addEventListener("submit", async (e) => {
 
     // Post new request
     const newRequest = { name: userName, request: musicRequest };
-    const postResponse = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newRequest),
-    });
-
+    const postResponse = await 
+    fetch('https://nodayz.onrender.com/requests', {
+        method: 'POST', // or POST, depending on your needs
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors', // explicitly state we want CORS
+        credentials: 'include' // if you need to send cookies
+    })
     if (!postResponse.ok) {
       throw new Error("Failed to post new request");
     }

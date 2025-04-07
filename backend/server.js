@@ -10,9 +10,7 @@ if (!process.env.MONGO_URI) {
 }
 
 const app = express();
-
-// ✅ Move corsOptions ABOVE its usage
-const corsOptions = {
+app.use(cors({
   origin: [
     "https://nodayzentertainment.co.ke",
     "https://www.nodayzentertainment.co.ke"
@@ -21,7 +19,8 @@ const corsOptions = {
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
   optionsSuccessStatus: 204 // Required for some CORS implementations
-};
+}));
+
 
 // ✅ Apply CORS middleware after definition
 app.use(cors(corsOptions));
