@@ -2746,15 +2746,12 @@ requestForm.addEventListener("submit", async (e) => {
 
     // Post new request
     const newRequest = { name: userName, request: musicRequest };
-    const postResponse = await 
-    fetch('https://nodayz.onrender.com/requests', {
-        method: 'POST', // or POST, depending on your needs
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors', // explicitly state we want CORS
-        credentials: 'include' // if you need to send cookies
-    })
+    const postResponse = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRequest),
+    });
+
     if (!postResponse.ok) {
       throw new Error("Failed to post new request");
     }
@@ -5512,7 +5509,7 @@ international: [
       backbtn2.style.display = 'block';
       searchbar.style.display = 'block';
     });
-
+ 
 // Function to render item list based on category
 function displayItems(category) {
   const itemList = document.getElementById("item-list");
@@ -5788,24 +5785,4 @@ document.addEventListener('keydown', (e) => {
         closePlayer();
     }
 });
-// ...existing code...
 
-document.getElementById('back-btn2').addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent default link behavior
-  
-  kcont.style.display = 'none';
-  ncont.style.display = 'none';
-  mixcont.style.display = 'none';
-  liveRequestBtn.style.display = 'none';
-  qr.style.display = 'none';
-  kvidz.style.display = 'none';
-  videoButton.style.display = 'block';
-  
-  // Show karaoke section
-  genresSection.style.display = 'block';
-  backbtn.style.display = 'block';
-  searchbar.style.display = 'block';
-  
-});
-
-// ...existing code...
