@@ -1003,7 +1003,7 @@ header {
   nav ul {
     display: none; /* Hide menu items by default */
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
+    background: none;
     position: absolute;
     top: 50px;
     right: 0; /* Changed from right: 10px to align with screen edge */
