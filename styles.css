@@ -990,11 +990,16 @@ header {
   }
 }
 /* Hide menu items and show hamburger menu on small screens */
+
 @media (max-width: 768px) {
-  .menu,#menu,.header {
+  .menu {
     width: 100%;
-    
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
   nav ul {
     display: none; /* Hide menu items by default */
     flex-direction: column;
