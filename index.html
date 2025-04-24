@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODAY'Z ENTERTAINMENT</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="./images/nodaylogo.png"> <!-- Favicon -->
+</head>
+<body>
+  <!-- Password Modal -->
+  <div id="password-modal" class="password-modal">
+    <div class="password-content">
+      <h2 id="password-title">Owner Access Required</h2>
+      <p id="password-message">Please enter the owner password to grant access to all users</p>
+
+      <!-- Login Form -->
+      <form id="password-form">
+        <input type="password" id="password-input" placeholder="Password" required>
+        <div class="password-options">
+          <label>
+            Set access duration:
+            <select id="access-hours">
+              <option value="1">1 hour</option>
+              <option value="2">2 hours</option>
+              <option value="3" selected>3 hours</option>
+              <option value="6">6 hours</option>
+              <option value="12">12 hours</option>
+              <option value="24">24 hours</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit">Grant Access</button>
+        <div id="password-expiry-info" class="expiry-info hidden">
+          Password expires in <span id="days-remaining">30</span> days
+        </div>
+      </form>
+
+      <!-- Change Password Form (initially hidden) -->
+      <form id="change-password-form" class="hidden">
+        <input type="password" id="current-password" placeholder="Current Password" required>
+        <input type="password" id="new-password" placeholder="New Password" required>
+        <input type="password" id="confirm-password" placeholder="Confirm New Password" required>
+        <button type="submit">Change Password</button>
+        <button type="button" id="cancel-change">Cancel</button>
+      </form>
+
+      <div id="password-error" class="error-message hidden"></div>
+      <div id="password-success" class="success-message hidden"></div>
+
+      <!-- Password change link -->
+      <div class="password-change-link">
+        <a href="#" id="show-change-password">Change Password</a>
+      </div>
+
+      <!-- Password expiration notice -->
+      <div id="password-expiration-notice" class="expiration-notice hidden">
+        Your password will expire in <span id="expiration-days">30</span> days.
+      </div>
+
+      <!-- Global Access Status -->
+      <div id="global-access-status" class="global-access-status hidden">
+        <p>Access is currently granted for all users</p>
+        <p>Time remaining: <span id="access-time-remaining">0</span> hours</p>
+        <button id="extend-access-btn" class="extend-btn">Add 1 Hour</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="menu">
+    <a href="/" id="logo-link"><img id="logoimg-1" src="./images/nodaylogo.png" alt="Logo" class="menu-logo"></a>
+    <a href="/" id="title-link"><h1 id="topz">NODAY'Z <span>ENTERTAINMENT</span></h1></a>
+    <a href="/" id="logo-link-2"><img id="logoimg-2" src="./images/nodaylogo.png" alt="Logo" class="menu-logo"></a>
+  </header>
+ <!--<div class="construction-notice">This website is under construction</div>  -->
+    <input type="text" class="hidden"placeholder="Search..." id="search-input">
+    <p><a href="/"class="backbutton hidden" id="back-btn">Back</a></p>
+    <p><a href="/"class="backbutton hidden" id="back-btn2">Back</a></p>
+
+      <!-- Back Button -->
+      <button id="return-btn" class="return-btn hidden" >Back</button>
+
+      <!-- Main Display Area -->
+      <section id="video-grid-section"class="details">
+        <h2 id="section-heading">Choose a Video Group</h2>
+        <ul id="video-grid"></ul>
+      </section>
+    </div>
+
+    <!-- Video Player Section -->
+    <div id="player-container" class="player-container hidden">
+      <video id="video-element" controls></video>
+      <div class="player-options">
+        <button id="expand-btn" class="expand-btn">Toggle Fullscreen</button>
+        <button id="exit-btn" class="exit-btn">X</button>
+      </div>
+    </div>
+  </div>
+  <div  class="container" id ="container1">
+    <section class="genres" id="genres-section">
+        <div class="container1">
+           <div class="content1">
+            <aside class="categories1">
+              <h2 id="kwanza">Genre</h2>
+              <ul id="category-list">
+                <li data-category="arabic">Arabic</li>
+                <li data-category="chinese">Chinese</li>
+                <li data-category="dancehall">Dancehall,Ragga,Riddims</li>
+                <li data-category="eastAfrican">East African</li>
+                <li data-category="gospel">gospel</li>
+                <li data-category="international">International</li>
+                <li data-category="lingala">Lingala & Rhumba</li>
+                <li data-category="roots">Reggae & Roots</li>
+                <li data-category="traditional">Traditional</li>
+                <li data-category="naija">West & South Africa</li>
+                <li data-category="xmass">Xmass</li>
+              </ul>
+            </aside>
+            <main class="details" id="kconcat">
+              <h2 id="details-title">Song</h2>
+              <ul id="item-list" class="item-list"></ul>
+            </main>
+
+          </div>
+        </div>
+        </div>
+        <main class="details" id="saxcont" >
+          <h2 id="details-title3">Song</h2>
+          <ul id="item-list3" class="item-list"></ul>
+        </main>
+        <div class="content"class="genre">
+      </div>
+       <!-- Genre and Video Sections -->
+          <div id="content" class="hidden">
+              <div id="genresColumn"class="hidden">
+                  <h2>Genres</h2>
+                  <ul id="genreList" class="hidden"></ul>
+              </div>
+              <div id="itemsColumn" class="hidden">
+                  <ul id="videoList"></ul>
+              </div>
+          </div>
+
+
+      <!-- Video Player Modal -->
+      <div id="playerModal" class="hidden">
+          <video id="mediaPlayer" controls></video>
+          <button id="closePlayer" onclick="closePlayer1()">Close</button>
+      </div>
+
+       </div>
+        <div id="kcont" class="genre"> KARAOKE @ CAFE AMKA <img id="amkalogo2"src="./images/amkabglogo.png" alt="Karaoke Logo"></div>
+        <div id="ncont" class="genre"> DJ NODAY & SAX-AFROPHONIST </div>
+        <button id="videoButton"  onclick="showGenres()">Karaoke videos</button>
+        <div id="startBtn" class="genre" >MIXXEZ</div>
+         <div class="content-container">
+            <div id="playerContainer" class="player-container">
+                <div class="close-player-btn" id="closePlayerBtn">✕</div>
+                <video id="mediaPlayer" class="media-player" controls></video>
+            </div>
+            <div class="media-list-container" id="mediaListContainer">
+                <div class="media-list" id="mediaList"></div>
+            </div>
+        </div>
+        <div class="container">
+          <button id="liveRequestBtn"class="genre">Live Request</button>
+          <div id="requestBox" class="hidden">
+            <form id="requestForm">
+              <input type="text" id="musicRequest" maxlength="40" placeholder="Enter music request" required>
+              <input type="text" id="userName" maxlength="15" placeholder="Enter your name (optional)">
+              <button type="submit"id="postbt">Post</button>
+            </form>
+            <div id="requestsDisplay" class="requests-display"></div>
+             <div id="duplicateMessage" class="hidden">This song has already been requested!</div>
+          </div>
+        </div>
+    </section>
+  <div>
+  </div>
+    <div id="qr-back-container">
+      <img id="qr" src="./images/QR.png" alt="https://nodayzentertainment.co.ke/">
+    </div>
+  </div>
+  <!-- Genre Content Display -->
+  <section id="genre-content" class="genre-content hidden">
+    <h3 id="genre-title"> Enjoy: </h3>
+    <ul id="music-list"></ul>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
