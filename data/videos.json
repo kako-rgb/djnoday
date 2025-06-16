@@ -1,0 +1,158 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Amina",
+      "artist": "DJ Noday",
+      "thumbnail": "assets/images/video-thumb-1.jpg",
+      "videoUrl": "assets/mixxez/Amina.mp4",
+      "duration": "3:45",
+      "description": "A high-energy mix of the latest Afrobeats hits"
+    },
+    {
+      "id": 2,
+      "title": "Bebi",
+      "artist": "DJ Noday",
+      "thumbnail": "assets/images/video-thumb-2.jpg",
+      "videoUrl": "assets/mixxez/Bebi.mp4",
+      "duration": "4:12",
+      "description": "Classic and modern dancehall tracks mixed to perfection"
+    },
+    {
+      "id": 3,
+      "title": "Chaguo",
+      "artist": "DJ Noday",
+      "thumbnail": "assets/images/video-thumb-3.jpg",
+      "videoUrl": "assets/mixxez/Chaguo.mp4",
+      "duration": "3:28",
+      "description": "The best of East African music from Tanzania, Kenya, and Uganda"
+    },
+    {
+      "id": 4,
+      "title": "Deadly Nameless",
+      "artist": "DJ Noday",
+      "thumbnail": "assets/images/video-thumb-4.jpg",
+      "videoUrl": "assets/mixxez/Deadly Nameless.mp4",
+      "duration": "4:35",
+      "description": "Global hits that dominated the charts worldwide"
+    },
+    {
+      "id": 5,
+      "title": "Set It",
+      "artist": "Dyana Cods ft. Ajay",
+      "thumbnail": "assets/images/video-thumb-5.jpg",
+      "videoUrl": "assets/mixxez/Set It  Dyana Cods ft. Ajay.mp4",
+      "duration": "3:52",
+      "description": "Hit collaboration between Dyana Cods and Ajay"
+    },
+    {
+      "id": 6,
+      "title": "Moto Moto",
+      "artist": "Ray C ft. French Boy",
+      "thumbnail": "assets/images/video-thumb-6.jpg",
+      "videoUrl": "assets/mixxez/Moto Moto  Ray C ft. French Boy.mp4",
+      "duration": "4:18",
+      "description": "Classic Bongo Flava hit featuring French Boy"
+    },
+    {
+      "id": 7,
+      "title": "Sinzia",
+      "artist": "Nameless",
+      "thumbnail": "assets/images/video-thumb-7.jpg",
+      "videoUrl": "assets/mixxez/Sinzia  Nameless.mp4",
+      "duration": "3:33",
+      "description": "Popular Kenyan hit by Nameless"
+    },
+    {
+      "id": 8,
+      "title": "Midnight Train",
+      "artist": "Sauti Sol",
+      "thumbnail": "assets/images/video-thumb-8.jpg",
+      "videoUrl": "assets/mixxez/Midnight Train  Sauti Sol.mp4",
+      "duration": "4:07",
+      "description": "Soulful track from Kenya's premier band Sauti Sol"
+    },
+    {
+      "id": 9,
+      "title": "Deadly",
+      "artist": "Nameless",
+      "thumbnail": "assets/images/video-thumb-9.jpg",
+      "videoUrl": "assets/mixxez/Deadly  Nameless.mp4",
+      "duration": "3:41",
+      "description": "High-energy hit by Kenyan legend Nameless"
+    },
+    {
+      "id": 10,
+      "title": "Extra",
+      "artist": "Bensoul",
+      "thumbnail": "assets/images/video-thumb-10.jpg",
+      "videoUrl": "assets/videos/Extra Bensoul.mp4",
+      "duration": "3:58",
+      "description": "Contemporary R&B vibes from Bensoul"
+    },
+    {
+      "id": 11,
+      "title": "Sample Video",
+      "artist": "DJ Noday",
+      "thumbnail": "assets/images/video-thumb-11.jpg",
+      "videoUrl": "assets/videos/sample-video.mp4",
+      "duration": "2:15",
+      "description": "Sample mix for demonstration"
+    },
+    {
+      "id": 12,
+      "title": "Nenda Lote",
+      "artist": "Sauti Sol",
+      "thumbnail": "assets/images/video-thumb-12.jpg",
+      "videoUrl": "assets/videos/Nenda Lote  Sauti Sol.mp4",
+      "duration": "4:23",
+      "description": "Popular hit from Sauti Sol's catalog"
+    },
+    {
+      "id": 13,
+      "title": "Isabella",
+      "artist": "Sauti Sol",
+      "thumbnail": "assets/images/video-thumb-1.jpg",
+      "videoUrl": "assets/videos/Isabella  Sauti Sol.mp4",
+      "duration": "3:49",
+      "description": "Romantic ballad by Sauti Sol"
+    },
+    {
+      "id": 14,
+      "title": "Mapenzi",
+      "artist": "Kidum",
+      "thumbnail": "assets/images/video-thumb-2.jpg",
+      "videoUrl": "assets/videos/Mapenzi  Kidum.mp4",
+      "duration": "4:02",
+      "description": "Love song by East African artist Kidum"
+    },
+    {
+      "id": 15,
+      "title": "Free",
+      "artist": "Nyashinski",
+      "thumbnail": "assets/images/video-thumb-3.jpg",
+      "videoUrl": "assets/videos/Free  Nyashinski.mp4",
+      "duration": "3:36",
+      "description": "Inspiring track by Kenyan rapper Nyashinski"
+    },
+    {
+      "id": 16,
+      "title": "Koo Koo",
+      "artist": "Elani",
+      "thumbnail": "assets/images/video-thumb-4.jpg",
+      "videoUrl": "assets/videos/Koo Koo  Elani.mp4",
+      "duration": "3:25",
+      "description": "Smooth R&B from Kenyan group Elani"
+    },
+    {
+      "id": 17,
+      "title": "Rhumba",
+      "artist": "Wanavokali",
+      "thumbnail": "assets/images/video-thumb-5.jpg",
+      "videoUrl": "assets/videos/Rhumba  Wanavokali.mp4",
+      "duration": "4:44",
+      "description": "Traditional Rhumba music by Wanavokali"
+    }
+  ]
+}
+
