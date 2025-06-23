@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test - Noday'z Entertainment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        .log-container {
+            background-color: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #333;
+            border-left: 3px solid #667eea;
+        }
+        .error {
+            border-left-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+        .success {
+            border-left-color: #51cf66;
+            color: #51cf66;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Test - Noday'z Entertainment</h1>
+    
+    <div>
+        <h2>Button Click Tests</h2>
+        <button class="test-button" onclick="testBasicClick()">Test Basic Click</button>
+        <button class="test-button" onclick="testNavigationClick()">Test Navigation Function</button>
+        <button class="test-button" onclick="testElementSelection()">Test Element Selection</button>
+        <button class="test-button" onclick="testCORSConnection()">Test CORS Connection</button>
+        <button class="test-button" onclick="clearLogs()">Clear Logs</button>
+    </div>
+    
+    <div class="log-container">
+        <h3>Debug Logs:</h3>
+        <div id="log-output"></div>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const logOutput = document.getElementById('log-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logOutput.appendChild(logEntry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+
+        function clearLogs() {
+            document.getElementById('log-output').innerHTML = '';
+            log('Logs cleared', 'info');
+        }
+
+        function testBasicClick() {
+            log('Basic click test executed successfully!', 'success');
+        }
+
+        function testNavigationClick() {
+            try {
+                // Test if navigation functions would work
+                const navButtons = document.querySelectorAll('.nav-button');
+                log(`Would find ${navButtons.length} navigation buttons in main app`, 'info');
+                
+                // Simulate navigation logic
+                const testPageId = 'karaoke-cafe';
+                log(`Testing navigation to: ${testPageId}`, 'info');
+                
+                // Test if basic DOM operations work
+                const testElement = document.createElement('div');
+                testElement.id = 'test-page';
+                testElement.className = 'page';
+                document.body.appendChild(testElement);
+                
+                // Test class manipulation
+                testElement.classList.add('active');
+                log('Successfully added "active" class to test element', 'success');
+                
+                testElement.classList.remove('active');
+                log('Successfully removed "active" class from test element', 'success');
+                
+                // Clean up
+                document.body.removeChild(testElement);
+                log('Navigation simulation completed successfully!', 'success');
+                
+            } catch (error) {
+                log(`Navigation test failed: ${error.message}`, 'error');
+            }
+        }
+
+        function testElementSelection() {
+            try {
+                // Test if we can find elements like the main app does
+                const body = document.body;
+                log(`Found body element: ${body ? 'YES' : 'NO'}`, body ? 'success' : 'error');
+                
+                const buttons = document.querySelectorAll('button');
+                log(`Found ${buttons.length} buttons on this page`, 'info');
+                
+                const nonExistent = document.getElementById('non-existent-element');
+                log(`Non-existent element test: ${nonExistent ? 'FOUND (ERROR)' : 'NOT FOUND (CORRECT)'}`, 
+                    nonExistent ? 'error' : 'success');
+                
+                log('Element selection tests completed!', 'success');
+                
+            } catch (error) {
+                log(`Element selection test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCORSConnection() {
+            try {
+                log('Testing CORS connection...', 'info');
+                
+                const apiUrl = 'https://djnoday2.onrender.com/api/health';
+                log(`Attempting connection to: ${apiUrl}`, 'info');
+                
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'omit'
+                });
+                
+                log(`Response status: ${response.status}`, response.ok ? 'success' : 'error');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`Response data: ${JSON.stringify(data)}`, 'success');
+                    log('CORS connection test PASSED!', 'success');
+                } else {
+                    log(`HTTP Error: ${response.status} - ${response.statusText}`, 'error');
+                }
+                
+            } catch (error) {
+                log(`CORS connection failed: ${error.message}`, 'error');
+                log(`Error type: ${error.name}`, 'error');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Debug test page loaded successfully!', 'success');
+            log('All buttons should be clickable. If they are not, there might be a CSS issue.', 'info');
+        });
+    </script>
+</body>
+</html>

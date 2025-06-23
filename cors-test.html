@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Debug Test</title>
+</head>
+<body>
+    <h1>CORS Debug Test</h1>
+    <button onclick="testCORS()">Test CORS Connection</button>
+    <div id="results"></div>
+
+    <script>
+        async function testCORS() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Testing CORS...</p>';
+            
+            const apiUrl = 'https://djnoday2.onrender.com/api/health';
+            
+            try {
+                console.log('Testing CORS with:', apiUrl);
+                
+                // Test 1: Simple GET request
+                resultsDiv.innerHTML += '<p>Test 1: Simple GET request</p>';
+                const response1 = await fetch(apiUrl, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                resultsDiv.innerHTML += `<p>Response 1 Status: ${response1.status}</p>`;
+                
+                if (response1.ok) {
+                    const data1 = await response1.json();
+                    resultsDiv.innerHTML += `<p>Response 1 Data: ${JSON.stringify(data1)}</p>`;
+                }
+                
+                // Test 2: GET request with headers
+                resultsDiv.innerHTML += '<p>Test 2: GET request with headers</p>';
+                const response2 = await fetch(apiUrl, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                resultsDiv.innerHTML += `<p>Response 2 Status: ${response2.status}</p>`;
+                
+                if (response2.ok) {
+                    const data2 = await response2.json();
+                    resultsDiv.innerHTML += `<p>Response 2 Data: ${JSON.stringify(data2)}</p>`;
+                }
+                
+                // Test 3: OPTIONS request
+                resultsDiv.innerHTML += '<p>Test 3: OPTIONS preflight request</p>';
+                const response3 = await fetch(apiUrl, {
+                    method: 'OPTIONS',
+                    mode: 'cors',
+                    headers: {
+                        'Access-Control-Request-Method': 'GET',
+                        'Access-Control-Request-Headers': 'Content-Type'
+                    }
+                });
+                
+                resultsDiv.innerHTML += `<p>Response 3 Status: ${response3.status}</p>`;
+                resultsDiv.innerHTML += '<p>✅ All tests completed successfully!</p>';
+                
+            } catch (error) {
+                console.error('CORS test failed:', error);
+                resultsDiv.innerHTML += `<p style="color: red;">❌ Error: ${error.message}</p>`;
+                resultsDiv.innerHTML += `<p style="color: red;">Error type: ${error.name}</p>`;
+                
+                // Additional debugging
+                if (error.message.includes('CORS')) {
+                    resultsDiv.innerHTML += '<p style="color: orange;">This is a CORS policy error. Check server configuration.</p>';
+                }
+                
+                if (error.message.includes('Failed to fetch')) {
+                    resultsDiv.innerHTML += '<p style="color: orange;">Network error. Server might be down or unreachable.</p>';
+                }
+            }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Debug Test</title>
+</head>
+<body>
+    <h1>CORS Debug Test</h1>
+    <button onclick="testCORS()">Test CORS Connection</button>
+    <div id="results"></div>
+
+    <script>
+        async function testCORS() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Testing CORS...</p>';
+            
+            const apiUrl = 'https://djnoday2.onrender.com/api/health';
+            
+            try {
+                console.log('Testing CORS with:', apiUrl);
+                
+                // Test 1: Simple GET request
+                resultsDiv.innerHTML += '<p>Test 1: Simple GET request</p>';
+                const response1 = await fetch(apiUrl, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                resultsDiv.innerHTML += `<p>Response 1 Status: ${response1.status}</p>`;
+                
+                if (response1.ok) {
+                    const data1 = await response1.json();
+                    resultsDiv.innerHTML += `<p>Response 1 Data: ${JSON.stringify(data1)}</p>`;
+                }
+                
+                // Test 2: GET request with headers
+                resultsDiv.innerHTML += '<p>Test 2: GET request with headers</p>';
+                const response2 = await fetch(apiUrl, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                resultsDiv.innerHTML += `<p>Response 2 Status: ${response2.status}</p>`;
+                
+                if (response2.ok) {
+                    const data2 = await response2.json();
+                    resultsDiv.innerHTML += `<p>Response 2 Data: ${JSON.stringify(data2)}</p>`;
+                }
+                
+                // Test 3: OPTIONS request
+                resultsDiv.innerHTML += '<p>Test 3: OPTIONS preflight request</p>';
+                const response3 = await fetch(apiUrl, {
+                    method: 'OPTIONS',
+                    mode: 'cors',
+                    headers: {
+                        'Access-Control-Request-Method': 'GET',
+                        'Access-Control-Request-Headers': 'Content-Type'
+                    }
+                });
+                
+                resultsDiv.innerHTML += `<p>Response 3 Status: ${response3.status}</p>`;
+                resultsDiv.innerHTML += '<p>✅ All tests completed successfully!</p>';
+                
+            } catch (error) {
+                console.error('CORS test failed:', error);
+                resultsDiv.innerHTML += `<p style="color: red;">❌ Error: ${error.message}</p>`;
+                resultsDiv.innerHTML += `<p style="color: red;">Error type: ${error.name}</p>`;
+                
+                // Additional debugging
+                if (error.message.includes('CORS')) {
+                    resultsDiv.innerHTML += '<p style="color: orange;">This is a CORS policy error. Check server configuration.</p>';
+                }
+                
+                if (error.message.includes('Failed to fetch')) {
+                    resultsDiv.innerHTML += '<p style="color: orange;">Network error. Server might be down or unreachable.</p>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
