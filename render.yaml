@@ -1,0 +1,22 @@
+# render.yaml
+services:
+  - type: web
+    name: noday-backend
+    env: python
+    plan: free # Or your desired plan
+    region: oregon # Or your desired region
+    rootDir: .
+    buildFilter:
+      paths:
+      - noday-backend/**
+    build:
+      command: "pip install -r noday-backend/requirements.txt"
+    start:
+      command: "gunicorn --bind 0.0.0.0:10000 'src.main:create_app()'"
+    envVars:
+      - key: MONGODB_URI
+        sync: false # Set this in the Render dashboard
+      - key: SECRET_KEY
+        generateValue: true # Let Render generate a secure key
+      - key: PYTHON_VERSION
+        value: 3.11 # Or the version you use

@@ -1,0 +1,5 @@
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://djnoday-main.onrender.com/api/:splat"
+  status = 200

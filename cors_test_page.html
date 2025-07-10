@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Test - Noday'z Entertainment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .test-section {
+            background-color: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #2d5a2d;
+            border: 1px solid #4caf50;
+        }
+        .error {
+            background-color: #5a2d2d;
+            border: 1px solid #f44336;
+        }
+        .info {
+            background-color: #2d4a5a;
+            border: 1px solid #2196f3;
+        }
+        button {
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #e55a2b;
+        }
+        pre {
+            background-color: #1a1a1a;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 CORS Configuration Test</h1>
+    <p>This page tests the CORS configuration for the Noday'z Entertainment backend API.</p>
+
+    <div class="test-section">
+        <h2>Test Configuration</h2>
+        <div id="config-info" class="test-result info">
+            <strong>Current Origin:</strong> <span id="current-origin"></span><br>
+            <strong>Backend URLs to test:</strong>
+            <ul>
+                <li>Local: http://localhost:5000</li>
+                <li>Production: https://djnoday2.onrender.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Tests</h2>
+        <button onclick="testLocalBackend()">Test Local Backend</button>
+        <button onclick="testProductionBackend()">Test Production Backend</button>
+        <button onclick="testAllEndpoints()">Test All Endpoints</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Automatic Test</h2>
+        <div id="auto-test-results"></div>
+    </div>
+
+    <script>
+        // Display current origin
+        document.getElementById('current-origin').textContent = window.location.origin;
+
+        // Test configuration
+        const testConfig = {
+            local: 'http://localhost:5000',
+            production: 'https://djnoday2.onrender.com'
+        };
+
+        function addResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+            document.getElementById('auto-test-results').innerHTML = '';
+        }
+
+        async function testCORS(baseUrl, label) {
+            addResult(`🧪 Testing ${label} (${baseUrl})...`, 'info');
+            
+            try {
+                // Test health endpoint
+                const healthUrl = `${baseUrl}/api/health`;
+                addResult(`Fetching: ${healthUrl}`, 'info');
+                
+                const response = await fetch(healthUrl, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'omit'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult(`✅ ${label} - Success! Status: ${data.status}, Database: ${data.database}`, 'success');
+                    
+                    // Show response headers
+                    const corsHeaders = {
+                        'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+                        'Access-Control-Allow-Credentials': response.headers.get('Access-Control-Allow-Credentials')
+                    };
+                    
+                    addResult(`CORS Headers: <pre>${JSON.stringify(corsHeaders, null, 2)}</pre>`, 'info');
+                    return true;
+                } else {
+                    addResult(`❌ ${label} - HTTP Error: ${response.status} ${response.statusText}`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                addResult(`❌ ${label} - Error: ${error.message}`, 'error');
+                
+                // Try alternative approach for CORS issues
+                if (error.message.includes('fetch')) {
+                    addResult(`🔄 Trying no-cors mode for ${label}...`, 'info');
+                    try {
+                        const noCorsResponse = await fetch(`${baseUrl}/api/health`, {
+                            method: 'GET',
+                            mode: 'no-cors'
+                        });
+                        addResult(`⚠️ ${label} - No-cors request completed (can't read response)`, 'info');
+                    } catch (noCorsError) {
+                        addResult(`❌ ${label} - No-cors also failed: ${noCorsError.message}`, 'error');
+                    }
+                }
+                return false;
+            }
+        }
+
+        async function testLocalBackend() {
+            await testCORS(testConfig.local, 'Local Backend');
+        }
+
+        async function testProductionBackend() {
+            await testCORS(testConfig.production, 'Production Backend');
+        }
+
+        async function testAllEndpoints() {
+            addResult('🚀 Starting comprehensive CORS test...', 'info');
+            
+            const results = [];
+            for (const [key, url] of Object.entries(testConfig)) {
+                const result = await testCORS(url, `${key.charAt(0).toUpperCase() + key.slice(1)} Backend`);
+                results.push({ key, url, success: result });
+            }
+            
+            const successCount = results.filter(r => r.success).length;
+            const totalCount = results.length;
+            
+            if (successCount === totalCount) {
+                addResult(`🎉 All tests passed! (${successCount}/${totalCount})`, 'success');
+            } else {
+                addResult(`⚠️ Some tests failed. (${successCount}/${totalCount} passed)`, 'error');
+            }
+        }
+
+        // Run automatic test on page load
+        window.addEventListener('load', async () => {
+            const autoResultsDiv = document.getElementById('auto-test-results');
+            autoResultsDiv.innerHTML = '<div class="test-result info">🔄 Running automatic CORS test...</div>';
+            
+            // Wait a moment for the page to fully load
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Test production backend automatically
+            const success = await testCORS(testConfig.production, 'Production Backend (Auto)');
+            
+            if (success) {
+                autoResultsDiv.innerHTML = '<div class="test-result success">✅ Automatic test passed! CORS is working correctly.</div>';
+            } else {
+                autoResultsDiv.innerHTML = '<div class="test-result error">❌ Automatic test failed. Please check the manual test results above.</div>';
+            }
+        });
+    </script>
+</body>
+</html>

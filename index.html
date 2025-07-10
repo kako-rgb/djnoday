@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noday'z Entertainment</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <div class="background-overlay"></div>
+        <div class="decorative-elements">
+            <img src="assets/images/home.jpg" alt="Background" class="background-image">
+        </div>
+        
+        <header class="main-header">
+            <div class="logo-container">
+                <div class="logo-icon left"></div>
+                <div class="title-container">
+                    <h1 class="main-title">NODAY'Z<span class="db-status-dot" id="db-status-dot"></span></h1>
+                    <h2 class="sub-title">ENTERTAINMENT</h2>
+                </div>
+                <div class="logo-icon right"></div>
+            </div>
+            <div class="db-status-indicator" id="db-status-indicator" title="Database Status"></div>
+        </header>
+
+        <nav class="main-navigation">
+            <button class="nav-button" data-target="karaoke-cafe">
+                <span>KARAOKE @ CAFE AMKA</span>
+                <span class="nav-icon">🎤</span>
+            </button>
+            <button class="nav-button" data-target="dj-noday">
+                <span>DJ NODAY & SAX-AFROPHONIST</span>
+            </button>
+            <button class="nav-button" data-target="mixxez">
+                <span>MIXXEZ</span>
+            </button>
+            <button class="nav-button live-request" data-target="live-request">
+                <span>LIVE REQUEST</span>
+            </button>
+        </nav>
+
+        <div class="qr-code">
+            <div class="qr-container">
+                <img src="assets/images/QR.png" alt="QR Code" class="qr-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Karaoke @ Cafe AMKA Page -->
+    <div id="karaoke-cafe" class="page">
+        <div class="background-overlay"></div>
+        <header class="page-header">
+            <div class="logo-container">
+                <div class="logo-icon left"></div>
+                <div class="title-container">
+                    <h1 class="main-title">NODAY'Z</h1>
+                    <h2 class="sub-title">ENTERTAINMENT</h2>
+                </div>
+                <div class="logo-icon right"></div>
+            </div>
+            <button class="back-button">Back</button>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="karaoke-search" placeholder="Search..." class="search-input">
+        </div>
+
+        <div class="content-container">
+            <div class="sidebar">
+                <h3 class="sidebar-title">Karaoke Songs</h3>
+                <div class="category-list" id="karaoke-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+                <button class="karaoke-videos-btn" id="karaoke-videos-btn">Karaoke videos</button>
+            </div>
+            <div class="main-content">
+                <div class="content-header">
+                    <h3 id="selected-category">Select a Category</h3>
+                </div>
+                <div class="songs-list" id="karaoke-songs-list">
+                    <!-- Songs will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DJ Noday & Sax-Afrophonist Page -->
+    <div id="dj-noday" class="page">
+        <div class="background-overlay"></div>
+        <header class="page-header">
+            <div class="logo-container">
+                <div class="logo-icon left"></div>
+                <div class="title-container">
+                    <h1 class="main-title">NODAY'Z</h1>
+                    <h2 class="sub-title">ENTERTAINMENT</h2>
+                </div>
+                <div class="logo-icon right"></div>
+            </div>
+            <button class="back-button">Back</button>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="dj-search" placeholder="Search..." class="search-input">
+        </div>
+
+        <div class="content-container">
+            <div class="sidebar">
+                <h3 class="sidebar-title">Karaoke Songs</h3>
+                <div class="category-list" id="dj-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="content-header">
+                    <h3 id="dj-selected-category">Select a Category</h3>
+                </div>
+                <div class="songs-list" id="dj-songs-list">
+                    <!-- Songs will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Karaoke Videos Page -->
+    <div id="karaoke-videos" class="page">
+        <div class="background-overlay"></div>
+        <header class="page-header">
+            <div class="logo-container">
+                <div class="logo-icon left"></div>
+                <div class="title-container">
+                    <h1 class="main-title">NODAY'Z</h1>
+                    <h2 class="sub-title">ENTERTAINMENT</h2>
+                </div>
+                <div class="logo-icon right"></div>
+            </div>
+            <button class="back-button">Back</button>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="karaoke-videos-search" placeholder="Search..." class="search-input">
+        </div>
+
+        <div class="content-container">
+            <div class="sidebar">
+                <h3 class="sidebar-title">Video Categories</h3>
+                <div class="category-list" id="karaoke-videos-categories">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="content-header">
+                    <h3 id="karaoke-videos-selected-category">Select a Category</h3>
+                </div>
+                <div class="video-grid" id="karaoke-videos-grid">
+                    <!-- Video thumbnails will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MIXXEZ Page -->
+    <div id="mixxez" class="page">
+        <div class="background-overlay"></div>
+        <header class="page-header">
+            <div class="logo-container">
+                <div class="logo-icon left"></div>
+                <div class="title-container">
+                    <h1 class="main-title">NODAY'Z</h1>
+                    <h2 class="sub-title">ENTERTAINMENT</h2>
+                </div>
+                <div class="logo-icon right"></div>
+            </div>
+            <button class="back-button">Back</button>
+        </header>
+
+        <div class="video-grid" id="video-grid">
+            <!-- Video thumbnails will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Live Request Page -->
+    <div id="live-request" class="page">
+        <div class="background-overlay"></div>
+        <header class="page-header">
+            <div class="logo-container">
+                <div class="logo-icon left"></div>
+                <div class="title-container">
+                    <h1 class="main-title">NODAY'Z</h1>
+                    <h2 class="sub-title">ENTERTAINMENT</h2>
+                </div>
+                <div class="logo-icon right"></div>
+            </div>
+            <button class="back-button">Back</button>
+        </header>
+
+        <div class="request-form">
+            <input type="text" id="music-request" placeholder="Enter music request" class="request-input">
+            <input type="text" id="requester-name" placeholder="Enter your name (optional)" class="request-input">
+            <button id="post-request" class="post-button">Post</button>
+        </div>
+
+        <div class="requests-list" id="requests-list">
+            <!-- Requests will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="video-player-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-player" id="close-player">&times;</button>
+            <video id="main-video-player" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+                <button class="control-btn" id="volume-btn">🔊</button>
+                <button class="control-btn" id="fullscreen-btn">⛶</button>
+                <button class="control-btn" id="more-btn">⋮</button>
+            </div>
+            <div class="video-thumbnails" id="player-thumbnails">
+                <!-- Thumbnails will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
